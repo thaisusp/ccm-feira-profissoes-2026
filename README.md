@@ -27,6 +27,9 @@ Depois, acesse `http://localhost:8000`.
 
 ## Estrutura do projeto
 
+- Arquivos na raiz: versão original preservada da apresentação interativa.
+- `slides/`: versão em formato de slides automáticos, criada a partir da
+  apresentação original.
 - `index.html`: versão modular da apresentação.
 - `css/styles.css`: identidade visual, layouts, responsividade e animações.
 - `js/app.js`: navegação, teclado, fullscreen e interações.
@@ -48,6 +51,12 @@ npm run build
 ```
 
 O comando atualiza `data/conteudo.js` e recria `dist/index.html`.
+
+Para gerar a versão de slides automáticos:
+
+```bash
+npm run build:slides
+```
 
 ## Controles da apresentação
 
@@ -77,4 +86,3 @@ As cores representam consistentemente as grandes áreas:
 
 Os projetos exibidos são exemplos reais do Ciclo Avançado fornecidos para a
 apresentação. Não há informações pessoais, telefones ou endereços de e-mail.
-
