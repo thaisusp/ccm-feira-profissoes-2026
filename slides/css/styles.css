@@ -67,14 +67,15 @@
     @keyframes word-in{to{opacity:1}}@keyframes dash{to{stroke-dashoffset:-380}}
 
     /* areas */
-    .campus-map{position:relative;width:min(100%,78rem);height:min(48vh,31rem);margin-top:1.2rem}
-    .campus-map svg{position:absolute;inset:0;width:100%;height:100%}
-    .campus-outline{fill:rgba(255,255,255,.66);stroke:#cbd5e1;stroke-width:2}
-    .campus-path{fill:none;stroke:#9db3d1;stroke-width:3;stroke-dasharray:9 12;opacity:.7}
-    .campus-node{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);width:clamp(4.6rem,8vw,6.5rem);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--area) 11%,#fff);border:2px solid var(--area);box-shadow:0 12px 30px color-mix(in srgb,var(--area) 16%,transparent);color:color-mix(in srgb,var(--area) 84%,#111827);font-weight:900;letter-spacing:.04em}
-    .campus-node::after{content:"";position:absolute;inset:-.45rem;border-radius:inherit;border:1px solid color-mix(in srgb,var(--area) 22%,transparent)}
-    .campus-node.ime{--x:18%;--y:58%}.campus-node.if{--x:29%;--y:37%}.campus-node.iq{--x:43%;--y:52%}.campus-node.ib{--x:56%;--y:31%}.campus-node.icb{--x:66%;--y:57%}.campus-node.poli{--x:77%;--y:36%}.campus-node.fflch{--x:84%;--y:68%}
-    .campus-more{position:absolute;right:5%;bottom:7%;font-size:clamp(2.4rem,5vw,4rem);font-weight:900;color:#94a3b8;letter-spacing:.08em}
+    .campus-layout{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(14rem,.55fr);gap:clamp(1.6rem,4vw,4rem);align-items:center;width:min(100%,82rem);margin-top:1.1rem}
+    .campus-map{position:relative;margin:0;height:min(50vh,31rem);border-radius:1.2rem;overflow:hidden;border:1px solid rgba(148,163,184,.42);background:#fff;box-shadow:0 16px 48px rgba(15,23,42,.12)}
+    .campus-map::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.7);pointer-events:none}
+    .campus-map img{width:100%;height:100%;object-fit:cover;object-position:50% 53%;display:block}
+    .campus-list{display:grid;gap:.7rem;align-content:center}
+    .campus-list span{display:flex;align-items:center;gap:.7rem;font-size:clamp(1rem,1.55vw,1.35rem);font-weight:880;letter-spacing:.05em;color:color-mix(in srgb,var(--area) 88%,#111827)}
+    .campus-list span::before{content:"";width:.85rem;aspect-ratio:1;border-radius:50%;background:var(--area);box-shadow:0 0 0 .36rem color-mix(in srgb,var(--area) 13%,transparent)}
+    .campus-list .more{color:#94a3b8}
+    .campus-list .more::before{background:#94a3b8;box-shadow:none}
     .split-note{display:flex;align-items:center;gap:1rem;color:#334155;margin-top:1.2rem;font-size:clamp(.92rem,1.4vw,1.12rem);font-weight:650}.split-note .rule{height:1px;flex:1;background:linear-gradient(90deg,transparent,#94a3b8,transparent)}
 
     /* question universe */
@@ -158,7 +159,7 @@
       .slide{padding:5rem 1.4rem 5rem;align-content:center}.key-hint{display:none}.topline{left:1.2rem}.controls{right:1rem}.control.auto,.control.help{display:none}
       .question-universe{height:70vh;overflow:auto;padding-right:.3rem}.question-universe .problem-pill{position:relative!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;transform:none!important;width:100%;margin:.3rem 0}.question-core{position:relative;left:auto;top:auto;transform:none;width:auto;aspect-ratio:auto;border-radius:1rem;padding:1rem;margin-bottom:.6rem}.q2:hover,.q7:hover{transform:translateY(-2px)!important}
       .two-col{grid-template-columns:1fr;gap:1rem}.map-stage{height:42vh;min-height:17rem}
-      .editorial-sequence{grid-template-columns:1fr;gap:1rem}.campus-map{height:42vh}.campus-node{width:4.35rem;font-size:.75rem}
+      .editorial-sequence{grid-template-columns:1fr;gap:1rem}.campus-layout{grid-template-columns:1fr;gap:1rem}.campus-map{height:34vh}.campus-list{grid-template-columns:repeat(2,1fr)}
       .basic-cycle-layout{grid-template-columns:1fr;gap:.5rem}.cycle-wheel{width:min(34vh,18rem)}.cycle-detail{min-height:5rem}.cycle-meta{margin-top:.45rem}
       .project-space{height:65vh}.project-panel{right:1rem}
       .profile-list{grid-template-columns:1fr;gap:0}.admission-flow{grid-template-columns:1fr}.flow-box{min-height:4.5rem}.flow-arrow{transform:rotate(90deg);justify-self:center}.final-grid{grid-template-columns:1fr;gap:2rem}

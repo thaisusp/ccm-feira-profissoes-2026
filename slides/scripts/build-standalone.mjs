@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { cp, mkdir, readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 
@@ -22,6 +22,6 @@ const standalone = sourceHtml
   );
 
 await mkdir(path.join(projectRoot, "dist"), { recursive: true });
+await cp(path.join(projectRoot, "images"), path.join(projectRoot, "dist", "images"), { recursive: true });
 await writeFile(path.join(projectRoot, "dist", "index.html"), standalone, "utf8");
 console.log("Arquivo standalone criado em dist/index.html");
-
