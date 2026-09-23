@@ -1,0 +1,463 @@
+{
+  "version": 2,
+  "areaPalette": {
+    "math": "#d93654",
+    "physics": "#e8751a",
+    "chemistry": "#c99b00",
+    "biology": "#199b62",
+    "computing": "#2468d8",
+    "humanities": "#7a4bc2"
+  },
+  "problemMapData": {
+    "linguagem": {
+      "question": "Como o cérebro produz linguagem?",
+      "color": "humanities",
+      "areas": [
+        {
+          "name": "Linguística",
+          "macro": "humanities",
+          "why": "Descreve as estruturas e os padrões que organizam a linguagem."
+        },
+        {
+          "name": "Neurociência",
+          "macro": "biology",
+          "why": "Investiga os mecanismos neurais envolvidos na produção e na compreensão da linguagem."
+        },
+        {
+          "name": "Matemática",
+          "macro": "math",
+          "why": "Formaliza relações entre unidades linguísticas e permite testar modelos precisos."
+        },
+        {
+          "name": "Computação",
+          "macro": "computing",
+          "why": "Constrói modelos capazes de analisar e simular padrões linguísticos."
+        },
+        {
+          "name": "Psicologia",
+          "macro": "humanities",
+          "why": "Estuda como pessoas percebem, aprendem e produzem linguagem."
+        }
+      ]
+    },
+    "epidemia": {
+      "question": "Como podemos prever uma epidemia?",
+      "color": "biology",
+      "areas": [
+        {
+          "name": "Epidemiologia",
+          "macro": "biology",
+          "why": "Identifica padrões de transmissão, exposição e risco em populações."
+        },
+        {
+          "name": "Modelagem matemática",
+          "macro": "math",
+          "why": "Traduz contágio e recuperação em modelos que projetam cenários."
+        },
+        {
+          "name": "Ciência de dados",
+          "macro": "computing",
+          "why": "Integra grandes conjuntos de dados e detecta mudanças nos padrões de casos."
+        },
+        {
+          "name": "Saúde pública",
+          "macro": "humanities",
+          "why": "Conecta previsões a estratégias reais de prevenção e resposta."
+        },
+        {
+          "name": "Demografia",
+          "macro": "humanities",
+          "why": "Mostra como idade, mobilidade e estrutura populacional alteram a propagação."
+        }
+      ]
+    },
+    "maquinas": {
+      "question": "Como máquinas aprendem?",
+      "color": "computing",
+      "areas": [
+        {
+          "name": "Aprendizado de máquina",
+          "macro": "computing",
+          "why": "Desenvolve algoritmos que ajustam seu comportamento a partir de dados."
+        },
+        {
+          "name": "Estatística",
+          "macro": "math",
+          "why": "Quantifica incerteza e permite avaliar se o modelo realmente generaliza."
+        },
+        {
+          "name": "Otimização",
+          "macro": "math",
+          "why": "Encontra parâmetros que reduzem o erro durante o treinamento."
+        },
+        {
+          "name": "Neurociência",
+          "macro": "biology",
+          "why": "Inspira hipóteses sobre aprendizagem, memória e representação."
+        },
+        {
+          "name": "Filosofia da mente",
+          "macro": "humanities",
+          "why": "Examina o que significa aprender, representar e compreender."
+        }
+      ]
+    },
+    "galaxias": {
+      "question": "Como observamos o passado do Universo?",
+      "color": "physics",
+      "areas": [
+        {
+          "name": "Astrofísica",
+          "macro": "physics",
+          "why": "Relaciona a luz observada aos processos físicos que formam estrelas e galáxias."
+        },
+        {
+          "name": "Astronomia observacional",
+          "macro": "physics",
+          "why": "Coleta sinais que viajaram bilhões de anos até chegar aos telescópios."
+        },
+        {
+          "name": "Matemática",
+          "macro": "math",
+          "why": "Permite reconstruir distâncias, movimentos e escalas de tempo cósmicas."
+        },
+        {
+          "name": "Computação",
+          "macro": "computing",
+          "why": "Processa levantamentos do céu e encontra padrões em milhões de objetos."
+        }
+      ]
+    },
+    "organizacao": {
+      "question": "Como sistemas biológicos se organizam?",
+      "color": "biology",
+      "areas": [
+        {
+          "name": "Biologia de sistemas",
+          "macro": "biology",
+          "why": "Estuda como interações entre componentes produzem comportamentos coletivos."
+        },
+        {
+          "name": "Bioquímica",
+          "macro": "chemistry",
+          "why": "Explica as reações moleculares que sustentam a organização celular."
+        },
+        {
+          "name": "Biofísica",
+          "macro": "physics",
+          "why": "Investiga forças, fluxos e restrições físicas em sistemas vivos."
+        },
+        {
+          "name": "Modelagem matemática",
+          "macro": "math",
+          "why": "Representa redes biológicas e prevê sua dinâmica."
+        },
+        {
+          "name": "Computação",
+          "macro": "computing",
+          "why": "Simula sistemas complexos e integra dados de muitas escalas."
+        }
+      ]
+    },
+    "geologia": {
+      "question": "Como as rochas registram a história da Terra?",
+      "color": "physics",
+      "areas": [
+        {
+          "name": "Geocronologia",
+          "macro": "physics",
+          "why": "Usa decaimento radioativo para estimar a idade de minerais e eventos geológicos."
+        },
+        {
+          "name": "Mineralogia",
+          "macro": "chemistry",
+          "why": "Lê na composição e na estrutura dos minerais as condições em que se formaram."
+        },
+        {
+          "name": "Geofísica",
+          "macro": "physics",
+          "why": "Reconstrói processos internos da Terra por ondas, campos e propriedades físicas."
+        },
+        {
+          "name": "Geoquímica",
+          "macro": "chemistry",
+          "why": "Rastreia a circulação de elementos e isótopos ao longo do tempo."
+        },
+        {
+          "name": "Modelagem matemática",
+          "macro": "math",
+          "why": "Combina evidências incompletas para testar cenários sobre o passado terrestre."
+        }
+      ]
+    },
+    "oceano": {
+      "question": "Como mudanças ambientais reorganizam ecossistemas oceânicos?",
+      "color": "biology",
+      "areas": [
+        {
+          "name": "Ecologia marinha",
+          "macro": "biology",
+          "why": "Mede como espécies e comunidades respondem a alterações no ambiente."
+        },
+        {
+          "name": "Oceanografia física",
+          "macro": "physics",
+          "why": "Explica como correntes, temperatura e mistura transportam energia e nutrientes."
+        },
+        {
+          "name": "Biogeoquímica",
+          "macro": "chemistry",
+          "why": "Acompanha os ciclos de carbono, oxigênio e nutrientes na água."
+        },
+        {
+          "name": "Modelagem climática",
+          "macro": "math",
+          "why": "Projeta como diferentes cenários ambientais afetam o oceano."
+        },
+        {
+          "name": "Ciência de dados",
+          "macro": "computing",
+          "why": "Integra medições de satélites, sensores e expedições oceanográficas."
+        }
+      ]
+    },
+    "biomateriais": {
+      "question": "Como criar materiais que interajam com tecidos vivos?",
+      "color": "chemistry",
+      "areas": [
+        {
+          "name": "Química de polímeros",
+          "macro": "chemistry",
+          "why": "Controla composição, degradação e propriedades da superfície do material."
+        },
+        {
+          "name": "Biologia celular",
+          "macro": "biology",
+          "why": "Mostra como células aderem, crescem e respondem ao material."
+        },
+        {
+          "name": "Engenharia de tecidos",
+          "macro": "biology",
+          "why": "Combina células e suportes para restaurar ou substituir funções biológicas."
+        },
+        {
+          "name": "Mecânica",
+          "macro": "physics",
+          "why": "Ajusta rigidez, elasticidade e resistência ao tecido que será reproduzido."
+        },
+        {
+          "name": "Modelagem computacional",
+          "macro": "computing",
+          "why": "Simula interações e ajuda a selecionar estruturas antes dos testes experimentais."
+        }
+      ]
+    }
+  },
+  "cycleAreas": [
+    {
+      "name": "Matemática",
+      "tool": "modelagem",
+      "color": "var(--math)",
+      "start": 0,
+      "end": 66
+    },
+    {
+      "name": "Física",
+      "tool": "mecanismos",
+      "color": "var(--physics)",
+      "start": 68,
+      "end": 138
+    },
+    {
+      "name": "Química",
+      "tool": "estrutura e transformação",
+      "color": "var(--chemistry)",
+      "start": 140,
+      "end": 208
+    },
+    {
+      "name": "Biologia",
+      "tool": "sistemas vivos",
+      "color": "var(--biology)",
+      "start": 210,
+      "end": 288
+    },
+    {
+      "name": "Computação",
+      "tool": "algoritmos",
+      "color": "var(--computing)",
+      "start": 290,
+      "end": 358
+    }
+  ],
+  "areas": [
+    "Matemática",
+    "Física",
+    "Biologia",
+    "Computação",
+    "Linguística",
+    "Psicologia",
+    "Química",
+    "Ciências Sociais"
+  ],
+  "comboMap": {
+    "Biologia|Matemática": [
+      "Genética de populações",
+      "Sistemas complexos",
+      "Modelagem de ecossistemas"
+    ],
+    "Computação|Linguística|Psicologia": [
+      "Modelos de linguagem",
+      "Cognição",
+      "Representação semântica"
+    ],
+    "Computação|Física": [
+      "Astroinformática",
+      "Computação quântica",
+      "Simulação científica"
+    ],
+    "Biologia|Química": [
+      "Biologia estrutural",
+      "Biotecnologia",
+      "Sinalização celular"
+    ],
+    "Física|Matemática": [
+      "Sistemas complexos",
+      "Física teórica",
+      "Modelagem matemática"
+    ],
+    "Ciências Sociais|Computação": [
+      "Estudos críticos de IA",
+      "Ciência social computacional",
+      "Governança de tecnologia"
+    ],
+    "Computação|Matemática": [
+      "Aprendizado de máquina",
+      "Otimização",
+      "Ciência de dados"
+    ],
+    "Biologia|Computação": [
+      "Bioinformática",
+      "Biologia de sistemas",
+      "Evolução computacional"
+    ],
+    "Linguística|Psicologia": [
+      "Cognição da linguagem",
+      "Psicolinguística",
+      "Semântica experimental"
+    ]
+  },
+  "projects": [
+    {
+      "short": "Galáxias azuis compactas",
+      "title": "Busca por Grupos Compactos Azuis de Galáxias como laboratórios para o estudo de evolução de galáxias",
+      "inst": "IAG · S-PLUS",
+      "areas": "Astrofísica Extragaláctica · Astroinformática",
+      "x": 12,
+      "y": 35,
+      "c": "linear-gradient(135deg,var(--physics),var(--computing))",
+      "glow": "var(--physics)"
+    },
+    {
+      "short": "Emoções em LLMs",
+      "title": "Investigando a Emergência de Conceitos Emocionais em Modelos de Linguagem Abertos",
+      "inst": "IME · CIAAM · TELUS Research Hub",
+      "areas": "Inteligência Artificial · Psicologia Cognitiva",
+      "x": 29,
+      "y": 17,
+      "c": "linear-gradient(135deg,var(--computing),var(--humanities))",
+      "glow": "var(--computing)"
+    },
+    {
+      "short": "Internet quântica",
+      "title": "Internet para o primeiro computador quântico da USP",
+      "inst": "IF · EQCOS",
+      "areas": "Sistemas Quânticos Híbridos · Física Experimental",
+      "x": 48,
+      "y": 37,
+      "c": "linear-gradient(135deg,var(--physics),var(--computing))",
+      "glow": "var(--physics)"
+    },
+    {
+      "short": "Sinalização nociceptiva",
+      "title": "Caracterização da interação entre o receptor TrkA e a fosfatase SHP-1: implicações estruturais e funcionais na sinalização nociceptiva",
+      "inst": "IQ · LSSB · Lab DS",
+      "areas": "Bioquímica · Biologia celular da sinalização",
+      "x": 78,
+      "y": 18,
+      "c": "linear-gradient(135deg,var(--chemistry),var(--biology))",
+      "glow": "var(--biology)"
+    },
+    {
+      "short": "Fases do metano",
+      "title": "Cálculo de Energias Livres de Fases do Metano por Primeiros Princípios",
+      "inst": "IFUSP · DFMT · SAMPA",
+      "areas": "Física do estado sólido",
+      "x": 87,
+      "y": 48,
+      "c": "var(--physics)",
+      "glow": "var(--physics)"
+    },
+    {
+      "short": "Variação fenotípica",
+      "title": "Modelos matemáticos para o estudo da variação fenotípica",
+      "inst": "IB",
+      "areas": "Genética de populações · Genética Quantitativa",
+      "x": 64,
+      "y": 65,
+      "c": "linear-gradient(135deg,var(--math),var(--biology))",
+      "glow": "var(--biology)"
+    },
+    {
+      "short": "Diversidade plasmidial",
+      "title": "Estruturando a diversidade plasmidial",
+      "inst": "IQ",
+      "areas": "Biologia Computacional",
+      "x": 38,
+      "y": 75,
+      "c": "linear-gradient(135deg,var(--biology),var(--computing))",
+      "glow": "var(--computing)"
+    },
+    {
+      "short": "Dinâmica aritmética",
+      "title": "Dinâmica Aritmética em Domínios de Dedekind",
+      "inst": "IME",
+      "areas": "Teoria dos Números",
+      "x": 16,
+      "y": 68,
+      "c": "var(--math)",
+      "glow": "var(--math)"
+    },
+    {
+      "short": "Combustível sustentável",
+      "title": "Transformando óleo de larva em combustível de avião sustentável por catálise enzimática whole cell",
+      "inst": "POLI",
+      "areas": "Biotecnologia industrial · Bioquímica · Genética Molecular",
+      "x": 84,
+      "y": 78,
+      "c": "linear-gradient(135deg,var(--chemistry),var(--biology))",
+      "glow": "var(--biology)"
+    },
+    {
+      "short": "Como ideias surgem?",
+      "title": "Como as ideias surgem?",
+      "inst": "IME · CIAAM · TELUS Research Hub",
+      "areas": "Sistemas Complexos",
+      "x": 49,
+      "y": 52,
+      "c": "linear-gradient(135deg,var(--math),var(--humanities))",
+      "glow": "var(--humanities)"
+    },
+    {
+      "short": "Extensão na USP",
+      "title": "Constituição histórica do conceito de extensão universitária na USP",
+      "inst": "FE",
+      "areas": "Política Educacional",
+      "x": 67,
+      "y": 34,
+      "c": "var(--humanities)",
+      "glow": "var(--humanities)"
+    }
+  ]
+}
+
