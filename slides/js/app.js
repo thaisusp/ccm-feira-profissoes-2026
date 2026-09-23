@@ -7,7 +7,6 @@
   const helpDialog = document.getElementById('helpDialog');
   const panel = document.getElementById('projectPanel');
   const projectSpace = document.getElementById('projectSpace');
-  const regions = document.getElementById('regions');
   const areaColors = { math: 'var(--math)', physics: 'var(--physics)', chemistry: 'var(--chemistry)', biology: 'var(--biology)', computing: 'var(--computing)', humanities: 'var(--humanities)' };
   const problemMapData = window.CM_DATA.problemMapData;
   const problemKeys = Object.keys(problemMapData);
@@ -20,8 +19,12 @@
   let autoTimer = null;
   let problemTimer = null;
   let projectTimer = null;
+  let questionTimer = null;
+  let cycleTimer = null;
   let selectedProblemIndex = 0;
   let selectedProjectIndex = 0;
+  let selectedQuestionIndex = 0;
+  let selectedCycleIndex = 0;
   let touchStartX = 0;
 
   function pad(n) { return String(n).padStart(2, '0'); }
@@ -41,21 +44,14 @@
 
     stopProblemCycle();
     stopProjectCycle();
+    stopQuestionCycle();
+    stopCycleRotation();
     closeProjectPanel();
 
+    if (slides[current].id === 'problema') startQuestionCycle();
     if (slides[current].id === 'problemas-areas') startProblemCycle();
+    if (slides[current].id === 'ciclo-basico') startCycleRotation();
     if (slides[current].id === 'projetos') startProjectCycle();
-    if (slides[current].id === 'diversidade') {
-      requestAnimationFrame(() => setTimeout(() => document.querySelectorAll('.region-dot').forEach(d => {
-        d.style.setProperty('--x', d.dataset.tx + '%');
-        d.style.setProperty('--y', d.dataset.ty + '%');
-      }), 120));
-    } else {
-      document.querySelectorAll('.region-dot').forEach(d => {
-        d.style.setProperty('--x', d.dataset.ox + '%');
-        d.style.setProperty('--y', d.dataset.oy + '%');
-      });
-    }
   }
 
   function move(delta) {
@@ -121,6 +117,26 @@
     if (Math.abs(dx) > 70) move(dx < 0 ? 1 : -1);
   }, { passive: true });
 
+  const questionPills = [...document.querySelectorAll('.auto-question')];
+  function highlightQuestion(index) {
+    selectedQuestionIndex = index;
+    questionPills.forEach((pill, i) => pill.classList.toggle('active-question', i === index));
+  }
+
+  function startQuestionCycle() {
+    highlightQuestion(selectedQuestionIndex);
+    questionTimer = setInterval(() => {
+      highlightQuestion((selectedQuestionIndex + 1) % questionPills.length);
+    }, 1900);
+  }
+
+  function stopQuestionCycle() {
+    if (!questionTimer) return;
+    clearInterval(questionTimer);
+    questionTimer = null;
+    questionPills.forEach(pill => pill.classList.remove('active-question'));
+  }
+
   function renderProblem(key) {
     const data = problemMapData[key];
     const areaWrap = document.getElementById('mapAreas');
@@ -159,7 +175,7 @@
     problemTimer = setInterval(() => {
       selectedProblemIndex = (selectedProblemIndex + 1) % problemKeys.length;
       renderProblem(problemKeys[selectedProblemIndex]);
-    }, 2700);
+    }, 3000);
   }
 
   function stopProblemCycle() {
@@ -169,6 +185,13 @@
   }
 
   const cycleAreas = window.CM_DATA.cycleAreas;
+  const cycleSubareas = {
+    'Matemática': ['Cálculo', 'Álgebra linear', 'Geometria analítica', 'Equações diferenciais', 'Probabilidade', 'Análise matemática'],
+    'Física': ['Mecânica', 'Ondas', 'Termodinâmica', 'Eletromagnetismo', 'Relatividade', 'Mecânica quântica'],
+    'Química': ['Química geral', 'Estrutura atômica e molecular', 'Físico-química', 'Química inorgânica', 'Espectroscopia', 'Química orgânica'],
+    'Biologia': ['Bioquímica', 'Biologia molecular', 'Biologia celular', 'Genética', 'Evolução', 'Fisiologia e sistemas biológicos'],
+    'Computação': ['Programação', 'Algoritmos', 'Estruturas de dados', 'Grafos', 'Métodos numéricos', 'Modelagem computacional']
+  };
   const cycleSvg = document.getElementById('cycleSvg');
   const cycleArea = document.getElementById('cycleArea');
   const cycleTool = document.getElementById('cycleTool');
@@ -190,15 +213,19 @@
 
   function showCycleArea(area) {
     cycleArea.textContent = area.name;
-    cycleTool.textContent = area.tool;
+    cycleTool.textContent = cycleSubareas[area.name].join(' · ');
     cycleDetail.style.setProperty('--detail-color', area.color);
+    [...cycleSvg.querySelectorAll('.basic-segment')].forEach(path => {
+      path.classList.toggle('active-segment', path.dataset.area === area.name);
+    });
   }
 
-  cycleAreas.forEach(area => {
+  cycleAreas.forEach((area, index) => {
     const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     path.setAttribute('d', donutPath(area.start, area.end));
     path.setAttribute('fill', area.color);
     path.setAttribute('class', 'basic-segment');
+    path.dataset.area = area.name;
     path.setAttribute('tabindex', '0');
     path.setAttribute('role', 'button');
     path.setAttribute('aria-label', area.name + ': ' + area.tool);
@@ -212,6 +239,21 @@
     });
     cycleSvg.appendChild(path);
   });
+
+  function startCycleRotation() {
+    showCycleArea(cycleAreas[selectedCycleIndex]);
+    cycleTimer = setInterval(() => {
+      selectedCycleIndex = (selectedCycleIndex + 1) % cycleAreas.length;
+      showCycleArea(cycleAreas[selectedCycleIndex]);
+    }, 1700);
+  }
+
+  function stopCycleRotation() {
+    if (!cycleTimer) return;
+    clearInterval(cycleTimer);
+    cycleTimer = null;
+    [...cycleSvg.querySelectorAll('.basic-segment')].forEach(path => path.classList.remove('active-segment'));
+  }
 
   const projects = window.CM_DATA.projects;
   const projectButtons = [];
@@ -262,24 +304,6 @@
     pauseAuto();
     stopProjectCycle();
     closeProjectPanel();
-  });
-
-  const regionPositions = [
-    { x: 35, y: 43 }, { x: 51, y: 66 }, { x: 40, y: 36 }, { x: 68, y: 53 }, { x: 50, y: 45 }, { x: 48, y: 35 }, { x: 47, y: 62 }, { x: 16, y: 36 }, { x: 65, y: 66 }, { x: 56, y: 56 }, { x: 80, y: 68 }
-  ];
-  projects.forEach((p, i) => {
-    const d = document.createElement('span');
-    d.className = 'region-dot';
-    d.dataset.short = p.short;
-    d.dataset.ox = p.x;
-    d.dataset.oy = p.y;
-    d.dataset.tx = regionPositions[i].x;
-    d.dataset.ty = regionPositions[i].y;
-    d.style.setProperty('--x', p.x + '%');
-    d.style.setProperty('--y', p.y + '%');
-    d.style.setProperty('--node-color', p.glow);
-    d.style.transitionDelay = (i * .06) + 's';
-    regions.appendChild(d);
   });
 
   showSlide(current, false);

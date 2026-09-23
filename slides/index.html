@@ -19,25 +19,29 @@
         <p class="lead fragment" style="--delay:.35s">E se a <strong class="accent">pergunta</strong> viesse antes da área?</p>
       </div>
       <div class="orbit" aria-hidden="true">
-        <svg class="orbit-lines" viewBox="0 0 1600 900" preserveAspectRatio="none"><line x1="190" y1="180" x2="1320" y2="220"/><line x1="260" y1="690" x2="1380" y2="660"/><line x1="560" y1="820" x2="1130" y2="90"/><line x1="190" y1="180" x2="1380" y2="660"/></svg>
-        <span class="word w1" style="--d:.7s;--area:var(--physics)">Física</span><span class="word w2" style="--d:.9s;--area:var(--biology)">Biologia</span><span class="word w3" style="--d:1.1s;--area:var(--math)">Matemática</span><span class="word w4" style="--d:1.3s;--area:var(--computing)">Computação</span><span class="word w5" style="--d:1.5s;--area:var(--chemistry)">Química</span><span class="word w6" style="--d:1.7s;--area:var(--humanities)">Humanidades</span>
+        <svg class="orbit-lines" viewBox="0 0 1600 900" preserveAspectRatio="none"><line x1="190" y1="180" x2="1320" y2="220"/><line x1="1320" y1="220" x2="1380" y2="660"/><line x1="1380" y1="660" x2="260" y2="690"/><line x1="260" y1="690" x2="560" y2="110"/><line x1="560" y1="110" x2="190" y2="180"/></svg>
+        <span class="word w1" style="--d:.7s;--area:var(--physics)">Física</span><span class="word w2" style="--d:.9s;--area:var(--biology)">Biologia</span><span class="word w3" style="--d:1.1s;--area:var(--math)">Matemática</span><span class="word w4" style="--d:1.3s;--area:var(--computing)">Computação</span><span class="word w5" style="--d:1.5s;--area:var(--chemistry)">Química</span>
       </div>
     </section>
 
     <section class="slide" id="caixas" data-title="Institutos e fronteiras">
       <p class="eyebrow">Como a universidade se organiza</p>
       <h2>A universidade é organizada em institutos.</h2>
-      <div class="area-grid fragment" style="--delay:.2s">
-        <div class="area-box" style="--area:var(--math)">IME<small>Matemática e Estatística</small></div>
-        <div class="area-box" style="--area:var(--physics)">IF<small>Física</small></div>
-        <div class="area-box" style="--area:var(--chemistry)">IQ<small>Química</small></div>
-        <div class="area-box" style="--area:var(--biology)">IB<small>Biociências</small></div>
-        <div class="area-box" style="--area:var(--physics)">IAG<small>Astronomia e Geofísica</small></div>
-        <div class="area-box" style="--area:var(--computing)">POLI<small>Engenharia</small></div>
-        <div class="area-box" style="--area:var(--humanities)">FFLCH<small>Filosofia Letras e Ciências Humanas</small></div>
-        <div class="area-box" style="--area:var(--humanities)">IP<small>Psicologia</small></div>
+      <div class="campus-map fragment" style="--delay:.2s" aria-label="Mapa simplificado da USP com institutos">
+        <svg viewBox="0 0 1000 560" preserveAspectRatio="none" aria-hidden="true">
+          <path class="campus-path" d="M92 408 C180 290 255 348 344 246 S545 134 656 228 778 360 916 218"/>
+          <path class="campus-outline" d="M72 162 C154 64 320 84 416 118 C554 168 604 84 728 116 C850 148 934 254 910 366 C884 490 724 530 574 490 C452 458 364 522 236 476 C126 436 24 300 72 162 Z"/>
+        </svg>
+        <span class="campus-node ime" style="--area:var(--math)">IME</span>
+        <span class="campus-node if" style="--area:var(--physics)">IF</span>
+        <span class="campus-node iq" style="--area:var(--chemistry)">IQ</span>
+        <span class="campus-node ib" style="--area:var(--biology)">IB</span>
+        <span class="campus-node icb" style="--area:var(--cyan)">ICB</span>
+        <span class="campus-node poli" style="--area:var(--computing)">POLI</span>
+        <span class="campus-node fflch" style="--area:var(--humanities)">FFLCH</span>
+        <span class="campus-more">...</span>
       </div>
-      <div class="split-note"><span class="rule"></span><span>Os problemas científicos, não.</span><span class="rule"></span></div>
+      <div class="split-note"><span class="rule"></span><span>Os problemas científicos não seguem essas divisões.</span><span class="rule"></span></div>
     </section>
 
     <section class="slide center" id="problema" data-title="Começar pelo problema">
@@ -49,7 +53,7 @@
         <span class="problem-pill q4 auto-question" style="--area:var(--physics)">Como observamos o passado do Universo?</span>
         <span class="problem-pill q5 auto-question" style="--area:var(--biology)">Como sistemas biológicos se organizam?</span>
         <span class="problem-pill q6 auto-question" style="--area:var(--physics)">Como as rochas registram a história da Terra?</span>
-        <span class="problem-pill q7 auto-question" style="--area:var(--biology)">Como mudanças ambientais reorganizam ecossistemas oceânicos?</span>
+        <span class="problem-pill q7 auto-question" style="--area:var(--cyan)">Como mudanças ambientais reorganizam ecossistemas oceânicos?</span>
         <span class="problem-pill q8 auto-question" style="--area:var(--chemistry)">Como criar materiais que interajam com tecidos vivos?</span>
       </div>
       <p class="note">No CM, a pergunta organiza o caminho. As áreas entram quando ajudam a responder.</p>
@@ -73,13 +77,12 @@
 
     <section class="slide" id="o-que-e" data-title="O que é o CM">
       <p class="eyebrow">Então, o que é o Ciências Moleculares?</p>
-      <h2>Um curso da USP criado para formar estudantes capazes de <span class="accent">atravessar fronteiras.</span></h2>
-      <div class="sequence">
-        <div class="sequence-step fragment" style="--delay:.1s">Formação ampla<small>Uma base científica comum para enxergar os problemas de vários ângulos.</small></div>
-        <span class="sequence-arrow fragment" style="--delay:.25s">→</span>
-        <div class="sequence-step fragment" style="--delay:.4s">Liberdade acadêmica<small>Um percurso que começa a responder às perguntas de cada estudante.</small></div>
-        <span class="sequence-arrow fragment" style="--delay:.55s">→</span>
-        <div class="sequence-step fragment" style="--delay:.7s">Pesquisa<small>Aprender ciência também significa participar da construção dela.</small></div>
+      <h2 class="definition-title">O que é o <span class="accent">Ciências Moleculares?</span></h2>
+      <p class="lead definition-copy">Um curso da USP criado para formar estudantes capazes de atravessar fronteiras científicas.</p>
+      <div class="editorial-sequence">
+        <p class="fragment" style="--delay:.1s"><strong>Formação ampla</strong><span>Uma base científica comum para enxergar problemas de vários ângulos.</span></p>
+        <p class="fragment" style="--delay:.3s"><strong>Liberdade acadêmica</strong><span>Um percurso que começa a responder às perguntas de cada estudante.</span></p>
+        <p class="fragment" style="--delay:.5s"><strong>Pesquisa</strong><span>Aprender ciência também significa participar da construção dela.</span></p>
       </div>
     </section>
 
@@ -98,33 +101,13 @@
       </div>
     </section>
 
-    <section class="slide center" id="mudanca" data-title="A mudança">
+    <section class="slide center" id="mudanca-avancado" data-title="Ciclo Avançado">
       <p class="eyebrow">A mudança</p>
-      <h2>Depois, o caminho deixa de ser igual para todo mundo.</h2>
-      <div class="opening-path" aria-hidden="true">
-        <div class="path-node">1</div><div class="path-node">2</div><div class="path-node">3</div><div class="path-node" style="--shift:-45px;--shift-end:-70px">↗</div><div class="path-node" style="--shift:58px;--shift-end:86px">↘</div><div class="path-node" style="--shift:-88px;--shift-end:-128px">↗</div><div class="path-node" style="--shift:26px;--shift-end:44px">→</div>
+      <h2>Depois da base comum, o caminho deixa de ser igual para todo mundo.</h2>
+      <p class="lead">Nos últimos quatro semestres, cada estudante constrói uma trajetória em torno de um projeto científico.</p>
+      <div class="opening-path advanced-path" aria-hidden="true">
+        <div class="path-node">Ciclo<br>Básico</div><div class="path-node">Base<br>comum</div><div class="path-node">Projeto</div><div class="path-node" style="--shift:-45px;--shift-end:-70px">Orientador</div><div class="path-node" style="--shift:58px;--shift-end:86px">Disciplinas</div><div class="path-node" style="--shift:-88px;--shift-end:-128px">Laboratórios</div><div class="path-node" style="--shift:26px;--shift-end:44px">Pesquisa</div>
       </div>
-    </section>
-
-    <section class="slide" id="ciclo-avancado" data-title="Ciclo Avançado">
-      <p class="eyebrow">Ciclo Avançado · últimos quatro semestres</p>
-      <h2>Da base comum a uma trajetória própria.</h2>
-      <p class="lead">Cada estudante constrói sua formação em torno de um projeto científico.</p>
-      <div class="advanced-network">
-        <svg viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true"><line x1="500" y1="300" x2="500" y2="58" style="--line-color:#101828"/><line x1="500" y1="300" x2="160" y2="170" style="--line-color:var(--humanities)"/><line x1="500" y1="300" x2="840" y2="170" style="--line-color:var(--computing)"/><line x1="500" y1="300" x2="850" y2="430" style="--line-color:var(--biology)"/><line x1="500" y1="300" x2="500" y2="535" style="--line-color:var(--physics)"/><line x1="500" y1="300" x2="150" y2="430" style="--line-color:var(--math)"/></svg>
-        <div class="you">VOCÊ</div>
-        <div class="adv-node project" style="--x:50%;--y:9%">Projeto de pesquisa</div>
-        <div class="adv-node" style="--x:16%;--y:28%;--node-color:var(--humanities)">Orientador</div>
-        <div class="adv-node" style="--x:84%;--y:28%;--node-color:var(--computing)">Disciplinas</div>
-        <div class="adv-node" style="--x:85%;--y:72%;--node-color:var(--biology)">Laboratórios</div>
-        <div class="adv-node" style="--x:50%;--y:89%;--node-color:var(--physics)">Institutos</div>
-        <div class="adv-node" style="--x:15%;--y:72%;--node-color:var(--math)">Áreas científicas<div class="adv-areas"><i style="--c:var(--math)"></i><i style="--c:var(--physics)"></i><i style="--c:var(--chemistry)"></i><i style="--c:var(--biology)"></i><i style="--c:var(--computing)"></i><i style="--c:var(--humanities)"></i></div></div>
-      </div>
-    </section>
-
-    <section class="slide dark center" id="sim" data-title="Sim">
-      <p class="huge fragment">Sim.</p>
-      <p class="lead fragment" style="--delay:.55s">Estes são projetos reais de estudantes do Ciências Moleculares.</p>
     </section>
 
     <section class="slide" id="projetos" data-title="Projetos reais">
@@ -135,35 +118,12 @@
         <div class="project-help">Projetos reais do Ciclo Avançado aparecem ao longo do mapa</div>
       </div>
       <aside class="project-panel" id="projectPanel" aria-hidden="true"><button class="panel-close" id="panelClose" aria-label="Fechar detalhes">×</button><h3 id="panelTitle"></h3><p class="panel-inst" id="panelInst"></p><p class="panel-areas" id="panelAreas"></p></aside>
-    </section>
-
-    <section class="slide" id="diversidade" data-title="Interdisciplinaridade">
-      <p class="eyebrow">Agora, olhe pelas áreas</p>
-      <div class="regions" id="regions">
-        <div class="region" style="--x:14%;--y:25%;--area:var(--math)">Matemática</div><div class="region" style="--x:49%;--y:14%;--area:var(--physics)">Física</div><div class="region" style="--x:84%;--y:26%;--area:var(--biology)">Biologia</div><div class="region" style="--x:18%;--y:73%;--area:var(--computing)">Computação</div><div class="region" style="--x:50%;--y:78%;--area:var(--chemistry)">Química</div><div class="region" style="--x:82%;--y:73%;--area:var(--humanities)">Humanidades</div>
-      </div>
-      <p class="manifesto">Interdisciplinaridade não é estudar um pouco de tudo. É <strong>combinar ferramentas quando o problema exige.</strong></p>
-    </section>
-
-    <section class="slide" id="trajetorias" data-title="Muitas trajetórias">
-      <p class="eyebrow">Um curso, muitas trajetórias</p>
-      <h2>O ponto de partida é comum. Os destinos, não.</h2>
-      <div class="trajectories">
-        <div class="trajectory fragment"><strong>A</strong><span>Ciclo Básico</span><span class="arrow">→</span><span><b class="area-biology">Biologia</b> + <b class="area-math">Matemática</b></span><span class="arrow">→</span><span>Genética quantitativa</span><span class="arrow">→</span><span>Variação fenotípica</span></div>
-        <div class="trajectory fragment" style="--delay:.15s"><strong>B</strong><span>Ciclo Básico</span><span class="arrow">→</span><span><b class="area-physics">Física</b> + <b class="area-computing">Computação</b></span><span class="arrow">→</span><span>Astroinformática</span><span class="arrow">→</span><span>Evolução de galáxias</span></div>
-        <div class="trajectory fragment" style="--delay:.3s"><strong>C</strong><span>Ciclo Básico</span><span class="arrow">→</span><span><b class="area-computing">Computação</b> + Cognição</span><span class="arrow">→</span><span>Inteligência Artificial</span><span class="arrow">→</span><span>Modelos de linguagem</span></div>
-      </div>
-    </section>
-
-    <section class="slide dark center" id="preciso-saber" data-title="Explorar primeiro">
-      <p class="eyebrow">Então eu preciso saber o que quero pesquisar antes de entrar?</p>
-      <p class="huge fragment">Não.</p>
-      <p class="lead fragment" style="--delay:.45s">O Ciclo Básico existe justamente para você explorar antes de escolher uma direção.</p>
+      <p class="manifesto project-manifesto">Interdisciplinaridade é <strong>combinar ferramentas quando o problema exige.</strong></p>
     </section>
 
     <section class="slide" id="perfil" data-title="Perfil">
-      <p class="eyebrow">Talvez o CM combine com você se...</p>
-      <h2>Curiosidade vem antes de certeza.</h2>
+      <p class="eyebrow">Perfil</p>
+      <h2><span class="accent">Talvez o CM combine com você</span> se curiosidade vem antes de certeza.</h2>
       <div class="profile-list">
         <div class="profile-item"><span class="plus">+</span><span>Você gosta de mais de uma área.</span></div>
         <div class="profile-item"><span class="plus">+</span><span>Costuma perguntar “por quê?” antes de “qual matéria cai?”.</span></div>
@@ -178,11 +138,11 @@
       <h2>O caminho começa dentro da USP.</h2>
       <div class="admission-flow">
         <div class="flow-box">Vestibular<br>ENEM-USP<br>Provão Paulista</div><div class="flow-arrow">→</div>
-        <div class="flow-box">Ingresso na USP<small>em um curso de graduação</small></div><div class="flow-arrow">→</div>
+        <div class="flow-box">Ingresso na USP<small>em qualquer curso de graduação</small></div><div class="flow-arrow">→</div>
         <div class="flow-box">Processo seletivo próprio<small>do Ciências Moleculares</small></div><div class="flow-arrow">→</div>
         <div class="flow-box"><span class="accent">Ciências Moleculares</span></div>
       </div>
-      <p class="note">Datas, etapas e regras podem mudar: consulte sempre o edital vigente.</p>
+      <p class="note admission-note">Não é necessário entrar diretamente no CM pelo vestibular. A seleção pode ser tentada em diferentes momentos da graduação, do início ao fim do curso original. Datas, etapas e regras podem mudar: consulte sempre o edital vigente.</p>
     </section>
 
     <section class="slide dark center" id="fronteiras" data-title="Pergunta antes da área">
@@ -196,6 +156,7 @@
           <p class="eyebrow">Ciências Moleculares · USP</p>
           <h1><span style="display:block;font-size:.34em;letter-spacing:.18em;margin-bottom:.38em;color:#8090a7">CIÊNCIAS</span>MOLECULARES</h1>
           <a class="final-url" href="https://cecm.usp.br" target="_blank" rel="noreferrer">cecm.usp.br <span aria-hidden="true">↗</span></a>
+          <a class="final-url email-link" href="mailto:moleculentos@gmail.com">moleculentos@gmail.com</a>
         </div>
         <p class="final-ask">Quer saber como funciona o curso?<br><strong style="color:#fff">Fala com a gente.</strong></p>
       </div>
@@ -207,7 +168,7 @@
     <button class="control help" id="helpBtn" aria-label="Ver atalhos"><span aria-hidden="true">?</span></button>
     <button class="control auto" id="autoBtn" aria-label="Ativar avanço automático" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
     <button class="control" id="prevBtn" aria-label="Tela anterior"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></button>
-    <span class="slide-number" id="slideNumber">01 / 17</span>
+    <span class="slide-number" id="slideNumber">01 / 12</span>
     <button class="control" id="nextBtn" aria-label="Próxima tela"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></button>
     <button class="control" id="fullBtn" aria-label="Entrar em tela cheia"><svg viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"/></svg></button>
   </div>
