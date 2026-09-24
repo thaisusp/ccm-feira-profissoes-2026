@@ -262,6 +262,7 @@
   }
 
   const projects = window.CM_DATA.projects;
+  const denseProjectGraph = projects.length > 30;
   const projectLinks = window.CM_DATA.projectLinks || [];
   const projectById = new Map(projects.map(project => [project.id, project]));
   const linkElements = [];
@@ -294,7 +295,7 @@
     b.style.setProperty('--y', p.y + '%');
     b.style.setProperty('--ring-bg', p.ring);
     b.style.setProperty('--primary-color', p.primaryColor);
-    b.style.setProperty('--size', p.areas.length > 1 ? '1.42rem' : '1.2rem');
+    b.style.setProperty('--size', denseProjectGraph ? (p.areas.length > 1 ? '1.08rem' : '.92rem') : (p.areas.length > 1 ? '1.42rem' : '1.2rem'));
     b.setAttribute('aria-label', p.title);
     b.innerHTML = `<span class="dot"></span><span class="node-label">${p.short}</span>`;
     b.addEventListener('click', () => {
