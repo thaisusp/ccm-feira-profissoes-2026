@@ -7,6 +7,8 @@
   const helpDialog = document.getElementById('helpDialog');
   const panel = document.getElementById('projectPanel');
   const projectSpace = document.getElementById('projectSpace');
+  const projectLines = document.getElementById('projectLines');
+  const projectLegend = document.getElementById('projectLegend');
   const areaColors = { math: 'var(--math)', physics: 'var(--physics)', chemistry: 'var(--chemistry)', biology: 'var(--biology)', computing: 'var(--computing)', humanities: 'var(--humanities)' };
   const problemMapData = window.CM_DATA.problemMapData;
   const problemKeys = Object.keys(problemMapData);
@@ -26,6 +28,7 @@
   let selectedQuestionIndex = 0;
   let selectedCycleIndex = 0;
   let touchStartX = 0;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function pad(n) { return String(n).padStart(2, '0'); }
 
@@ -109,7 +112,10 @@
     else if (e.key.toLowerCase() === 'f') toggleFullscreen();
     else if (e.key.toLowerCase() === 'a') toggleAuto();
     else if (e.key === '?') helpDialog.classList.add('open');
-    else if (e.key === 'Escape') closeProjectPanel();
+    else if (e.key === 'Escape') {
+      stopProjectCycle();
+      closeProjectPanel();
+    }
   });
   deck.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].clientX, { passive: true });
   deck.addEventListener('touchend', e => {
@@ -256,19 +262,44 @@
   }
 
   const projects = window.CM_DATA.projects;
+  const projectLinks = window.CM_DATA.projectLinks || [];
+  const projectById = new Map(projects.map(project => [project.id, project]));
+  const linkElements = [];
   const projectButtons = [];
+  (window.CM_DATA.projectAreaLegend || []).forEach(area => {
+    const item = document.createElement('span');
+    item.className = 'legend-item';
+    item.innerHTML = `<span class="legend-dot" style="--legend-color:${area.color}"></span><span>${area.name}</span>`;
+    projectLegend.appendChild(item);
+  });
+  projectLinks.forEach(link => {
+    const source = projectById.get(link.source);
+    const target = projectById.get(link.target);
+    if (!source || !target) return;
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.classList.add('project-link');
+    line.dataset.source = link.source;
+    line.dataset.target = link.target;
+    line.setAttribute('x1', source.x);
+    line.setAttribute('y1', source.y);
+    line.setAttribute('x2', target.x);
+    line.setAttribute('y2', target.y);
+    projectLines.appendChild(line);
+    linkElements.push(line);
+  });
   projects.forEach((p, i) => {
     const b = document.createElement('button');
     b.className = 'project-node';
     b.style.setProperty('--x', p.x + '%');
     b.style.setProperty('--y', p.y + '%');
-    b.style.setProperty('--node-color', p.c);
-    b.style.setProperty('--glow-color', p.glow);
-    b.style.setProperty('--size', (i % 3 === 0 ? '1.15rem' : '.88rem'));
+    b.style.setProperty('--ring-bg', p.ring);
+    b.style.setProperty('--primary-color', p.primaryColor);
+    b.style.setProperty('--size', p.areas.length > 1 ? '1.42rem' : '1.2rem');
     b.setAttribute('aria-label', p.title);
     b.innerHTML = `<span class="dot"></span><span class="node-label">${p.short}</span>`;
     b.addEventListener('click', () => {
       pauseAuto();
+      stopProjectCycle();
       openProject(p, i);
     });
     projectButtons.push(b);
@@ -278,30 +309,64 @@
   function openProject(p, index) {
     selectedProjectIndex = index;
     projectButtons.forEach((button, i) => button.classList.toggle('active-project', i === index));
+    linkElements.forEach(line => {
+      line.classList.toggle('active-link', line.dataset.source === p.id || line.dataset.target === p.id);
+    });
     document.getElementById('panelTitle').textContent = p.title;
-    document.getElementById('panelInst').textContent = p.inst;
-    document.getElementById('panelAreas').textContent = p.areas;
+    const panelInst = document.getElementById('panelInst');
+    panelInst.replaceChildren();
+    p.areas.forEach(area => {
+      const marker = document.createElement('span');
+      marker.className = 'panel-area';
+      marker.style.setProperty('--area-color', window.CM_DATA.projectAreaColors[area] || '#64748b');
+      marker.textContent = area;
+      panelInst.appendChild(marker);
+    });
+    document.getElementById('panelAreas').textContent = p.subareas.join(' · ');
+    panel.classList.toggle('panel-left', p.x > 65);
     panel.classList.add('open');
     panel.setAttribute('aria-hidden', 'false');
   }
 
   function startProjectCycle() {
-    openProject(projects[selectedProjectIndex], selectedProjectIndex);
-    projectTimer = setInterval(() => {
-      selectedProjectIndex = (selectedProjectIndex + 1) % projects.length;
+    if (projectTimer || !projects.length) return;
+    projectTimer = setTimeout(() => {
       openProject(projects[selectedProjectIndex], selectedProjectIndex);
-    }, 2300);
+      if (reduceMotion) {
+        projectTimer = null;
+        return;
+      }
+      projectTimer = setInterval(() => {
+        selectedProjectIndex = (selectedProjectIndex + 1) % projects.length;
+        openProject(projects[selectedProjectIndex], selectedProjectIndex);
+      }, 3200);
+    }, 900);
   }
 
-  function stopProjectCycle() {
-    if (!projectTimer) return;
-    clearInterval(projectTimer);
-    projectTimer = null;
+  function stopProjectCycle(clearFocus = true) {
+    if (projectTimer) {
+      clearInterval(projectTimer);
+      clearTimeout(projectTimer);
+      projectTimer = null;
+    }
+    if (!clearFocus) return;
     projectButtons.forEach(button => button.classList.remove('active-project'));
+    linkElements.forEach(line => line.classList.remove('active-link'));
   }
 
   document.getElementById('panelClose').addEventListener('click', () => {
     pauseAuto();
+    stopProjectCycle();
+    closeProjectPanel();
+  });
+
+  projectSpace.addEventListener('pointerenter', () => {
+    if (slides[current].id === 'projetos') stopProjectCycle(false);
+  });
+
+  document.addEventListener('click', event => {
+    if (slides[current].id !== 'projetos' || !panel.classList.contains('open')) return;
+    if (panel.contains(event.target) || event.target.closest('.project-node')) return;
     stopProjectCycle();
     closeProjectPanel();
   });

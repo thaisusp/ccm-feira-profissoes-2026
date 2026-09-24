@@ -349,115 +349,606 @@
   },
   "projects": [
     {
-      "short": "Galáxias azuis compactas",
-      "title": "Busca por Grupos Compactos Azuis de Galáxias como laboratórios para o estudo de evolução de galáxias",
-      "inst": "IAG · S-PLUS",
-      "areas": "Astrofísica Extragaláctica · Astroinformática",
-      "x": 12,
-      "y": 35,
-      "c": "linear-gradient(135deg,var(--physics),var(--computing))",
-      "glow": "var(--physics)"
+      "id": "p01",
+      "short": "Be binaries",
+      "title": "The mysterious triple-peak features in Be binaries",
+      "areas": [
+        "Física e Astronomia"
+      ],
+      "subareas": [
+        "Astrofísica e Cosmologia"
+      ],
+      "entries": [
+        {
+          "area": "Física e Astronomia",
+          "subarea": "Astrofísica e Cosmologia",
+          "color": "#FF7A1A"
+        }
+      ],
+      "x": 18,
+      "y": 20,
+      "ring": "conic-gradient(#FF7A1A 0 360deg)",
+      "primaryColor": "#FF7A1A"
     },
     {
-      "short": "Emoções em LLMs",
-      "title": "Investigando a Emergência de Conceitos Emocionais em Modelos de Linguagem Abertos",
-      "inst": "IME · CIAAM · TELUS Research Hub",
-      "areas": "Inteligência Artificial · Psicologia Cognitiva",
-      "x": 29,
-      "y": 17,
-      "c": "linear-gradient(135deg,var(--computing),var(--humanities))",
-      "glow": "var(--computing)"
+      "id": "p02",
+      "short": "Árvores de Cayley",
+      "title": "Fórmula de Cayley e outros resultados sobre árvores",
+      "areas": [
+        "Matemática e Estatística"
+      ],
+      "subareas": [
+        "Matemática Pura"
+      ],
+      "entries": [
+        {
+          "area": "Matemática e Estatística",
+          "subarea": "Matemática Pura",
+          "color": "#F43F5E"
+        }
+      ],
+      "x": 15,
+      "y": 63,
+      "ring": "conic-gradient(#F43F5E 0 360deg)",
+      "primaryColor": "#F43F5E"
     },
     {
-      "short": "Internet quântica",
-      "title": "Internet para o primeiro computador quântico da USP",
-      "inst": "IF · EQCOS",
-      "areas": "Sistemas Quânticos Híbridos · Física Experimental",
-      "x": 48,
-      "y": 37,
-      "c": "linear-gradient(135deg,var(--physics),var(--computing))",
-      "glow": "var(--physics)"
+      "id": "p03",
+      "short": "Caixeiro viajante",
+      "title": "Método de Resolução do Problema de Caixeiro Viajante Aberto com Funções de Desempenho em Redes Urbanas",
+      "areas": [
+        "Matemática e Estatística"
+      ],
+      "subareas": [
+        "Otimização e Pesquisa Operacional"
+      ],
+      "entries": [
+        {
+          "area": "Matemática e Estatística",
+          "subarea": "Otimização e Pesquisa Operacional",
+          "color": "#F43F5E"
+        }
+      ],
+      "x": 24,
+      "y": 73,
+      "ring": "conic-gradient(#F43F5E 0 360deg)",
+      "primaryColor": "#F43F5E"
     },
     {
-      "short": "Sinalização nociceptiva",
-      "title": "Caracterização da interação entre o receptor TrkA e a fosfatase SHP-1: implicações estruturais e funcionais na sinalização nociceptiva",
-      "inst": "IQ · LSSB · Lab DS",
-      "areas": "Bioquímica · Biologia celular da sinalização",
-      "x": 78,
-      "y": 18,
-      "c": "linear-gradient(135deg,var(--chemistry),var(--biology))",
-      "glow": "var(--biology)"
+      "id": "p04",
+      "short": "Erros em ML na saúde",
+      "title": "Identificação de padrões de erros de algoritmos de machine learning em saúde: uma análise multicêntrica nas cinco regiões brasileiras",
+      "areas": [
+        "Computação e Inteligência Artificial",
+        "Ciências da Saúde"
+      ],
+      "subareas": [
+        "Inteligência Artificial e Aprendizado de Máquina",
+        "Saúde Pública e Epidemiologia"
+      ],
+      "entries": [
+        {
+          "area": "Computação e Inteligência Artificial",
+          "subarea": "Inteligência Artificial e Aprendizado de Máquina",
+          "color": "#2563EB"
+        },
+        {
+          "area": "Ciências da Saúde",
+          "subarea": "Saúde Pública e Epidemiologia",
+          "color": "#06A9C7"
+        }
+      ],
+      "x": 58,
+      "y": 30,
+      "ring": "conic-gradient(#2563EB 0.0deg 180.0deg, #06A9C7 180.0deg 360.0deg)",
+      "primaryColor": "#2563EB"
     },
     {
-      "short": "Fases do metano",
-      "title": "Cálculo de Energias Livres de Fases do Metano por Primeiros Princípios",
-      "inst": "IFUSP · DFMT · SAMPA",
-      "areas": "Física do estado sólido",
-      "x": 87,
-      "y": 48,
-      "c": "var(--physics)",
-      "glow": "var(--physics)"
+      "id": "p05",
+      "short": "Tênis por visão computacional",
+      "title": "Visão computacional para aprendizado de tênis",
+      "areas": [
+        "Computação e Inteligência Artificial"
+      ],
+      "subareas": [
+        "Visão Computacional"
+      ],
+      "entries": [
+        {
+          "area": "Computação e Inteligência Artificial",
+          "subarea": "Visão Computacional",
+          "color": "#2563EB"
+        }
+      ],
+      "x": 37,
+      "y": 20,
+      "ring": "conic-gradient(#2563EB 0 360deg)",
+      "primaryColor": "#2563EB"
     },
     {
-      "short": "Variação fenotípica",
-      "title": "Modelos matemáticos para o estudo da variação fenotípica",
-      "inst": "IB",
-      "areas": "Genética de populações · Genética Quantitativa",
-      "x": 64,
+      "id": "p06",
+      "short": "Cooling establishment time",
+      "title": "Quanto tempo leva para atingir o pico de redução de calor? Avançando o conceito de \"Cooling Establishment Time\"",
+      "areas": [
+        "Terra, Mar e Ambiente"
+      ],
+      "subareas": [
+        "Sensoriamento Remoto e Geoprocessamento",
+        "Ciências Ambientais"
+      ],
+      "entries": [
+        {
+          "area": "Terra, Mar e Ambiente",
+          "subarea": "Sensoriamento Remoto e Geoprocessamento",
+          "color": "#166534"
+        },
+        {
+          "area": "Terra, Mar e Ambiente",
+          "subarea": "Ciências Ambientais",
+          "color": "#166534"
+        }
+      ],
+      "x": 39,
+      "y": 80,
+      "ring": "conic-gradient(#166534 0 360deg)",
+      "primaryColor": "#166534"
+    },
+    {
+      "id": "p07",
+      "short": "Infraestruturas verde-azul",
+      "title": "Automatizando a identificação de Infraestruturas Verde e Azul a fim de gerar uma base de dados global para o \"Tempo de Estabelecimento de Resfriamento\" (CET)",
+      "areas": [
+        "Terra, Mar e Ambiente",
+        "Computação e Inteligência Artificial"
+      ],
+      "subareas": [
+        "Sensoriamento Remoto e Geoprocessamento",
+        "Ciência de Dados"
+      ],
+      "entries": [
+        {
+          "area": "Terra, Mar e Ambiente",
+          "subarea": "Sensoriamento Remoto e Geoprocessamento",
+          "color": "#166534"
+        },
+        {
+          "area": "Computação e Inteligência Artificial",
+          "subarea": "Ciência de Dados",
+          "color": "#2563EB"
+        }
+      ],
+      "x": 43,
+      "y": 62,
+      "ring": "conic-gradient(#166534 0.0deg 180.0deg, #2563EB 180.0deg 360.0deg)",
+      "primaryColor": "#166534"
+    },
+    {
+      "id": "p08",
+      "short": "Regeneração em Lineus",
+      "title": "Mecanismos Moleculares de Regeneração em Lineus sanguineus (Rathke, 1799) (Pilidiophora: Nemertea)",
+      "areas": [
+        "Ciências Biológicas"
+      ],
+      "subareas": [
+        "Biologia Celular e Molecular"
+      ],
+      "entries": [
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Biologia Celular e Molecular",
+          "color": "#19B789"
+        }
+      ],
+      "x": 82,
+      "y": 76,
+      "ring": "conic-gradient(#19B789 0 360deg)",
+      "primaryColor": "#19B789"
+    },
+    {
+      "id": "p09",
+      "short": "Cidades de 15 minutos",
+      "title": "Pesquisa sobre segregação social em cidades de 15 minutos utilizando dados de localização de celulares",
+      "areas": [
+        "Humanidades",
+        "Computação e Inteligência Artificial"
+      ],
+      "subareas": [
+        "Geografia Humana",
+        "Ciência de Dados"
+      ],
+      "entries": [
+        {
+          "area": "Humanidades",
+          "subarea": "Geografia Humana",
+          "color": "#A78BFA"
+        },
+        {
+          "area": "Computação e Inteligência Artificial",
+          "subarea": "Ciência de Dados",
+          "color": "#2563EB"
+        }
+      ],
+      "x": 31,
+      "y": 45,
+      "ring": "conic-gradient(#A78BFA 0.0deg 180.0deg, #2563EB 180.0deg 360.0deg)",
+      "primaryColor": "#A78BFA"
+    },
+    {
+      "id": "p10",
+      "short": "Mobilidade ativa",
+      "title": "Ampliação das medidas de acesso percebido a serviços locais e mobilidade ativa",
+      "areas": [
+        "Humanidades",
+        "Computação e Inteligência Artificial"
+      ],
+      "subareas": [
+        "Geografia Humana",
+        "Ciência de Dados"
+      ],
+      "entries": [
+        {
+          "area": "Humanidades",
+          "subarea": "Geografia Humana",
+          "color": "#A78BFA"
+        },
+        {
+          "area": "Computação e Inteligência Artificial",
+          "subarea": "Ciência de Dados",
+          "color": "#2563EB"
+        }
+      ],
+      "x": 34,
+      "y": 55,
+      "ring": "conic-gradient(#A78BFA 0.0deg 180.0deg, #2563EB 180.0deg 360.0deg)",
+      "primaryColor": "#A78BFA"
+    },
+    {
+      "id": "p11",
+      "short": "Grafos em Dedekind",
+      "title": "Dinâmica de Grafos Funcionais em Domínios de Dedekind",
+      "areas": [
+        "Matemática e Estatística"
+      ],
+      "subareas": [
+        "Matemática Pura"
+      ],
+      "entries": [
+        {
+          "area": "Matemática e Estatística",
+          "subarea": "Matemática Pura",
+          "color": "#F43F5E"
+        }
+      ],
+      "x": 14,
+      "y": 77,
+      "ring": "conic-gradient(#F43F5E 0 360deg)",
+      "primaryColor": "#F43F5E"
+    },
+    {
+      "id": "p12",
+      "short": "Constantes de acoplamento",
+      "title": "Calibração de funcionais de densidade para cálculos de constante de acoplamento indireta spin-spin",
+      "areas": [
+        "Química"
+      ],
+      "subareas": [
+        "Físico-Química",
+        "Química Computacional"
+      ],
+      "entries": [
+        {
+          "area": "Química",
+          "subarea": "Físico-Química",
+          "color": "#F2B90C"
+        },
+        {
+          "area": "Química",
+          "subarea": "Química Computacional",
+          "color": "#F2B90C"
+        }
+      ],
+      "x": 61,
+      "y": 80,
+      "ring": "conic-gradient(#F2B90C 0 360deg)",
+      "primaryColor": "#F2B90C"
+    },
+    {
+      "id": "p13",
+      "short": "Cadeias quânticas",
+      "title": "Transporte em Cadeias Quânticas fora do Equilíbrio com Potenciais Quasiperiódicos",
+      "areas": [
+        "Física e Astronomia"
+      ],
+      "subareas": [
+        "Física Quântica",
+        "Física da Matéria Condensada"
+      ],
+      "entries": [
+        {
+          "area": "Física e Astronomia",
+          "subarea": "Física Quântica",
+          "color": "#FF7A1A"
+        },
+        {
+          "area": "Física e Astronomia",
+          "subarea": "Física da Matéria Condensada",
+          "color": "#FF7A1A"
+        }
+      ],
+      "x": 24,
+      "y": 31,
+      "ring": "conic-gradient(#FF7A1A 0 360deg)",
+      "primaryColor": "#FF7A1A"
+    },
+    {
+      "id": "p14",
+      "short": "Redes neurais coletivas",
+      "title": "Propriedades coletivas emergentes em sociedades de redes neurais",
+      "areas": [
+        "Física e Astronomia",
+        "Computação e Inteligência Artificial"
+      ],
+      "subareas": [
+        "Física Estatística e Sistemas Complexos",
+        "Inteligência Artificial e Aprendizado de Máquina"
+      ],
+      "entries": [
+        {
+          "area": "Física e Astronomia",
+          "subarea": "Física Estatística e Sistemas Complexos",
+          "color": "#FF7A1A"
+        },
+        {
+          "area": "Computação e Inteligência Artificial",
+          "subarea": "Inteligência Artificial e Aprendizado de Máquina",
+          "color": "#2563EB"
+        }
+      ],
+      "x": 47,
+      "y": 38,
+      "ring": "conic-gradient(#FF7A1A 0.0deg 180.0deg, #2563EB 180.0deg 360.0deg)",
+      "primaryColor": "#FF7A1A"
+    },
+    {
+      "id": "p15",
+      "short": "Príon e glioblastoma",
+      "title": "Investigação do papel da proteína príon celular na biologia do glioblastoma por transcriptômica bulk e de célula única [descrição pública; título formal não publicado]",
+      "areas": [
+        "Ciências da Saúde",
+        "Ciências Biológicas"
+      ],
+      "subareas": [
+        "Ciências Biomédicas",
+        "Biologia Celular e Molecular",
+        "Genética e Genômica"
+      ],
+      "entries": [
+        {
+          "area": "Ciências da Saúde",
+          "subarea": "Ciências Biomédicas",
+          "color": "#06A9C7"
+        },
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Biologia Celular e Molecular",
+          "color": "#19B789"
+        },
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Genética e Genômica",
+          "color": "#19B789"
+        }
+      ],
+      "x": 77,
+      "y": 54,
+      "ring": "conic-gradient(#06A9C7 0.0deg 180.0deg, #19B789 180.0deg 360.0deg)",
+      "primaryColor": "#06A9C7"
+    },
+    {
+      "id": "p16",
+      "short": "SARS-CoV-2 challenge",
+      "title": "Caracterização da resposta imune à infecção por SARS-CoV-2 no COVID-19 Human Challenge Study [descrição pública; título formal não publicado]",
+      "areas": [
+        "Ciências da Saúde",
+        "Ciências Biológicas"
+      ],
+      "subareas": [
+        "Ciências Biomédicas",
+        "Genética e Genômica"
+      ],
+      "entries": [
+        {
+          "area": "Ciências da Saúde",
+          "subarea": "Ciências Biomédicas",
+          "color": "#06A9C7"
+        },
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Genética e Genômica",
+          "color": "#19B789"
+        }
+      ],
+      "x": 86,
+      "y": 43,
+      "ring": "conic-gradient(#06A9C7 0.0deg 180.0deg, #19B789 180.0deg 360.0deg)",
+      "primaryColor": "#06A9C7"
+    },
+    {
+      "id": "p17",
+      "short": "Cânceres de pele",
+      "title": "Caracterização das paisagens celulares e espaciais de cânceres de pele [descrição pública; título formal não publicado]",
+      "areas": [
+        "Ciências da Saúde",
+        "Ciências Biológicas"
+      ],
+      "subareas": [
+        "Ciências Biomédicas",
+        "Biologia Celular e Molecular",
+        "Genética e Genômica"
+      ],
+      "entries": [
+        {
+          "area": "Ciências da Saúde",
+          "subarea": "Ciências Biomédicas",
+          "color": "#06A9C7"
+        },
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Biologia Celular e Molecular",
+          "color": "#19B789"
+        },
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Genética e Genômica",
+          "color": "#19B789"
+        }
+      ],
+      "x": 88,
       "y": 65,
-      "c": "linear-gradient(135deg,var(--math),var(--biology))",
-      "glow": "var(--biology)"
+      "ring": "conic-gradient(#06A9C7 0.0deg 180.0deg, #19B789 180.0deg 360.0deg)",
+      "primaryColor": "#06A9C7"
+    }
+  ],
+  "projectAreaColors": {
+    "Ciências Biológicas": "#19B789",
+    "Física e Astronomia": "#FF7A1A",
+    "Química": "#F2B90C",
+    "Computação e Inteligência Artificial": "#2563EB",
+    "Matemática e Estatística": "#F43F5E",
+    "Humanidades": "#A78BFA",
+    "Ciências da Saúde": "#06A9C7",
+    "Engenharias": "#172554",
+    "Psicologia": "#6B21A8",
+    "Terra, Mar e Ambiente": "#166534",
+    "Ciências Sociais": "#9F1239"
+  },
+  "projectAreaLegend": [
+    {
+      "name": "Física e Astronomia",
+      "color": "#FF7A1A"
     },
     {
-      "short": "Diversidade plasmidial",
-      "title": "Estruturando a diversidade plasmidial",
-      "inst": "IQ",
-      "areas": "Biologia Computacional",
-      "x": 38,
-      "y": 75,
-      "c": "linear-gradient(135deg,var(--biology),var(--computing))",
-      "glow": "var(--computing)"
+      "name": "Matemática e Estatística",
+      "color": "#F43F5E"
     },
     {
-      "short": "Dinâmica aritmética",
-      "title": "Dinâmica Aritmética em Domínios de Dedekind",
-      "inst": "IME",
-      "areas": "Teoria dos Números",
-      "x": 16,
-      "y": 68,
-      "c": "var(--math)",
-      "glow": "var(--math)"
+      "name": "Computação e Inteligência Artificial",
+      "color": "#2563EB"
     },
     {
-      "short": "Combustível sustentável",
-      "title": "Transformando óleo de larva em combustível de avião sustentável por catálise enzimática whole cell",
-      "inst": "POLI",
-      "areas": "Biotecnologia industrial · Bioquímica · Genética Molecular",
-      "x": 84,
-      "y": 78,
-      "c": "linear-gradient(135deg,var(--chemistry),var(--biology))",
-      "glow": "var(--biology)"
+      "name": "Ciências da Saúde",
+      "color": "#06A9C7"
     },
     {
-      "short": "Como ideias surgem?",
-      "title": "Como as ideias surgem?",
-      "inst": "IME · CIAAM · TELUS Research Hub",
-      "areas": "Sistemas Complexos",
-      "x": 49,
-      "y": 52,
-      "c": "linear-gradient(135deg,var(--math),var(--humanities))",
-      "glow": "var(--humanities)"
+      "name": "Terra, Mar e Ambiente",
+      "color": "#166534"
     },
     {
-      "short": "Extensão na USP",
-      "title": "Constituição histórica do conceito de extensão universitária na USP",
-      "inst": "FE",
-      "areas": "Política Educacional",
-      "x": 67,
-      "y": 34,
-      "c": "var(--humanities)",
-      "glow": "var(--humanities)"
+      "name": "Ciências Biológicas",
+      "color": "#19B789"
+    },
+    {
+      "name": "Humanidades",
+      "color": "#A78BFA"
+    },
+    {
+      "name": "Química",
+      "color": "#F2B90C"
+    }
+  ],
+  "projectLinks": [
+    {
+      "source": "p15",
+      "target": "p17",
+      "shared": [
+        "Biologia Celular e Molecular",
+        "Ciências Biomédicas",
+        "Genética e Genômica"
+      ],
+      "score": 3
+    },
+    {
+      "source": "p09",
+      "target": "p10",
+      "shared": [
+        "Ciência de Dados",
+        "Geografia Humana"
+      ],
+      "score": 2
+    },
+    {
+      "source": "p15",
+      "target": "p16",
+      "shared": [
+        "Ciências Biomédicas",
+        "Genética e Genômica"
+      ],
+      "score": 2
+    },
+    {
+      "source": "p16",
+      "target": "p17",
+      "shared": [
+        "Ciências Biomédicas",
+        "Genética e Genômica"
+      ],
+      "score": 2
+    },
+    {
+      "source": "p07",
+      "target": "p10",
+      "shared": [
+        "Ciência de Dados"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p08",
+      "target": "p17",
+      "shared": [
+        "Biologia Celular e Molecular"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p04",
+      "target": "p14",
+      "shared": [
+        "Inteligência Artificial e Aprendizado de Máquina"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p06",
+      "target": "p07",
+      "shared": [
+        "Sensoriamento Remoto e Geoprocessamento"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p07",
+      "target": "p09",
+      "shared": [
+        "Ciência de Dados"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p08",
+      "target": "p15",
+      "shared": [
+        "Biologia Celular e Molecular"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p02",
+      "target": "p11",
+      "shared": [
+        "Matemática Pura"
+      ],
+      "score": 1
     }
   ]
 }
-
