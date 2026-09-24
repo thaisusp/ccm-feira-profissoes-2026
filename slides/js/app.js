@@ -9,7 +9,8 @@
   const projectSpace = document.getElementById('projectSpace');
   const projectLines = document.getElementById('projectLines');
   const projectLegend = document.getElementById('projectLegend');
-  const areaColors = { math: 'var(--math)', physics: 'var(--physics)', chemistry: 'var(--chemistry)', biology: 'var(--biology)', computing: 'var(--computing)', humanities: 'var(--humanities)' };
+  const areaColors = { math: 'var(--math)', physics: 'var(--physics)', chemistry: 'var(--chemistry)', biology: 'var(--biology)', computing: 'var(--computing)', humanities: 'var(--humanities)', earth: 'var(--earth)', health: 'var(--health)', linguistics: 'var(--linguistics)' };
+  const problemDisplayPalette = ['#FF7A1A', '#F43F5E', '#2563EB', '#06A9C7', '#166534', '#19B789', '#A78BFA', '#F2B90C', '#EC4899'];
   const problemMapData = window.CM_DATA.problemMapData;
   const problemKeys = Object.keys(problemMapData);
   const areaPositions = {
@@ -42,6 +43,7 @@
     slideNumber.textContent = `${pad(current + 1)} / ${pad(slides.length)}`;
     progress.style.width = `${((current + 1) / slides.length) * 100}%`;
     document.body.classList.toggle('dark-active', slides[current].classList.contains('dark'));
+    document.body.dataset.slide = slides[current].id;
     document.title = `${slides[current].dataset.title} - Ciências Moleculares`;
     if (updateHash) history.replaceState(null, '', '#' + slides[current].id);
 
@@ -156,12 +158,13 @@
     data.areas.forEach((area, i) => {
       const pos = positions[i];
       const delay = .18 + i * .18;
+      const displayColor = problemDisplayPalette[(selectedProblemIndex + i) % problemDisplayPalette.length] || areaColors[area.macro];
       const n = document.createElement('span');
       n.className = 'map-area';
       n.textContent = area.name;
       n.style.setProperty('--x', pos.x + '%');
       n.style.setProperty('--y', pos.y + '%');
-      n.style.setProperty('--area', areaColors[area.macro]);
+      n.style.setProperty('--area', displayColor);
       n.style.setProperty('--delay', delay + 's');
       areaWrap.appendChild(n);
 
@@ -170,7 +173,7 @@
       line.setAttribute('y1', '270');
       line.setAttribute('x2', String(pos.x * 10));
       line.setAttribute('y2', String(pos.y * 6));
-      line.style.setProperty('--area', areaColors[area.macro]);
+      line.style.setProperty('--area', displayColor);
       line.style.setProperty('--delay', (delay + .1) + 's');
       lineWrap.appendChild(line);
     });
@@ -181,7 +184,7 @@
     problemTimer = setInterval(() => {
       selectedProblemIndex = (selectedProblemIndex + 1) % problemKeys.length;
       renderProblem(problemKeys[selectedProblemIndex]);
-    }, 3000);
+    }, 5200);
   }
 
   function stopProblemCycle() {

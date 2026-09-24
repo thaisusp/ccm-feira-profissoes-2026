@@ -2009,7 +2009,8 @@ window.CM_DATA = {
     "Engenharias": "#172554",
     "Psicologia": "#6B21A8",
     "Terra, Mar e Ambiente": "#166534",
-    "Ciências Sociais": "#9F1239"
+    "Ciências Sociais": "#9F1239",
+    "Linguística": "#EC4899"
   },
   "projectAreaLegend": [
     {
@@ -2055,6 +2056,10 @@ window.CM_DATA = {
     {
       "name": "Ciências Sociais",
       "color": "#9F1239"
+    },
+    {
+      "name": "Linguística",
+      "color": "#EC4899"
     }
   ],
   "projectLinks": [
