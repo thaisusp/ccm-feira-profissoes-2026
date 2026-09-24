@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#0b1220">
-  <meta name="description" content="Apresentação interativa do curso de Ciências Moleculares da USP para a Feira de Profissões.">
-  <title>Ciências Moleculares — Feira de Profissões</title>
+  <meta name="description" content="Slides automáticos do curso de Ciências Moleculares da USP para a Feira de Profissões.">
+  <title>Ciências Moleculares — Slides Feira de Profissões</title>
   <style>
     :root {
       --paper:#f6f8fc;
@@ -17,31 +17,41 @@
       --cyan:#18a8c6;
       --math:#d93654;
       --physics:#e8751a;
-      --chemistry:#c99b00;
+      --chemistry:#f2b90c;
       --biology:#199b62;
       --computing:#2468d8;
       --humanities:#7a4bc2;
+      --earth:#166534;
+      --health:#06a9c7;
+      --linguistics:#ec4899;
       --panel:rgba(255,255,255,.82);
       --shadow:0 24px 70px rgba(15,23,42,.14);
       --radius:1.4rem;
+      --slide-title-size:4rem;
+      --slide-eyebrow-size:2.5rem;
+      --slide-footer-size:1rem;
     }
     *{box-sizing:border-box}
     html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
     button,a{font:inherit}
     button{color:inherit}
-    .deck{position:relative;width:100vw;height:100dvh;overflow:hidden;background:radial-gradient(circle at 78% 12%,rgba(24,168,198,.08),transparent 29%),linear-gradient(135deg,#fff 0%,var(--paper) 68%)}
-    .deck::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(15,23,42,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(15,23,42,.025) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,transparent,#000 25%,#000 80%,transparent);pointer-events:none}
-    .slide{position:absolute;inset:0;display:grid;align-content:center;padding:clamp(4.5rem,8vw,8rem) clamp(2rem,8vw,9rem) clamp(5rem,8vh,7rem);opacity:0;visibility:hidden;transform:translateX(3.5%);transition:opacity .55s ease,transform .65s cubic-bezier(.2,.8,.2,1),visibility .55s;overflow:hidden}
+    .deck{position:relative;width:100vw;height:100dvh;overflow:hidden;background:#fff}
+    .slide{position:absolute;inset:0;display:grid;align-content:center;padding:clamp(4.5rem,8vw,8rem) clamp(2rem,8vw,9rem) clamp(5rem,8vh,7rem);opacity:0;visibility:hidden;transform:translateX(3.5%);transition:opacity .55s ease,transform .65s cubic-bezier(.2,.8,.2,1),visibility .55s;overflow:hidden;background-image:url("../images/slide-bg-waves-a.png");background-size:cover;background-position:center;background-repeat:no-repeat}
+    .slide:nth-of-type(even){background-image:url("../images/slide-bg-waves-b.png")}
     .slide.active{opacity:1;visibility:visible;transform:none;z-index:2}
     .slide.was-active{transform:translateX(-3.5%)}
-    .slide.dark{background:#0b1220;color:#f8fafc}
-    .slide.dark::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(25,86,216,.25),transparent 36%),radial-gradient(circle at 13% 77%,rgba(24,168,198,.12),transparent 28%);pointer-events:none}
+    .slide.dark{color:#f8fafc;background-image:linear-gradient(rgba(11,18,32,.82),rgba(11,18,32,.82)),url("../images/slide-bg-waves-a.png")}
+    .slide.dark:nth-of-type(even){background-image:linear-gradient(rgba(11,18,32,.82),rgba(11,18,32,.82)),url("../images/slide-bg-waves-b.png")}
+    .slide.dark::after{content:"";position:absolute;inset:0;z-index:0;background:radial-gradient(circle at 50% 50%,rgba(25,86,216,.25),transparent 36%),radial-gradient(circle at 13% 77%,rgba(24,168,198,.12),transparent 28%);pointer-events:none}
+    #fronteiras{background-image:url("../images/slide-bg-waves-dark.png")}
+    #fronteiras::after{display:none}
+    #final{background-color:#0b1220;background-image:none}
     .slide>*{position:relative;z-index:1}
-    .eyebrow{display:flex;align-items:center;gap:.7rem;margin:0 0 1.2rem;text-transform:uppercase;letter-spacing:.16em;font-size:clamp(.72rem,1.1vw,.95rem);font-weight:800;color:var(--blue)}
+    .eyebrow{display:flex;align-items:center;gap:.7rem;margin:0 0 1.2rem;text-transform:uppercase;letter-spacing:.16em;font-size:var(--slide-eyebrow-size);font-weight:800;color:var(--blue)}
     .eyebrow::before{content:"";width:1.8rem;height:2px;background:currentColor}
     h1,h2,h3,p{margin-top:0}
     h1{font-size:clamp(3.3rem,9.4vw,9.4rem);line-height:.82;letter-spacing:-.075em;margin-bottom:1.7rem;max-width:14ch}
-    h2{font-size:clamp(2.35rem,5.3vw,5.6rem);line-height:.95;letter-spacing:-.055em;margin-bottom:1.4rem;max-width:15ch}
+    h2{font-size:var(--slide-title-size);line-height:.95;letter-spacing:-.055em;margin-bottom:1.4rem;max-width:15ch}
     h3{font-size:clamp(1.05rem,1.7vw,1.5rem);margin-bottom:.45rem}
     .lead{font-size:clamp(1.12rem,2.05vw,1.85rem);line-height:1.35;max-width:39ch;color:#334155}
     .dark .lead,.dark .muted{color:#b9c8dd}
@@ -53,12 +63,12 @@
     .cm-mark{width:2.25rem;height:2.25rem;border:2px solid var(--blue);display:grid;place-items:center;border-radius:50%;color:var(--blue);font-size:.69rem;letter-spacing:-.04em;background:rgba(255,255,255,.74)}
     .dark .cm-mark{background:rgba(11,18,32,.75);border-color:#7db5ff;color:#dbeafe}.dark .topline{color:#94a3b8}
     .controls{position:fixed;z-index:30;right:clamp(1rem,2.5vw,2.4rem);bottom:clamp(1rem,2.2vw,2rem);display:flex;align-items:center;gap:.55rem}
-    .control{width:2.7rem;height:2.7rem;border:1px solid rgba(100,116,139,.32);border-radius:50%;background:rgba(255,255,255,.8);backdrop-filter:blur(12px);display:grid;place-items:center;cursor:pointer;transition:.2s ease;box-shadow:0 4px 18px rgba(15,23,42,.07)}
+    .control{width:2.7rem;height:2.7rem;border:1px solid rgba(100,116,139,.32);border-radius:50%;background:rgba(255,255,255,.8);backdrop-filter:blur(12px);display:grid;place-items:center;cursor:pointer;transition:.2s ease;box-shadow:0 4px 18px rgba(15,23,42,.07);font-size:var(--slide-footer-size)}
     .control:hover,.control:focus-visible{background:#fff;border-color:var(--blue);color:var(--blue);transform:translateY(-2px);outline:none}
     .control svg{width:1.1rem;height:1.1rem;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-    .slide-number{min-width:4.2rem;text-align:center;font-size:.78rem;color:#64748b;font-variant-numeric:tabular-nums}
+    .slide-number{min-width:4.2rem;text-align:center;font-size:var(--slide-footer-size);color:#64748b;font-variant-numeric:tabular-nums}
     .progress{position:fixed;z-index:31;left:0;bottom:0;height:3px;background:var(--blue);width:5%;transition:width .45s ease}
-    .key-hint{position:fixed;z-index:20;left:clamp(1.5rem,4vw,4.5rem);bottom:clamp(1.25rem,2.5vw,2.35rem);font-size:.76rem;color:#94a3b8;letter-spacing:.04em}
+    .key-hint{position:fixed;z-index:20;left:clamp(1.5rem,4vw,4.5rem);bottom:clamp(1.25rem,2.5vw,2.35rem);font-size:var(--slide-footer-size);color:#94a3b8;letter-spacing:.04em}
     .dark-active .control{background:rgba(15,23,42,.82);color:#e2e8f0;border-color:rgba(148,163,184,.35)}
     .dark-active .slide-number,.dark-active .key-hint{color:#94a3b8}
     .fragment{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
@@ -75,22 +85,32 @@
     @keyframes word-in{to{opacity:1}}@keyframes dash{to{stroke-dashoffset:-380}}
 
     /* areas */
-    .area-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(.55rem,1.25vw,1rem);width:min(100%,78rem);margin-top:1.8rem}
-    .area-box{min-height:clamp(5.3rem,11vh,7rem);display:grid;place-items:center;border:1px solid color-mix(in srgb,var(--area) 42%,#cbd5e1);border-top:4px solid var(--area);border-radius:.35rem;background:linear-gradient(180deg,color-mix(in srgb,var(--area) 7%,#fff),rgba(255,255,255,.82));font-size:clamp(1.05rem,1.5vw,1.35rem);font-weight:850;letter-spacing:.06em;position:relative;overflow:hidden;box-shadow:0 8px 25px rgba(15,23,42,.05)}
-    .area-box small{display:block;font-size:.64rem;letter-spacing:.03em;color:var(--area);font-weight:700;margin-top:.25rem}
-    .split-note{display:flex;align-items:center;gap:1rem;color:#334155;margin-top:1.2rem;font-size:clamp(.92rem,1.4vw,1.12rem);font-weight:650}.split-note .rule{height:1px;flex:1;background:linear-gradient(90deg,transparent,#94a3b8,transparent)}
+    #caixas h2{max-width:27ch}
+    .campus-layout{display:grid;grid-template-columns:minmax(0,1.34fr) minmax(15rem,.66fr);gap:clamp(1.5rem,3.5vw,3.6rem);align-items:center;width:min(100%,82rem);margin-top:.4rem}
+    .campus-map{position:relative;margin:0;height:min(44vh,27rem);border-radius:1.2rem;overflow:hidden;border:1px solid rgba(148,163,184,.42);background:#fff;box-shadow:0 16px 48px rgba(15,23,42,.12)}
+    .campus-map::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.7);pointer-events:none}
+    .campus-map img{width:100%;height:100%;object-fit:cover;object-position:50% 53%;display:block}
+    .campus-list{display:grid;gap:.7rem;align-content:center}
+    .campus-list span{display:flex;align-items:center;gap:.7rem;font-size:clamp(1.2rem,2vw,1.65rem);font-weight:880;letter-spacing:.05em;color:color-mix(in srgb,var(--area) 88%,#111827)}
+    .campus-list span::before{content:"";width:.85rem;aspect-ratio:1;border-radius:50%;background:var(--area);box-shadow:0 0 0 .36rem color-mix(in srgb,var(--area) 13%,transparent)}
+    .campus-list .more{color:#94a3b8}
+    .campus-list .more::before{background:#94a3b8;box-shadow:none}
+    .split-note{display:flex;align-items:center;justify-content:center;gap:1rem;color:var(--blue);margin-top:1.35rem;font-size:clamp(1.35rem,2.3vw,2rem);font-weight:870;text-align:center;letter-spacing:-.02em}.split-note .rule{height:2px;flex:1;max-width:10rem;background:linear-gradient(90deg,transparent,currentColor,transparent)}
 
     /* question universe */
-    .question-universe{position:relative;width:min(100%,78rem);height:min(61vh,38rem);margin:0 auto}
-    .question-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:clamp(12rem,20vw,16rem);aspect-ratio:1;border:1px solid rgba(25,86,216,.3);border-radius:50%;display:grid;place-items:center;text-align:center;padding:1.5rem;background:#fff;box-shadow:0 20px 80px rgba(25,86,216,.16);font-size:clamp(1.35rem,2.25vw,2.25rem);font-weight:820;line-height:1.05;letter-spacing:-.04em}
-    .problem-pill,.area-chip{--area:var(--blue);border:1px solid color-mix(in srgb,var(--area) 42%,#cbd5e1);background:color-mix(in srgb,var(--area) 5%,rgba(255,255,255,.92));border-radius:999px;padding:.72rem 1rem;cursor:pointer;transition:.2s ease;text-align:left;line-height:1.2}
-    .problem-pill:hover,.problem-pill:focus-visible,.area-chip:hover,.area-chip:focus-visible,.area-chip.selected{border-color:var(--area);background:var(--area);color:#fff;outline:none;box-shadow:0 8px 28px color-mix(in srgb,var(--area) 24%,transparent);transform:translateY(-2px)}
-    .question-universe .problem-pill{position:absolute;width:min(18rem,27vw);font-size:clamp(.7rem,.95vw,.9rem)}
-    .q1{left:2%;top:4%}.q2{left:50%;top:0;transform:translateX(-50%)}.q3{right:2%;top:4%}.q4{left:0;top:42%}.q5{right:0;top:42%}.q6{left:7%;bottom:0}.q7{left:50%;bottom:-2%;transform:translateX(-50%)}.q8{right:7%;bottom:0}.q2:hover,.q2:focus-visible,.q7:hover,.q7:focus-visible{transform:translateX(-50%) translateY(-2px)}
+    .question-universe{position:relative;width:min(100%,78rem);margin:0 auto}
+    .problem-title{max-width:none;width:100%;margin:0 auto 2rem;text-align:center}
+    .question-columns{display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.25rem;width:min(100%,76rem);margin:0 auto}
+    .question-column{display:grid;gap:.9rem}
+    .problem-pill{--area:var(--blue);border:1px solid color-mix(in srgb,var(--area) 42%,#cbd5e1);background:color-mix(in srgb,var(--area) 6%,rgba(255,255,255,.94));border-radius:1rem;padding:1.05rem 1.15rem;cursor:pointer;transition:.2s ease;text-align:left;line-height:1.18}
+    .problem-pill:hover,.problem-pill:focus-visible{border-color:var(--area);background:var(--area);color:#fff;outline:none;box-shadow:0 8px 28px color-mix(in srgb,var(--area) 24%,transparent);transform:translateY(-2px)}
+    .auto-question{display:block;cursor:default;pointer-events:none}
+    .auto-question:hover{background:color-mix(in srgb,var(--area) 5%,rgba(255,255,255,.92));color:inherit;box-shadow:none;transform:none}
+    .auto-question.active-question{background:var(--area);border-color:var(--area);color:#fff;box-shadow:0 12px 34px color-mix(in srgb,var(--area) 24%,transparent);transform:translateY(-5px) scale(1.04)}
+    .question-universe .problem-pill{position:relative;width:100%;font-size:clamp(1.08rem,1.55vw,1.42rem);font-weight:780;min-height:5.2rem;display:flex;align-items:center}
 
     /* problem map */
     .two-col{display:grid;grid-template-columns:minmax(14rem,.75fr) minmax(0,1.5fr);gap:clamp(2rem,6vw,7rem);align-items:center;width:min(100%,82rem)}
-    .problem-list{display:flex;flex-direction:column;gap:.4rem}.problem-list .problem-pill{font-size:.78rem;padding:.58rem .8rem}.problem-list .problem-pill.active-choice{background:var(--area);color:#fff;border-color:var(--area)}
     .map-stage{position:relative;height:min(62vh,37rem);min-height:25rem;border:1px solid rgba(148,163,184,.34);border-radius:2rem;background:rgba(255,255,255,.64);box-shadow:var(--shadow);overflow:hidden}
     .map-stage::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at center,rgba(25,86,216,.12),transparent 38%)}
     .map-lines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.map-lines line{stroke:var(--area);stroke-width:2;stroke-dasharray:800;stroke-dashoffset:800;opacity:.54;animation:draw-line .55s ease forwards;animation-delay:var(--delay)}
@@ -101,79 +121,99 @@
     @keyframes node-in{from{opacity:0;transform:translate(-50%,-50%) scale(.72)}}@keyframes draw-line{to{stroke-dashoffset:0}}
 
     /* definition */
-    .sequence{display:flex;align-items:center;gap:clamp(.8rem,2vw,2rem);margin-top:3.2rem;width:min(100%,76rem)}
-    .sequence-step{flex:1;min-height:10rem;border-top:3px solid var(--blue);padding:1.2rem 0;font-size:clamp(1.2rem,2.2vw,2rem);font-weight:780;letter-spacing:-.03em}.sequence-step small{display:block;margin-top:.65rem;color:#64748b;font-size:.82rem;line-height:1.4;font-weight:500;letter-spacing:0}
-    .sequence-arrow{color:var(--blue);font-size:2rem}
+    .definition-title{max-width:18ch;margin-bottom:1rem}
+    .definition-copy{max-width:43ch;margin-bottom:2.3rem}
+    .editorial-sequence{width:min(100%,72rem);display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.2rem,3vw,3rem);align-items:start}
+    .editorial-sequence p{margin:0;padding-top:1.1rem;border-top:3px solid var(--blue);text-align:left}
+    .editorial-sequence strong{display:block;font-size:clamp(1.25rem,2vw,2rem);letter-spacing:-.03em;margin-bottom:.45rem}
+    .editorial-sequence span{display:block;color:#64748b;line-height:1.42;font-size:clamp(.9rem,1.2vw,1.05rem)}
 
     /* basic cycle */
-    .basic-cycle-layout{display:grid;grid-template-columns:minmax(19rem,.9fr) minmax(18rem,1fr);align-items:center;gap:clamp(2rem,7vw,7rem);width:min(100%,77rem);margin-top:.8rem}
-    .cycle-wheel{position:relative;width:min(48vh,31rem);aspect-ratio:1;margin:auto;filter:drop-shadow(0 18px 28px rgba(15,23,42,.11))}.cycle-wheel svg{width:100%;height:100%;overflow:visible}.basic-segment{cursor:help;transition:transform .2s ease,filter .2s ease;transform-origin:210px 210px;stroke:#fff;stroke-width:4}.basic-segment:hover,.basic-segment:focus{transform:scale(1.035);filter:brightness(1.06);outline:none}.wheel-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:38%;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;text-align:center;padding:1rem;background:#fff;border:1px solid #dbe3ef;font-weight:850;line-height:1.12;box-shadow:0 10px 35px rgba(15,23,42,.1)}
-    .cycle-detail{border-left:4px solid var(--detail-color,var(--blue));padding-left:1.5rem;min-height:9rem;display:grid;align-content:center}.cycle-detail strong{font-size:clamp(1.5rem,3vw,2.8rem);color:var(--detail-color,var(--blue));letter-spacing:-.04em}.cycle-detail span{font-size:clamp(1rem,1.6vw,1.3rem);color:#475569;margin-top:.3rem}.cycle-meta{font-size:.74rem;color:#64748b;margin-top:1.2rem;max-width:42ch}
+    .basic-cycle-layout{position:relative;width:min(100%,77rem);height:min(50vh,31rem);min-height:25rem;margin-top:.2rem}
+    .cycle-wheel{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);width:min(40vh,28rem);aspect-ratio:1;margin:0;filter:drop-shadow(0 18px 28px rgba(15,23,42,.11))}.cycle-wheel svg{width:100%;height:100%;overflow:visible}.basic-segment{cursor:help;transition:transform .28s ease,filter .28s ease,opacity .28s ease;transform-origin:210px 210px;stroke:#fff;stroke-width:4;opacity:.72}.basic-segment:hover,.basic-segment:focus,.basic-segment.active-segment{transform:scale(1.055);filter:brightness(1.08);opacity:1;outline:none}.wheel-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:38%;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;text-align:center;padding:1rem;background:#fff;border:1px solid #dbe3ef;font-weight:850;line-height:1.12;box-shadow:0 10px 35px rgba(15,23,42,.1)}
+    .cycle-detail{position:absolute;left:0;bottom:0;width:min(28rem,34%);border-left:4px solid var(--detail-color,var(--blue));border-radius:.9rem;padding:1rem 1.2rem 1rem 1.4rem;min-height:6.8rem;display:grid;align-content:center;background:rgba(255,255,255,.86);box-shadow:0 14px 34px rgba(15,23,42,.09)}.cycle-detail strong{font-size:clamp(1.35rem,2.5vw,2.35rem);color:var(--detail-color,var(--blue));letter-spacing:-.04em}.cycle-detail span{font-size:clamp(.92rem,1.25vw,1.1rem);color:#475569;margin-top:.3rem}.cycle-meta{display:none}
 
     /* opening transition */
     .opening-path{width:min(100%,77rem);margin:3rem auto 0;display:flex;align-items:center;justify-content:space-between;position:relative}
     .opening-path::before{content:"";position:absolute;left:4%;right:4%;top:50%;height:2px;background:linear-gradient(90deg,var(--blue),var(--cyan),transparent)}
     .path-node{position:relative;width:clamp(3rem,5vw,4.5rem);aspect-ratio:1;border-radius:50%;background:#fff;border:2px solid var(--blue);box-shadow:0 0 0 .6rem rgba(25,86,216,.08);display:grid;place-items:center;font-weight:800;color:var(--blue)}
+    #mudanca-avancado h2{max-width:21ch}
+    #mudanca-avancado .lead{max-width:45ch;margin-bottom:0}
+    .advanced-path{margin-top:1.55rem}
+    .advanced-path .path-node{width:clamp(5.7rem,8.2vw,7.4rem);font-size:clamp(.72rem,.95vw,.92rem);line-height:1.12;padding:.62rem;text-align:center;letter-spacing:0}
+    .advanced-note{max-width:64rem;margin:1.65rem auto 0;color:#64748b;font-size:clamp(.95rem,1.25vw,1.08rem);line-height:1.42}
     .path-node:nth-child(n+4){animation:open-path 3s ease-in-out infinite alternate;transform:translateY(var(--shift))}
     @keyframes open-path{to{transform:translateY(var(--shift-end)) scale(1.08);border-color:var(--cyan)}}
 
-    /* advanced */
-    .advanced-network{position:relative;width:min(100%,75rem);height:min(54vh,32rem);margin:.3rem auto 0}
-    .you{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:10rem;aspect-ratio:1;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:1.35rem;font-weight:900;letter-spacing:.08em;box-shadow:0 0 0 1.3rem rgba(25,86,216,.1)}
-    .adv-node{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);padding:.8rem 1.05rem;background:#fff;border:1px solid color-mix(in srgb,var(--node-color,var(--blue)) 38%,#cbd5e1);border-left:4px solid var(--node-color,var(--blue));border-radius:.8rem;font-weight:780;white-space:nowrap;box-shadow:0 9px 30px rgba(15,23,42,.09)}
-    .adv-node.project{font-size:1.08rem;background:var(--ink);color:#fff;border-color:var(--ink);padding:1rem 1.35rem}.adv-areas{display:flex;gap:.28rem;margin-top:.4rem;justify-content:center}.adv-areas i{width:.5rem;aspect-ratio:1;border-radius:50%;background:var(--c)}
-    .advanced-network svg{position:absolute;inset:0;width:100%;height:100%;z-index:-1}.advanced-network line{stroke:var(--line-color,#9db3d1);stroke-width:1.6;stroke-dasharray:5 6}
-
-    /* trajectory builder */
-    .builder{width:min(100%,76rem);margin-top:1rem}.chips{display:flex;flex-wrap:wrap;gap:.7rem;margin:1.4rem 0 2rem}.area-chip{padding:.72rem 1.05rem;font-weight:760;color:color-mix(in srgb,var(--area) 84%,#111827)}.area-chip:disabled{opacity:.4;cursor:not-allowed}
-    .result-panel{min-height:12rem;border-left:4px solid var(--blue);padding:1.2rem 1.6rem;background:rgba(255,255,255,.68);display:grid;align-content:center}
-    .result-kicker{font-size:.78rem;text-transform:uppercase;letter-spacing:.13em;color:var(--blue);font-weight:800}.result-title{font-size:clamp(1.45rem,3vw,2.7rem);font-weight:800;letter-spacing:-.035em;margin:.5rem 0}.result-copy{color:#64748b;max-width:56ch;margin:0}
-
     /* projects */
-    .project-space{position:relative;height:min(65vh,41rem);width:min(100%,82rem);margin:0 auto;border-radius:2rem;background:radial-gradient(circle at 50% 50%,rgba(25,86,216,.18),transparent 38%);overflow:hidden}
-    .project-space::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(148,163,184,.42) 1px,transparent 1.5px);background-size:33px 33px;mask-image:radial-gradient(circle,#000,transparent 78%)}
-    .project-lines{position:absolute;inset:0;width:100%;height:100%;opacity:.3}.project-lines line{stroke:#7298e3;stroke-width:1}
-    .project-node{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);border:0;background:transparent;cursor:pointer;padding:0;z-index:2}
-    .project-node .dot{display:block;width:var(--size,1rem);aspect-ratio:1;background:var(--node-color,#1956d8);border-radius:50%;box-shadow:0 0 0 .45rem color-mix(in srgb,var(--glow-color,#1956d8) 14%,transparent),0 0 18px color-mix(in srgb,var(--glow-color,#1956d8) 45%,transparent);transition:.25s ease}
-    .project-node .node-label{position:absolute;left:50%;top:calc(100% + .65rem);transform:translateX(-50%);width:10rem;text-align:center;color:#334155;font-size:.72rem;line-height:1.25;opacity:0;pointer-events:none;transition:.2s ease;background:rgba(255,255,255,.9);padding:.35rem .5rem;border-radius:.45rem}
-    .project-node:hover .dot,.project-node:focus-visible .dot{transform:scale(1.6);outline:2px solid #fff;outline-offset:2px}.project-node:hover .node-label,.project-node:focus-visible .node-label{opacity:1}.project-node:focus-visible{outline:none}
-    .project-help{position:absolute;left:1.2rem;bottom:1rem;color:#64748b;font-size:.78rem}
-    .project-panel{position:absolute;right:clamp(1.4rem,4vw,4rem);top:50%;transform:translateY(-50%) translateX(115%);width:min(28rem,calc(100vw - 3rem));z-index:7;background:#fff;border:1px solid #cbd5e1;border-radius:1.4rem;padding:1.6rem 1.6rem 1.4rem;box-shadow:var(--shadow);transition:.35s cubic-bezier(.2,.8,.2,1)}
+    #projetos{background-color:#071426;background-image:url("../images/slide-bg-waves-dark.png");color:#f8fafc;padding-top:clamp(4rem,6vw,6rem)}
+    #projetos::after{display:none}
+    #projetos .eyebrow{color:#93c5fd;margin-bottom:.8rem}
+    #projetos h2{max-width:none;width:min(100%,86rem);white-space:nowrap;color:#f8fafc;margin-bottom:.45rem}
+    .project-space{position:relative;height:min(52vh,32rem);width:min(100%,82rem);margin:.2rem auto 0;overflow:visible}
+    .project-space::before{content:"";position:absolute;inset:3% 2%;background:radial-gradient(circle at 54% 52%,rgba(25,86,216,.13),transparent 34%);pointer-events:none}
+    #projetos .project-space{height:min(54vh,35rem)}
+    #projetos .project-space::before{background:radial-gradient(circle at 54% 52%,rgba(96,165,250,.2),transparent 35%)}
+    .project-lines{position:absolute;inset:0;width:100%;height:100%;overflow:visible}.project-link{stroke:#1d4ed8;stroke-width:.28;stroke-linecap:round;opacity:.16;transition:opacity .25s ease,stroke-width .25s ease}.project-link.active-link{opacity:.62;stroke-width:.58}
+    #projetos .project-link{stroke:#93c5fd;opacity:.24}.project-link.active-link{opacity:.7;stroke-width:.58}
+    .project-legend{position:absolute;left:0;top:0;z-index:4;display:grid;grid-template-columns:repeat(2,minmax(8.5rem,auto));gap:.34rem .75rem;max-width:25rem;color:#475569;font-size:.64rem;line-height:1.15;font-weight:720}
+    #projetos .project-legend{grid-template-columns:1fr;gap:.32rem;max-width:24rem;color:#d8e4f5;font-size:.68rem}
+    .legend-item{display:flex;align-items:center;gap:.38rem;white-space:nowrap}.legend-dot{width:.52rem;aspect-ratio:1;border-radius:50%;background:var(--legend-color);box-shadow:0 0 0 .22rem color-mix(in srgb,var(--legend-color) 13%,transparent)}
+    .project-node{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);border:0;background:transparent;cursor:pointer;padding:0;z-index:5}
+    .project-node .dot{position:relative;display:block;width:var(--size,1.26rem);aspect-ratio:1;background:var(--ring-bg,#1956d8);border-radius:50%;box-shadow:0 0 0 .4rem color-mix(in srgb,var(--primary-color,#1956d8) 13%,transparent),0 0 18px color-mix(in srgb,var(--primary-color,#1956d8) 38%,transparent);transition:.25s ease}
+    .project-node .dot::after{content:"";position:absolute;inset:28%;border-radius:inherit;background:#fff;border:1px solid rgba(15,23,42,.11)}
+    #projetos .project-node .dot::after{background:#071426;border-color:rgba(226,232,240,.28)}
+    .project-node .node-label{position:absolute;left:50%;top:calc(100% + .58rem);transform:translateX(-50%);width:10.8rem;text-align:center;color:#334155;font-size:.68rem;line-height:1.22;opacity:0;pointer-events:none;transition:.2s ease;background:rgba(255,255,255,.92);padding:.35rem .48rem;border:1px solid rgba(203,213,225,.72);border-radius:.45rem;box-shadow:0 8px 22px rgba(15,23,42,.08)}
+    #projetos .project-node .node-label{color:#e2e8f0;background:rgba(7,20,38,.88);border-color:rgba(148,163,184,.34)}
+    .project-node:hover .dot,.project-node:focus-visible .dot{transform:scale(1.42);outline:2px solid #fff;outline-offset:2px}.project-node:hover .node-label,.project-node:focus-visible .node-label{opacity:1}.project-node:focus-visible{outline:none}
+    .project-node.active-project{z-index:8}.project-node.active-project .dot{transform:scale(1.58);outline:2px solid #fff;outline-offset:2px}
+    .project-node.active-project .node-label{opacity:1}
+    .project-help{position:absolute;left:0;bottom:.2rem;color:#64748b;font-size:var(--slide-footer-size)}
+    #projetos .project-help{color:#b8c8dd}
+    .project-panel{position:absolute;right:clamp(1.4rem,5vw,5rem);top:57%;transform:translateY(-50%) translateX(115%);width:min(25.5rem,calc(100vw - 3rem));max-height:min(48vh,28rem);overflow:auto;z-index:12;background:rgba(255,255,255,.96);border:1px solid #cbd5e1;border-radius:1rem;padding:1.35rem 1.4rem 1.2rem;box-shadow:var(--shadow);transition:.35s cubic-bezier(.2,.8,.2,1);color:var(--ink)}
     .project-panel.open{transform:translateY(-50%) translateX(0)}
-    .panel-close{position:absolute;right:.8rem;top:.8rem;border:0;background:#eef2f7;width:2rem;height:2rem;border-radius:50%;cursor:pointer}.project-panel h3{font-size:1.35rem;line-height:1.18;padding-right:1.5rem}.panel-inst{color:var(--blue);font-weight:800;font-size:.82rem;margin:.8rem 0}.panel-areas{color:#64748b;line-height:1.45;margin-bottom:0}
+    .project-panel.panel-left{right:auto;left:clamp(1.4rem,5vw,5rem);transform:translateY(-50%) translateX(-115%)}
+    .project-panel.panel-left.open{transform:translateY(-50%) translateX(0)}
+    .panel-close{position:absolute;right:.72rem;top:.72rem;border:0;background:#eef2f7;color:#0f172a;width:2rem;height:2rem;border-radius:50%;cursor:pointer}.project-panel h3{font-size:1.2rem;line-height:1.18;padding-right:1.5rem}.panel-inst{display:flex;flex-wrap:wrap;gap:.35rem .85rem;color:var(--blue);font-weight:850;font-size:.82rem;margin:.85rem 0 .7rem}.panel-area{display:inline-flex;align-items:center;gap:.35rem}.panel-area::before{content:"";width:.52rem;aspect-ratio:1;border-radius:50%;background:var(--area-color);box-shadow:0 0 0 .22rem color-mix(in srgb,var(--area-color) 14%,transparent)}.panel-areas{color:#64748b;line-height:1.42;margin-bottom:0;font-size:.88rem}
 
-    /* regions */
-    .regions{position:relative;height:min(62vh,38rem);width:min(100%,82rem);margin:0 auto}
-    .region{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);width:clamp(8rem,13vw,12rem);aspect-ratio:1;border-radius:50%;border:1px dashed var(--area);display:grid;place-items:center;text-align:center;font-weight:800;color:var(--area);background:color-mix(in srgb,var(--area) 6%,rgba(255,255,255,.62))}
-    .region::before{content:"";position:absolute;inset:-2.5rem;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--area) 13%,transparent),transparent 67%);z-index:-1}
-    .region-dot{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);width:.8rem;aspect-ratio:1;border-radius:50%;background:var(--node-color,var(--blue));box-shadow:0 0 0 .34rem color-mix(in srgb,var(--node-color,var(--blue)) 14%,transparent);transition:left 1.2s ease,top 1.2s ease}
-    .region-dot::after{content:attr(data-short);position:absolute;left:1rem;top:-.3rem;width:8rem;font-size:.69rem;line-height:1.2;color:#334155;font-weight:650}
     .manifesto{font-size:clamp(1.15rem,2.1vw,1.8rem);line-height:1.35;max-width:55ch;margin:-.5rem auto 0;text-align:center}.manifesto strong{color:var(--blue)}
-
-    /* trajectories */
-    .trajectories{display:grid;gap:1.1rem;width:min(100%,80rem);margin-top:2rem}.trajectory{display:grid;grid-template-columns:.35fr 1fr auto 1.45fr auto 1.15fr auto 1.3fr;align-items:center;gap:.9rem;padding:1rem 1.2rem;border-bottom:1px solid #cbd5e1}.trajectory strong{color:var(--blue)}.trajectory .arrow{color:#94a3b8}.trajectory span:not(.arrow){font-size:clamp(.84rem,1.2vw,1.05rem)}
+    .project-manifesto{margin:.45rem auto 0}
+    #projetos .project-manifesto{color:#e2e8f0}
+    #projetos .project-manifesto strong{color:#8fb6ff}
 
     /* profile and flow */
-    .profile-list{display:grid;grid-template-columns:1fr 1fr;gap:1rem 3rem;width:min(100%,75rem);margin-top:2rem}.profile-item{display:flex;gap:1rem;align-items:flex-start;padding:1.1rem 0;border-top:1px solid #cbd5e1;font-size:clamp(1rem,1.55vw,1.3rem);line-height:1.35}.profile-item .plus{color:var(--blue);font-weight:900;font-size:1.5rem}
-    .admission-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1.15fr auto 1fr;gap:clamp(.5rem,1.2vw,1.2rem);align-items:center;width:min(100%,80rem);margin-top:3rem}.flow-box{min-height:9rem;border:1px solid #b8c7df;border-radius:1rem;padding:1.2rem;background:#fff;display:grid;align-content:center;text-align:center;font-weight:800;box-shadow:0 9px 28px rgba(15,23,42,.07)}.flow-box small{display:block;color:#64748b;margin-top:.5rem;font-weight:500}.flow-arrow{font-size:1.7rem;color:var(--blue)}
-    .note{font-size:.84rem;color:#64748b;margin-top:1.2rem}
+    #perfil{align-content:start;padding-top:clamp(4.8rem,7vw,7rem)}
+    #perfil h2{max-width:20ch;margin-bottom:1.25rem}
+    .profile-list{display:grid;grid-template-columns:1fr 1fr;gap:.8rem 3rem;width:min(100%,75rem);margin-top:.6rem}.profile-item{display:flex;gap:1rem;align-items:flex-start;padding:1rem 0;border-top:1px solid #cbd5e1;font-size:clamp(1.05rem,1.55vw,1.32rem);line-height:1.32}.profile-item .plus{color:var(--blue);font-weight:900;font-size:1.5rem}
+    .profile-conclusion{align-self:end;justify-self:center;margin:2rem auto 0;text-align:center;color:var(--blue);font-size:clamp(2.4rem,5vw,4rem);line-height:.98;font-weight:880;letter-spacing:-.055em}
+    body[data-slide="perfil"] .key-hint{color:#64748b;background:rgba(255,255,255,.82);border:1px solid rgba(203,213,225,.72);border-radius:999px;padding:.35rem .8rem;backdrop-filter:blur(8px)}
+    #ingresso h2{max-width:none;white-space:nowrap}
+    .admission-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1.15fr auto 1fr;gap:clamp(.5rem,1.2vw,1.2rem);align-items:center;width:min(100%,82rem);margin-top:2.4rem}.flow-box{min-height:8.4rem;border:1px solid #b8c7df;border-radius:1rem;padding:1.05rem;background:#fff;display:grid;align-content:center;text-align:center;font-weight:800;box-shadow:0 9px 28px rgba(15,23,42,.07)}.flow-box small{display:block;color:#64748b;margin-top:.45rem;font-weight:500}.flow-arrow{font-size:1.7rem;color:var(--blue)}
+    .origin-texture{width:min(100%,77rem);display:flex;flex-wrap:wrap;justify-content:center;gap:.45rem .55rem;margin:1.35rem auto 0;color:#64748b}
+    .origin-texture span{border:1px solid rgba(100,116,139,.24);background:rgba(255,255,255,.62);border-radius:999px;padding:.25rem .58rem;font-size:clamp(.72rem,1vw,.92rem);font-weight:760;letter-spacing:.04em;box-shadow:0 5px 16px rgba(15,23,42,.04)}
+    .note{font-size:var(--slide-footer-size);color:#64748b;margin-top:1.2rem}
+    .admission-note{max-width:76ch;line-height:1.45}
 
     /* final */
-    .final-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:5rem;align-items:end;width:min(100%,80rem)}
+    .final-stack{display:grid;justify-items:center;align-content:center;text-align:center;width:min(100%,80rem);min-height:62vh}
+    .final-stack h1{margin-bottom:1.5rem}
+    .final-links{display:flex;justify-content:center;align-items:center;gap:1.3rem;flex-wrap:wrap;margin-top:2rem}
     .final-url{display:inline-flex;align-items:center;gap:.7rem;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35);padding-bottom:.5rem;font-size:clamp(1rem,1.6vw,1.35rem)}
+    .email-link{color:#8fdcf0}
     .final-url:hover{color:#8fdcf0}.final-ask{font-size:clamp(1.4rem,3vw,2.7rem);line-height:1.12;color:#cbd5e1}
     .kbd-help{position:fixed;inset:0;z-index:50;background:rgba(15,23,42,.52);backdrop-filter:blur(9px);display:none;place-items:center;padding:2rem}.kbd-help.open{display:grid}.kbd-card{width:min(33rem,100%);background:#fff;border-radius:1.3rem;padding:1.8rem;box-shadow:var(--shadow)}.kbd-row{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid #e2e8f0;padding:.75rem 0;color:#475569}.kbd-row kbd{background:#eef2f7;border:1px solid #cbd5e1;border-radius:.35rem;padding:.16rem .45rem;color:#0f172a}
     .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
     @media(max-width:800px){
       .slide{padding:5rem 1.4rem 5rem;align-content:center}.key-hint{display:none}.topline{left:1.2rem}.controls{right:1rem}.control.auto,.control.help{display:none}
-      .area-grid{grid-template-columns:repeat(2,1fr)}.area-box{min-height:4.3rem}
-      .question-universe{height:70vh;overflow:auto;padding-right:.3rem}.question-universe .problem-pill{position:relative!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;transform:none!important;width:100%;margin:.3rem 0}.question-core{position:relative;left:auto;top:auto;transform:none;width:auto;aspect-ratio:auto;border-radius:1rem;padding:1rem;margin-bottom:.6rem}.q2:hover,.q7:hover{transform:translateY(-2px)!important}
-      .two-col{grid-template-columns:1fr;gap:1rem}.problem-list{display:grid;grid-template-columns:1fr 1fr}.problem-list .problem-pill{font-size:.68rem;padding:.5rem}.map-stage{height:42vh;min-height:17rem}
-      .sequence{flex-direction:column;align-items:stretch}.sequence-step{min-height:auto}.sequence-arrow{transform:rotate(90deg);align-self:center}
-      .basic-cycle-layout{grid-template-columns:1fr;gap:.5rem}.cycle-wheel{width:min(34vh,18rem)}.cycle-detail{min-height:5rem}.cycle-meta{margin-top:.45rem}.advanced-network{height:52vh}.adv-node{font-size:.68rem;padding:.5rem .62rem}.adv-node.project{font-size:.76rem;padding:.68rem .8rem}.you{width:6.7rem;font-size:.9rem}
-      .project-space{height:65vh}.project-panel{right:1rem}.regions{height:58vh}.region{width:6.4rem;font-size:.72rem}.region-dot::after{display:none}
-      .trajectory{grid-template-columns:1fr;gap:.32rem}.trajectory .arrow{transform:rotate(90deg);justify-self:start}.profile-list{grid-template-columns:1fr;gap:0}.admission-flow{grid-template-columns:1fr}.flow-box{min-height:4.5rem}.flow-arrow{transform:rotate(90deg);justify-self:center}.final-grid{grid-template-columns:1fr;gap:2rem}
+      .question-universe{height:auto;overflow:visible;padding-right:0}.problem-title{text-align:left;margin-bottom:1rem}.question-columns{grid-template-columns:1fr;gap:.65rem}.question-column{gap:.65rem}.question-universe .problem-pill{position:relative!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;transform:none!important;width:100%;min-height:auto;margin:0;font-size:1rem;padding:.85rem .95rem}.auto-question.active-question{transform:translateY(-2px) scale(1.01)!important}
+      .two-col{grid-template-columns:1fr;gap:1rem}.map-stage{height:42vh;min-height:17rem}
+      .editorial-sequence{grid-template-columns:1fr;gap:1rem}.campus-layout{grid-template-columns:1fr;gap:1rem}.campus-map{height:34vh}.campus-list{grid-template-columns:repeat(2,1fr)}
+      .basic-cycle-layout{display:grid;height:auto;min-height:0;gap:.9rem}.cycle-wheel{position:relative;left:auto;top:auto;transform:none;width:min(34vh,18rem);margin:auto}.cycle-detail{position:relative;left:auto;bottom:auto;width:100%;min-height:5rem}.cycle-meta{margin-top:.45rem}
+      .project-space{height:54vh}.project-legend{display:none}.project-panel{right:1rem;top:58%;width:min(22rem,calc(100vw - 2rem))}
+      #projetos h2{white-space:normal}
+      #perfil{align-content:center}.profile-list{grid-template-columns:1fr;gap:0}.profile-conclusion{text-align:left;font-size:2.4rem}
+      #ingresso h2{white-space:normal}.admission-flow{grid-template-columns:1fr}.flow-box{min-height:4.5rem}.flow-arrow{transform:rotate(90deg);justify-self:center}.origin-texture{justify-content:flex-start;margin-top:1rem}.origin-texture span{font-size:.7rem}.final-stack{min-height:62vh}.final-links{gap:.8rem}
     }
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
   </style>
@@ -189,67 +229,77 @@
         <p class="lead fragment" style="--delay:.35s">E se a <strong class="accent">pergunta</strong> viesse antes da área?</p>
       </div>
       <div class="orbit" aria-hidden="true">
-        <svg class="orbit-lines" viewBox="0 0 1600 900" preserveAspectRatio="none"><line x1="190" y1="180" x2="1320" y2="220"/><line x1="260" y1="690" x2="1380" y2="660"/><line x1="560" y1="820" x2="1130" y2="90"/><line x1="190" y1="180" x2="1380" y2="660"/></svg>
-        <span class="word w1" style="--d:.7s;--area:var(--physics)">Física</span><span class="word w2" style="--d:.9s;--area:var(--biology)">Biologia</span><span class="word w3" style="--d:1.1s;--area:var(--math)">Matemática</span><span class="word w4" style="--d:1.3s;--area:var(--computing)">Computação</span><span class="word w5" style="--d:1.5s;--area:var(--chemistry)">Química</span><span class="word w6" style="--d:1.7s;--area:var(--humanities)">Humanidades</span>
+        <svg class="orbit-lines" viewBox="0 0 1600 900" preserveAspectRatio="none"><line x1="190" y1="180" x2="1320" y2="220"/><line x1="1320" y1="220" x2="1380" y2="660"/><line x1="1380" y1="660" x2="260" y2="690"/><line x1="260" y1="690" x2="560" y2="110"/><line x1="560" y1="110" x2="190" y2="180"/></svg>
+        <span class="word w1" style="--d:.7s;--area:var(--physics)">Física</span><span class="word w2" style="--d:.9s;--area:var(--biology)">Biologia</span><span class="word w3" style="--d:1.1s;--area:var(--math)">Matemática</span><span class="word w4" style="--d:1.3s;--area:var(--computing)">Computação</span><span class="word w5" style="--d:1.5s;--area:var(--chemistry)">Química</span>
       </div>
     </section>
 
     <section class="slide" id="caixas" data-title="Institutos e fronteiras">
       <p class="eyebrow">Como a universidade se organiza</p>
       <h2>A universidade é organizada em institutos.</h2>
-      <div class="area-grid fragment" style="--delay:.2s">
-        <div class="area-box" style="--area:var(--math)">IME<small>Matemática e Estatística</small></div>
-        <div class="area-box" style="--area:var(--physics)">IF<small>Física</small></div>
-        <div class="area-box" style="--area:var(--chemistry)">IQ<small>Química</small></div>
-        <div class="area-box" style="--area:var(--biology)">IB<small>Biociências</small></div>
-        <div class="area-box" style="--area:var(--physics)">IAG<small>Astronomia e Geofísica</small></div>
-        <div class="area-box" style="--area:var(--computing)">POLI<small>Engenharia</small></div>
-        <div class="area-box" style="--area:var(--humanities)">FFLCH<small>Filosofia Letras e Ciências Humanas</small></div>
-        <div class="area-box" style="--area:var(--humanities)">IP<small>Psicologia</small></div>
+      <div class="campus-layout fragment" style="--delay:.2s">
+        <figure class="campus-map" aria-label="Mapa do campus da USP Butantã">
+          <img src="images/usp-campus-map.png" alt="Mapa do campus da USP Butantã">
+        </figure>
+        <div class="campus-list" aria-label="Institutos principais">
+          <span style="--area:var(--math)">IME</span>
+          <span style="--area:var(--physics)">IF</span>
+          <span style="--area:var(--chemistry)">IQ</span>
+          <span style="--area:var(--biology)">IB</span>
+          <span style="--area:var(--cyan)">ICB</span>
+          <span style="--area:var(--computing)">POLI</span>
+          <span style="--area:var(--humanities)">FFLCH</span>
+          <span class="more">...</span>
+        </div>
       </div>
-      <div class="split-note"><span class="rule"></span><span>Os problemas científicos, não.</span><span class="rule"></span></div>
+      <div class="split-note"><span class="rule"></span><span>Os problemas científicos não seguem essas divisões.</span><span class="rule"></span></div>
     </section>
 
     <section class="slide center" id="problema" data-title="Começar pelo problema">
       <div class="question-universe">
-        <div class="question-core">E se começássemos pelo <span class="accent">problema?</span></div>
-        <button class="problem-pill q1" style="--area:var(--humanities)" data-problem="linguagem">Como o cérebro produz linguagem?</button>
-        <button class="problem-pill q2" style="--area:var(--biology)" data-problem="epidemia">Como podemos prever uma epidemia?</button>
-        <button class="problem-pill q3" style="--area:var(--computing)" data-problem="maquinas">Como máquinas aprendem?</button>
-        <button class="problem-pill q4" style="--area:var(--physics)" data-problem="galaxias">Como observamos o passado do Universo?</button>
-        <button class="problem-pill q5" style="--area:var(--biology)" data-problem="organizacao">Como sistemas biológicos se organizam?</button>
-        <button class="problem-pill q6" style="--area:var(--physics)" data-problem="geologia">Como as rochas registram a história da Terra?</button>
-        <button class="problem-pill q7" style="--area:var(--biology)" data-problem="oceano">Como mudanças ambientais reorganizam ecossistemas oceânicos?</button>
-        <button class="problem-pill q8" style="--area:var(--chemistry)" data-problem="biomateriais">Como criar materiais que interajam com tecidos vivos?</button>
+        <h2 class="problem-title">E se começássemos pelo <span class="accent">problema?</span></h2>
+        <div class="question-columns">
+          <div class="question-column">
+            <span class="problem-pill q1 auto-question" style="--area:#A78BFA">Como o cérebro produz linguagem?</span>
+            <span class="problem-pill q2 auto-question" style="--area:#19B789">Como podemos prever uma epidemia?</span>
+            <span class="problem-pill q3 auto-question" style="--area:#2563EB">Como máquinas aprendem?</span>
+            <span class="problem-pill q4 auto-question" style="--area:#FF7A1A">Como observamos o passado do Universo?</span>
+          </div>
+          <div class="question-column">
+            <span class="problem-pill q5 auto-question" style="--area:#F43F5E">Como sistemas biológicos se organizam?</span>
+            <span class="problem-pill q6 auto-question" style="--area:#166534">Como as rochas registram a história da Terra?</span>
+            <span class="problem-pill q7 auto-question" style="--area:#06A9C7">Como mudanças ambientais reorganizam ecossistemas oceânicos?</span>
+            <span class="problem-pill q8 auto-question" style="--area:#F2B90C">Como criar materiais que interajam com tecidos vivos?</span>
+          </div>
+        </div>
       </div>
-      <p class="note">Escolha uma pergunta para seguir seus caminhos possíveis.</p>
+      <p class="note">No CM, a pergunta organiza o caminho. As áreas entram quando ajudam a responder.</p>
     </section>
 
-    <section class="slide" id="escolha" data-title="Escolha um problema">
+    <section class="slide" id="problemas-areas" data-title="Perguntas atravessam áreas">
       <div class="two-col">
         <div>
-          <p class="eyebrow">Escolha um problema</p>
+          <p class="eyebrow">Perguntas atravessam áreas</p>
           <h2>Problemas reais não respeitam departamentos.</h2>
-          <div class="problem-list" id="problemList"></div>
+          <p class="lead">A cada pergunta, várias linguagens científicas aparecem ao mesmo tempo.</p>
         </div>
-        <div class="map-stage" id="problemMap" aria-label="Mapa das áreas ligadas ao problema selecionado">
+        <div class="map-stage" id="problemMap" aria-label="Mapa automático das áreas ligadas a perguntas científicas">
           <svg class="map-lines" id="mapLines" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true"></svg>
           <div class="map-center" id="mapCenter"></div>
           <div id="mapAreas"></div>
-          <div class="map-explanation" id="mapExplanation">Passe o cursor por uma área para ver como ela contribui.</div>
+          <div class="map-explanation" id="mapExplanation">As áreas se combinam conforme a pergunta muda.</div>
         </div>
       </div>
     </section>
 
     <section class="slide" id="o-que-e" data-title="O que é o CM">
       <p class="eyebrow">Então, o que é o Ciências Moleculares?</p>
-      <h2>Um curso da USP criado para formar estudantes capazes de <span class="accent">atravessar fronteiras.</span></h2>
-      <div class="sequence">
-        <div class="sequence-step fragment" style="--delay:.1s">Formação ampla<small>Uma base científica comum para enxergar os problemas de vários ângulos.</small></div>
-        <span class="sequence-arrow fragment" style="--delay:.25s">→</span>
-        <div class="sequence-step fragment" style="--delay:.4s">Liberdade acadêmica<small>Um percurso que começa a responder às perguntas de cada estudante.</small></div>
-        <span class="sequence-arrow fragment" style="--delay:.55s">→</span>
-        <div class="sequence-step fragment" style="--delay:.7s">Pesquisa<small>Aprender ciência também significa participar da construção dela.</small></div>
+      <h2 class="definition-title">O que é o <span class="accent">Ciências Moleculares?</span></h2>
+      <p class="lead definition-copy">Um curso da USP criado para formar estudantes capazes de atravessar fronteiras científicas.</p>
+      <div class="editorial-sequence">
+        <p class="fragment" style="--delay:.1s"><strong>Formação ampla</strong><span>Uma base científica comum para enxergar problemas de vários ângulos.</span></p>
+        <p class="fragment" style="--delay:.3s"><strong>Liberdade acadêmica</strong><span>Um percurso que começa a responder às perguntas de cada estudante.</span></p>
+        <p class="fragment" style="--delay:.5s"><strong>Pesquisa</strong><span>Aprender ciência também significa participar da construção dela.</span></p>
       </div>
     </section>
 
@@ -263,97 +313,43 @@
         </div>
         <div>
           <div class="cycle-detail" id="cycleDetail"><strong id="cycleArea">Explore o círculo</strong><span id="cycleTool">Cada cor representa uma linguagem científica.</span></div>
-          <p class="cycle-meta">Mapa conceitual — os setores não representam porcentagens nem carga horária.</p>
         </div>
       </div>
     </section>
 
-    <section class="slide center" id="mudanca" data-title="A mudança">
-      <p class="eyebrow">A mudança</p>
-      <h2>Depois, o caminho deixa de ser igual para todo mundo.</h2>
-      <div class="opening-path" aria-hidden="true">
-        <div class="path-node">1</div><div class="path-node">2</div><div class="path-node">3</div><div class="path-node" style="--shift:-45px;--shift-end:-70px">↗</div><div class="path-node" style="--shift:58px;--shift-end:86px">↘</div><div class="path-node" style="--shift:-88px;--shift-end:-128px">↗</div><div class="path-node" style="--shift:26px;--shift-end:44px">→</div>
+    <section class="slide center" id="mudanca-avancado" data-title="Ciclo Avançado">
+      <p class="eyebrow">O ciclo avançado</p>
+      <h2>Depois do ciclo básico, cada aluno constrói sua própria trajetória acadêmica.</h2>
+      <p class="lead">O Ciclo Avançado gira em torno de um projeto de pesquisa, orientado por uma pergunta científica própria.</p>
+      <div class="opening-path advanced-path" aria-hidden="true">
+        <div class="path-node">Ciclo<br>Básico</div><div class="path-node">Área de<br>interesse</div><div class="path-node">Orientador</div><div class="path-node" style="--shift:-45px;--shift-end:-70px">Projeto de<br>pesquisa</div><div class="path-node" style="--shift:58px;--shift-end:86px">Grade<br>personalizada</div><div class="path-node" style="--shift:-26px;--shift-end:-44px">Pesquisa</div>
       </div>
+      <p class="advanced-note">A grade pode incluir disciplinas de diferentes unidades da USP e, em alguns casos, da pós-graduação.</p>
     </section>
 
-    <section class="slide" id="ciclo-avancado" data-title="Ciclo Avançado">
-      <p class="eyebrow">Ciclo Avançado · últimos quatro semestres</p>
-      <h2>Da base comum a uma trajetória própria.</h2>
-      <p class="lead">Cada estudante constrói sua formação em torno de um projeto científico.</p>
-      <div class="advanced-network">
-        <svg viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true"><line x1="500" y1="300" x2="500" y2="58" style="--line-color:#101828"/><line x1="500" y1="300" x2="160" y2="170" style="--line-color:var(--humanities)"/><line x1="500" y1="300" x2="840" y2="170" style="--line-color:var(--computing)"/><line x1="500" y1="300" x2="850" y2="430" style="--line-color:var(--biology)"/><line x1="500" y1="300" x2="500" y2="535" style="--line-color:var(--physics)"/><line x1="500" y1="300" x2="150" y2="430" style="--line-color:var(--math)"/></svg>
-        <div class="you">VOCÊ</div>
-        <div class="adv-node project" style="--x:50%;--y:9%">Projeto de pesquisa</div>
-        <div class="adv-node" style="--x:16%;--y:28%;--node-color:var(--humanities)">Orientador</div>
-        <div class="adv-node" style="--x:84%;--y:28%;--node-color:var(--computing)">Disciplinas</div>
-        <div class="adv-node" style="--x:85%;--y:72%;--node-color:var(--biology)">Laboratórios</div>
-        <div class="adv-node" style="--x:50%;--y:89%;--node-color:var(--physics)">Institutos</div>
-        <div class="adv-node" style="--x:15%;--y:72%;--node-color:var(--math)">Áreas científicas<div class="adv-areas"><i style="--c:var(--math)"></i><i style="--c:var(--physics)"></i><i style="--c:var(--chemistry)"></i><i style="--c:var(--biology)"></i><i style="--c:var(--computing)"></i><i style="--c:var(--humanities)"></i></div></div>
-      </div>
-    </section>
-
-    <section class="slide" id="monte" data-title="Monte sua trajetória">
-      <p class="eyebrow">Monte sua trajetória</p>
-      <h2>O que você gostaria de combinar?</h2>
-      <div class="builder">
-        <div class="chips" id="areaChips" aria-label="Escolha duas ou três áreas"></div>
-        <div class="result-panel" id="researchResult" aria-live="polite">
-          <span class="result-kicker">Escolha 2 ou 3 áreas</span>
-          <div class="result-title">Sua pergunta pode estar entre elas.</div>
-          <p class="result-copy">Não existe uma combinação única: estas são apenas algumas possibilidades de pesquisa.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="slide dark center" id="sim" data-title="Sim">
-      <p class="huge fragment">Sim.</p>
-      <p class="lead fragment" style="--delay:.55s">Estes são projetos reais de estudantes do Ciências Moleculares.</p>
-    </section>
-
-    <section class="slide" id="projetos" data-title="Projetos reais">
+    <section class="slide dark" id="projetos" data-title="Projetos reais">
       <p class="eyebrow">Universo de projetos</p>
       <h2>Da <span class="area-math">matemática</span> pura à <span class="area-biology">biologia</span> molecular.</h2>
       <div class="project-space" id="projectSpace">
-        <svg class="project-lines" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true"><line x1="120" y1="210" x2="330" y2="110"/><line x1="330" y1="110" x2="510" y2="245"/><line x1="510" y1="245" x2="785" y2="120"/><line x1="510" y1="245" x2="840" y2="400"/><line x1="510" y1="245" x2="245" y2="440"/><line x1="245" y1="440" x2="620" y2="510"/><line x1="620" y1="510" x2="840" y2="400"/></svg>
-        <div class="project-help">Clique em um ponto para conhecer o projeto</div>
+        <div class="project-legend" id="projectLegend" aria-label="Legenda de macroáreas"></div>
+        <svg class="project-lines" id="projectLines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
+        <div class="project-help">Conexões indicam subáreas compartilhadas</div>
       </div>
       <aside class="project-panel" id="projectPanel" aria-hidden="true"><button class="panel-close" id="panelClose" aria-label="Fechar detalhes">×</button><h3 id="panelTitle"></h3><p class="panel-inst" id="panelInst"></p><p class="panel-areas" id="panelAreas"></p></aside>
-    </section>
-
-    <section class="slide" id="diversidade" data-title="Interdisciplinaridade">
-      <p class="eyebrow">Agora, olhe pelas áreas</p>
-      <div class="regions" id="regions">
-        <div class="region" style="--x:14%;--y:25%;--area:var(--math)">Matemática</div><div class="region" style="--x:49%;--y:14%;--area:var(--physics)">Física</div><div class="region" style="--x:84%;--y:26%;--area:var(--biology)">Biologia</div><div class="region" style="--x:18%;--y:73%;--area:var(--computing)">Computação</div><div class="region" style="--x:50%;--y:78%;--area:var(--chemistry)">Química</div><div class="region" style="--x:82%;--y:73%;--area:var(--humanities)">Humanidades</div>
-      </div>
-      <p class="manifesto">Interdisciplinaridade não é estudar um pouco de tudo. É <strong>combinar ferramentas quando o problema exige.</strong></p>
-    </section>
-
-    <section class="slide" id="trajetorias" data-title="Muitas trajetórias">
-      <p class="eyebrow">Um curso, muitas trajetórias</p>
-      <h2>O ponto de partida é comum. Os destinos, não.</h2>
-      <div class="trajectories">
-        <div class="trajectory fragment"><strong>A</strong><span>Ciclo Básico</span><span class="arrow">→</span><span><b class="area-biology">Biologia</b> + <b class="area-math">Matemática</b></span><span class="arrow">→</span><span>Genética quantitativa</span><span class="arrow">→</span><span>Variação fenotípica</span></div>
-        <div class="trajectory fragment" style="--delay:.15s"><strong>B</strong><span>Ciclo Básico</span><span class="arrow">→</span><span><b class="area-physics">Física</b> + <b class="area-computing">Computação</b></span><span class="arrow">→</span><span>Astroinformática</span><span class="arrow">→</span><span>Evolução de galáxias</span></div>
-        <div class="trajectory fragment" style="--delay:.3s"><strong>C</strong><span>Ciclo Básico</span><span class="arrow">→</span><span><b class="area-computing">Computação</b> + Cognição</span><span class="arrow">→</span><span>Inteligência Artificial</span><span class="arrow">→</span><span>Modelos de linguagem</span></div>
-      </div>
-    </section>
-
-    <section class="slide dark center" id="preciso-saber" data-title="Explorar primeiro">
-      <p class="eyebrow">Então eu preciso saber o que quero pesquisar antes de entrar?</p>
-      <p class="huge fragment">Não.</p>
-      <p class="lead fragment" style="--delay:.45s">O Ciclo Básico existe justamente para você explorar antes de escolher uma direção.</p>
+      <p class="manifesto project-manifesto">Interdisciplinaridade é <strong>combinar ferramentas quando o problema exige.</strong></p>
     </section>
 
     <section class="slide" id="perfil" data-title="Perfil">
-      <p class="eyebrow">Talvez o CM combine com você se...</p>
-      <h2>Curiosidade vem antes de certeza.</h2>
+      <p class="eyebrow">Perfil</p>
+      <h2>Essas perguntas parecem com você?</h2>
       <div class="profile-list">
-        <div class="profile-item"><span class="plus">+</span><span>Você gosta de mais de uma área.</span></div>
-        <div class="profile-item"><span class="plus">+</span><span>Costuma perguntar “por quê?” antes de “qual matéria cai?”.</span></div>
-        <div class="profile-item"><span class="plus">+</span><span>Gosta de entender problemas por vários ângulos.</span></div>
-        <div class="profile-item"><span class="plus">+</span><span>Tem curiosidade sobre pesquisa.</span></div>
-        <div class="profile-item"><span class="plus">+</span><span>Não quer escolher uma especialização imediatamente.</span></div>
+        <div class="profile-item"><span class="plus">+</span><span>Você gosta de mais de uma área?</span></div>
+        <div class="profile-item"><span class="plus">+</span><span>Costuma perguntar “por quê?” antes de “qual matéria cai?”</span></div>
+        <div class="profile-item"><span class="plus">+</span><span>Gosta de entender problemas por vários ângulos?</span></div>
+        <div class="profile-item"><span class="plus">+</span><span>Tem curiosidade sobre pesquisa?</span></div>
+        <div class="profile-item"><span class="plus">+</span><span>Prefere não escolher uma especialização imediatamente?</span></div>
       </div>
+      <p class="profile-conclusion">Talvez o CM combine com você</p>
     </section>
 
     <section class="slide" id="ingresso" data-title="Como entrar">
@@ -361,11 +357,14 @@
       <h2>O caminho começa dentro da USP.</h2>
       <div class="admission-flow">
         <div class="flow-box">Vestibular<br>ENEM-USP<br>Provão Paulista</div><div class="flow-arrow">→</div>
-        <div class="flow-box">Ingresso na USP<small>em um curso de graduação</small></div><div class="flow-arrow">→</div>
-        <div class="flow-box">Processo seletivo próprio<small>do Ciências Moleculares</small></div><div class="flow-arrow">→</div>
+        <div class="flow-box">Ingresso na USP<small>em qualquer curso de graduação</small></div><div class="flow-arrow">→</div>
+        <div class="flow-box">Processo seletivo próprio<small>do Ciências Moleculares</small><small>meio do ano</small></div><div class="flow-arrow">→</div>
         <div class="flow-box"><span class="accent">Ciências Moleculares</span></div>
       </div>
-      <p class="note">Datas, etapas e regras podem mudar: consulte sempre o edital vigente.</p>
+      <div class="origin-texture" aria-label="Unidades de origem de alunos">
+        <span>POLI</span><span>FE</span><span>IQ</span><span>EACH</span><span>IME</span><span>ICB</span><span>FFLCH</span><span>IAG</span><span>EEL</span><span>FOFITO</span><span>IF</span><span>IO</span><span>FEA</span><span>ICMC</span><span>IB</span><span>IGC</span><span>Sanfran</span><span>Med</span>
+      </div>
+      <p class="note admission-note">Não é necessário entrar diretamente no CM pelo vestibular. A seleção pode ser tentada em diferentes momentos da graduação, do início ao fim do curso original. Datas, etapas e regras podem mudar: consulte sempre o edital vigente.</p>
     </section>
 
     <section class="slide dark center" id="fronteiras" data-title="Pergunta antes da área">
@@ -373,24 +372,24 @@
       <p class="lead fragment" style="--delay:.45s"><strong style="color:#fff">Ciências Moleculares.</strong><br>Uma formação para aprender a atravessar fronteiras científicas.</p>
     </section>
 
-    <section class="slide dark" id="final" data-title="Ciências Moleculares USP">
-      <div class="final-grid">
-        <div>
-          <p class="eyebrow">Ciências Moleculares · USP</p>
-          <h1><span style="display:block;font-size:.34em;letter-spacing:.18em;margin-bottom:.38em;color:#8090a7">CIÊNCIAS</span>MOLECULARES</h1>
-          <a class="final-url" href="https://cecm.usp.br" target="_blank" rel="noreferrer">cecm.usp.br <span aria-hidden="true">↗</span></a>
-        </div>
+    <section class="slide dark center" id="final" data-title="Ciências Moleculares USP">
+      <div class="final-stack">
+        <h1><span style="display:block;font-size:.34em;letter-spacing:.18em;margin-bottom:.38em;color:#8090a7">CIÊNCIAS</span>MOLECULARES</h1>
         <p class="final-ask">Quer saber como funciona o curso?<br><strong style="color:#fff">Fala com a gente.</strong></p>
+        <div class="final-links">
+          <a class="final-url" href="https://cecm.usp.br" target="_blank" rel="noreferrer">cecm.usp.br <span aria-hidden="true">↗</span></a>
+          <a class="final-url email-link" href="mailto:moleculentos@gmail.com">moleculentos@gmail.com</a>
+        </div>
       </div>
     </section>
   </main>
 
-  <div class="key-hint">← → navegar · F tela cheia · A automático · ? ajuda</div>
+  <div class="key-hint">apresentação automática · ← → navegar · F tela cheia · ? ajuda</div>
   <div class="controls" aria-label="Controles da apresentação">
     <button class="control help" id="helpBtn" aria-label="Ver atalhos"><span aria-hidden="true">?</span></button>
     <button class="control auto" id="autoBtn" aria-label="Ativar avanço automático" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
     <button class="control" id="prevBtn" aria-label="Tela anterior"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></button>
-    <span class="slide-number" id="slideNumber">01 / 18</span>
+    <span class="slide-number" id="slideNumber">01 / 12</span>
     <button class="control" id="nextBtn" aria-label="Próxima tela"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></button>
     <button class="control" id="fullBtn" aria-label="Entrar em tela cheia"><svg viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"/></svg></button>
   </div>
@@ -751,234 +750,2509 @@ window.CM_DATA = {
   },
   "projects": [
     {
-      "short": "Galáxias azuis compactas",
-      "title": "Busca por Grupos Compactos Azuis de Galáxias como laboratórios para o estudo de evolução de galáxias",
-      "inst": "IAG · S-PLUS",
-      "areas": "Astrofísica Extragaláctica · Astroinformática",
-      "x": 12,
-      "y": 35,
-      "c": "linear-gradient(135deg,var(--physics),var(--computing))",
-      "glow": "var(--physics)"
-    },
-    {
-      "short": "Emoções em LLMs",
-      "title": "Investigando a Emergência de Conceitos Emocionais em Modelos de Linguagem Abertos",
-      "inst": "IME · CIAAM · TELUS Research Hub",
-      "areas": "Inteligência Artificial · Psicologia Cognitiva",
-      "x": 29,
-      "y": 17,
-      "c": "linear-gradient(135deg,var(--computing),var(--humanities))",
-      "glow": "var(--computing)"
-    },
-    {
-      "short": "Internet quântica",
-      "title": "Internet para o primeiro computador quântico da USP",
-      "inst": "IF · EQCOS",
-      "areas": "Sistemas Quânticos Híbridos · Física Experimental",
-      "x": 48,
-      "y": 37,
-      "c": "linear-gradient(135deg,var(--physics),var(--computing))",
-      "glow": "var(--physics)"
-    },
-    {
-      "short": "Sinalização nociceptiva",
-      "title": "Caracterização da interação entre o receptor TrkA e a fosfatase SHP-1: implicações estruturais e funcionais na sinalização nociceptiva",
-      "inst": "IQ · LSSB · Lab DS",
-      "areas": "Bioquímica · Biologia celular da sinalização",
-      "x": 78,
-      "y": 18,
-      "c": "linear-gradient(135deg,var(--chemistry),var(--biology))",
-      "glow": "var(--biology)"
-    },
-    {
-      "short": "Fases do metano",
-      "title": "Cálculo de Energias Livres de Fases do Metano por Primeiros Princípios",
-      "inst": "IFUSP · DFMT · SAMPA",
-      "areas": "Física do estado sólido",
-      "x": 87,
-      "y": 48,
-      "c": "var(--physics)",
-      "glow": "var(--physics)"
-    },
-    {
-      "short": "Variação fenotípica",
+      "id": "p01",
+      "short": "Modelos matemáticos estudo variaçã",
       "title": "Modelos matemáticos para o estudo da variação fenotípica",
-      "inst": "IB",
-      "areas": "Genética de populações · Genética Quantitativa",
-      "x": 64,
-      "y": 65,
-      "c": "linear-gradient(135deg,var(--math),var(--biology))",
-      "glow": "var(--biology)"
+      "areas": [
+        "Ciências Biológicas",
+        "Matemática e Estatística"
+      ],
+      "subareas": [
+        "Genética e Genômica",
+        "Biologia Evolutiva",
+        "Probabilidade e Estatística"
+      ],
+      "entries": [
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Genética e Genômica",
+          "color": "#19B789"
+        },
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Biologia Evolutiva",
+          "color": "#19B789"
+        },
+        {
+          "area": "Matemática e Estatística",
+          "subarea": "Probabilidade e Estatística",
+          "color": "#F43F5E"
+        }
+      ],
+      "x": 48.3,
+      "y": 69.4,
+      "ring": "conic-gradient(#19B789 0.0deg 180.0deg, #F43F5E 180.0deg 360.0deg)",
+      "primaryColor": "#19B789"
     },
     {
-      "short": "Diversidade plasmidial",
-      "title": "Estruturando a diversidade plasmidial",
-      "inst": "IQ",
-      "areas": "Biologia Computacional",
+      "id": "p02",
+      "short": "Cálculo Energias Livres Fases",
+      "title": "Cálculo de Energias Livres de Fases do Metano por Primeiros Princípios",
+      "areas": [
+        "Física e Astronomia",
+        "Química"
+      ],
+      "subareas": [
+        "Física da Matéria Condensada",
+        "Físico-Química"
+      ],
+      "entries": [
+        {
+          "area": "Física e Astronomia",
+          "subarea": "Física da Matéria Condensada",
+          "color": "#FF7A1A"
+        },
+        {
+          "area": "Química",
+          "subarea": "Físico-Química",
+          "color": "#F2B90C"
+        }
+      ],
       "x": 38,
-      "y": 75,
-      "c": "linear-gradient(135deg,var(--biology),var(--computing))",
-      "glow": "var(--computing)"
+      "y": 49,
+      "ring": "conic-gradient(#FF7A1A 0.0deg 180.0deg, #F2B90C 180.0deg 360.0deg)",
+      "primaryColor": "#FF7A1A"
     },
     {
-      "short": "Dinâmica aritmética",
-      "title": "Dinâmica Aritmética em Domínios de Dedekind",
-      "inst": "IME",
-      "areas": "Teoria dos Números",
+      "id": "p03",
+      "short": "Cores de Aglomerados Globulares",
+      "title": "Cores de Aglomerados Globulares: como fazer os modelos reproduzirem as observações?",
+      "areas": [
+        "Física e Astronomia"
+      ],
+      "subareas": [
+        "Astrofísica e Cosmologia"
+      ],
+      "entries": [
+        {
+          "area": "Física e Astronomia",
+          "subarea": "Astrofísica e Cosmologia",
+          "color": "#FF7A1A"
+        }
+      ],
+      "x": 18.6,
+      "y": 26.5,
+      "ring": "conic-gradient(#FF7A1A 0 360deg)",
+      "primaryColor": "#FF7A1A"
+    },
+    {
+      "id": "p04",
+      "short": "Moléculas Quirais no Espaço",
+      "title": "Moléculas Quirais no Espaço: Caminhos Astrofísicos de Nuvens Moleculares à Homoquiralidade Prebiótica",
+      "areas": [
+        "Física e Astronomia",
+        "Química",
+        "Ciências Biológicas"
+      ],
+      "subareas": [
+        "Astrofísica e Cosmologia",
+        "Química Orgânica",
+        "Biologia Evolutiva"
+      ],
+      "entries": [
+        {
+          "area": "Física e Astronomia",
+          "subarea": "Astrofísica e Cosmologia",
+          "color": "#FF7A1A"
+        },
+        {
+          "area": "Química",
+          "subarea": "Química Orgânica",
+          "color": "#F2B90C"
+        },
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Biologia Evolutiva",
+          "color": "#19B789"
+        }
+      ],
+      "x": 53.7,
+      "y": 56.7,
+      "ring": "conic-gradient(#FF7A1A 0.0deg 120.0deg, #F2B90C 120.0deg 240.0deg, #19B789 240.0deg 360.0deg)",
+      "primaryColor": "#FF7A1A"
+    },
+    {
+      "id": "p05",
+      "short": "Restauração Simetria U_A 1",
+      "title": "Restauração da Simetria U_A(1) na Interação Forte",
+      "areas": [
+        "Física e Astronomia",
+        "Matemática e Estatística"
+      ],
+      "subareas": [
+        "Física de Partículas e Nuclear",
+        "Matemática Pura"
+      ],
+      "entries": [
+        {
+          "area": "Física e Astronomia",
+          "subarea": "Física de Partículas e Nuclear",
+          "color": "#FF7A1A"
+        },
+        {
+          "area": "Matemática e Estatística",
+          "subarea": "Matemática Pura",
+          "color": "#F43F5E"
+        }
+      ],
       "x": 16,
-      "y": 68,
-      "c": "var(--math)",
-      "glow": "var(--math)"
+      "y": 48.3,
+      "ring": "conic-gradient(#FF7A1A 0.0deg 180.0deg, #F43F5E 180.0deg 360.0deg)",
+      "primaryColor": "#FF7A1A"
     },
     {
-      "short": "Combustível sustentável",
+      "id": "p06",
+      "short": "Estruturando diversidade plasmidia",
+      "title": "Estruturando a diversidade plasmidial global",
+      "areas": [
+        "Ciências Biológicas",
+        "Computação e Inteligência Artificial",
+        "Ciências da Saúde"
+      ],
+      "subareas": [
+        "Genética e Genômica",
+        "Microbiologia",
+        "Ciência de Dados",
+        "Saúde Pública e Epidemiologia"
+      ],
+      "entries": [
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Genética e Genômica",
+          "color": "#19B789"
+        },
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Microbiologia",
+          "color": "#19B789"
+        },
+        {
+          "area": "Computação e Inteligência Artificial",
+          "subarea": "Ciência de Dados",
+          "color": "#2563EB"
+        },
+        {
+          "area": "Ciências da Saúde",
+          "subarea": "Saúde Pública e Epidemiologia",
+          "color": "#06A9C7"
+        }
+      ],
+      "x": 65,
+      "y": 47,
+      "ring": "conic-gradient(#19B789 0.0deg 120.0deg, #2563EB 120.0deg 240.0deg, #06A9C7 240.0deg 360.0deg)",
+      "primaryColor": "#19B789"
+    },
+    {
+      "id": "p07",
+      "short": "AVALIAÇÃO CRESCIMENTO CELULAR ACID",
+      "title": "AVALIAÇÃO DO CRESCIMENTO CELULAR DE ACIDITHIOBACILLUS FERROOXIDANS NA PRESENÇA DE METAIS ENCONTRADOS EM MARTE",
+      "areas": [
+        "Ciências Biológicas",
+        "Terra, Mar e Ambiente",
+        "Física e Astronomia"
+      ],
+      "subareas": [
+        "Microbiologia",
+        "Geologia e Geofísica",
+        "Astrofísica e Cosmologia"
+      ],
+      "entries": [
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Microbiologia",
+          "color": "#19B789"
+        },
+        {
+          "area": "Terra, Mar e Ambiente",
+          "subarea": "Geologia e Geofísica",
+          "color": "#166534"
+        },
+        {
+          "area": "Física e Astronomia",
+          "subarea": "Astrofísica e Cosmologia",
+          "color": "#FF7A1A"
+        }
+      ],
+      "x": 45.3,
+      "y": 55.4,
+      "ring": "conic-gradient(#19B789 0.0deg 120.0deg, #166534 120.0deg 240.0deg, #FF7A1A 240.0deg 360.0deg)",
+      "primaryColor": "#19B789"
+    },
+    {
+      "id": "p08",
+      "short": "Transformando óleo larva combustív",
       "title": "Transformando óleo de larva em combustível de avião sustentável por catálise enzimática whole cell",
-      "inst": "POLI",
-      "areas": "Biotecnologia industrial · Bioquímica · Genética Molecular",
-      "x": 84,
-      "y": 78,
-      "c": "linear-gradient(135deg,var(--chemistry),var(--biology))",
-      "glow": "var(--biology)"
+      "areas": [
+        "Engenharias",
+        "Ciências Biológicas"
+      ],
+      "subareas": [
+        "Engenharia Química",
+        "Biotecnologia",
+        "Bioquímica",
+        "Genética e Genômica"
+      ],
+      "entries": [
+        {
+          "area": "Engenharias",
+          "subarea": "Engenharia Química",
+          "color": "#172554"
+        },
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Biotecnologia",
+          "color": "#19B789"
+        },
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Bioquímica",
+          "color": "#19B789"
+        },
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Genética e Genômica",
+          "color": "#19B789"
+        }
+      ],
+      "x": 72,
+      "y": 46,
+      "ring": "conic-gradient(#172554 0.0deg 180.0deg, #19B789 180.0deg 360.0deg)",
+      "primaryColor": "#172554"
     },
     {
-      "short": "Como ideias surgem?",
+      "id": "p09",
+      "short": "Como as ideias surgem",
       "title": "Como as ideias surgem?",
-      "inst": "IME · CIAAM · TELUS Research Hub",
-      "areas": "Sistemas Complexos",
-      "x": 49,
-      "y": 52,
-      "c": "linear-gradient(135deg,var(--math),var(--humanities))",
-      "glow": "var(--humanities)"
+      "areas": [
+        "Física e Astronomia",
+        "Matemática e Estatística"
+      ],
+      "subareas": [
+        "Física Estatística e Sistemas Complexos",
+        "Matemática Aplicada"
+      ],
+      "entries": [
+        {
+          "area": "Física e Astronomia",
+          "subarea": "Física Estatística e Sistemas Complexos",
+          "color": "#FF7A1A"
+        },
+        {
+          "area": "Matemática e Estatística",
+          "subarea": "Matemática Aplicada",
+          "color": "#F43F5E"
+        }
+      ],
+      "x": 19.1,
+      "y": 47.8,
+      "ring": "conic-gradient(#FF7A1A 0.0deg 180.0deg, #F43F5E 180.0deg 360.0deg)",
+      "primaryColor": "#FF7A1A"
     },
     {
-      "short": "Extensão na USP",
-      "title": "Constituição histórica do conceito de extensão universitária na USP",
-      "inst": "FE",
-      "areas": "Política Educacional",
-      "x": 67,
-      "y": 34,
-      "c": "var(--humanities)",
-      "glow": "var(--humanities)"
+      "id": "p10",
+      "short": "Controle interfaces óticas-acústic",
+      "title": "Controle de interfaces óticas-acústicas-elétricas para transmissão de informação quântica",
+      "areas": [
+        "Física e Astronomia",
+        "Engenharias"
+      ],
+      "subareas": [
+        "Física Quântica",
+        "Óptica e Fotônica",
+        "Engenharia Elétrica e de Computação"
+      ],
+      "entries": [
+        {
+          "area": "Física e Astronomia",
+          "subarea": "Física Quântica",
+          "color": "#FF7A1A"
+        },
+        {
+          "area": "Física e Astronomia",
+          "subarea": "Óptica e Fotônica",
+          "color": "#FF7A1A"
+        },
+        {
+          "area": "Engenharias",
+          "subarea": "Engenharia Elétrica e de Computação",
+          "color": "#172554"
+        }
+      ],
+      "x": 40,
+      "y": 21.8,
+      "ring": "conic-gradient(#FF7A1A 0.0deg 180.0deg, #172554 180.0deg 360.0deg)",
+      "primaryColor": "#FF7A1A"
+    },
+    {
+      "id": "p11",
+      "short": "Caracterização interação entre rec",
+      "title": "Caracterização da interação entre o receptor  TrkA e a fosfatase SHP-1: implicações estruturais e funcionais na  sinalização nociceptiva",
+      "areas": [
+        "Ciências Biológicas",
+        "Ciências da Saúde"
+      ],
+      "subareas": [
+        "Biologia Celular e Molecular",
+        "Bioquímica",
+        "Neurociências"
+      ],
+      "entries": [
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Biologia Celular e Molecular",
+          "color": "#19B789"
+        },
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Bioquímica",
+          "color": "#19B789"
+        },
+        {
+          "area": "Ciências da Saúde",
+          "subarea": "Neurociências",
+          "color": "#06A9C7"
+        }
+      ],
+      "x": 77,
+      "y": 59.3,
+      "ring": "conic-gradient(#19B789 0.0deg 180.0deg, #06A9C7 180.0deg 360.0deg)",
+      "primaryColor": "#19B789"
+    },
+    {
+      "id": "p12",
+      "short": "Modulação dopaminérgica astrocitár",
+      "title": "Modulação dopaminérgica e astrocitária no córtex pré-frontal",
+      "areas": [
+        "Ciências da Saúde",
+        "Computação e Inteligência Artificial"
+      ],
+      "subareas": [
+        "Neurociências",
+        "Ciência de Dados"
+      ],
+      "entries": [
+        {
+          "area": "Ciências da Saúde",
+          "subarea": "Neurociências",
+          "color": "#06A9C7"
+        },
+        {
+          "area": "Computação e Inteligência Artificial",
+          "subarea": "Ciência de Dados",
+          "color": "#2563EB"
+        }
+      ],
+      "x": 56.1,
+      "y": 40,
+      "ring": "conic-gradient(#06A9C7 0.0deg 180.0deg, #2563EB 180.0deg 360.0deg)",
+      "primaryColor": "#06A9C7"
+    },
+    {
+      "id": "p13",
+      "short": "Modelagem matemática dinâmica auto",
+      "title": "Modelagem matemática de dinâmica e autonomia em sistemas supraorganismais de ASCIDIACEA",
+      "areas": [
+        "Ciências Biológicas",
+        "Matemática e Estatística"
+      ],
+      "subareas": [
+        "Ecologia",
+        "Zoologia",
+        "Matemática Aplicada"
+      ],
+      "entries": [
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Ecologia",
+          "color": "#19B789"
+        },
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Zoologia",
+          "color": "#19B789"
+        },
+        {
+          "area": "Matemática e Estatística",
+          "subarea": "Matemática Aplicada",
+          "color": "#F43F5E"
+        }
+      ],
+      "x": 50.6,
+      "y": 74.6,
+      "ring": "conic-gradient(#19B789 0.0deg 180.0deg, #F43F5E 180.0deg 360.0deg)",
+      "primaryColor": "#19B789"
+    },
+    {
+      "id": "p14",
+      "short": "Modulando a neuroinflamação",
+      "title": "Modulando a neuroinflamação: a isoforma α2 da Na⁺/K⁺-ATPase como alvo terapêutico para digoxina",
+      "areas": [
+        "Ciências da Saúde",
+        "Ciências Biológicas",
+        "Química"
+      ],
+      "subareas": [
+        "Neurociências",
+        "Farmacologia e Toxicologia",
+        "Biologia Celular e Molecular",
+        "Bioquímica",
+        "Química Medicinal"
+      ],
+      "entries": [
+        {
+          "area": "Ciências da Saúde",
+          "subarea": "Neurociências",
+          "color": "#06A9C7"
+        },
+        {
+          "area": "Ciências da Saúde",
+          "subarea": "Farmacologia e Toxicologia",
+          "color": "#06A9C7"
+        },
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Biologia Celular e Molecular",
+          "color": "#19B789"
+        },
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Bioquímica",
+          "color": "#19B789"
+        },
+        {
+          "area": "Química",
+          "subarea": "Química Medicinal",
+          "color": "#F2B90C"
+        }
+      ],
+      "x": 72.3,
+      "y": 63.3,
+      "ring": "conic-gradient(#06A9C7 0.0deg 120.0deg, #19B789 120.0deg 240.0deg, #F2B90C 240.0deg 360.0deg)",
+      "primaryColor": "#06A9C7"
+    },
+    {
+      "id": "p15",
+      "short": "Estratégias Colaborativas Definiçã",
+      "title": "Estratégias Colaborativas para Definição de Requisitos em Projetos Complexos: Estudo de Reforma dos Laboratórios da FCF-USP",
+      "areas": [
+        "Engenharias"
+      ],
+      "subareas": [
+        "Engenharia Civil e Ambiental"
+      ],
+      "entries": [
+        {
+          "area": "Engenharias",
+          "subarea": "Engenharia Civil e Ambiental",
+          "color": "#172554"
+        }
+      ],
+      "x": 62,
+      "y": 22,
+      "ring": "conic-gradient(#172554 0 360deg)",
+      "primaryColor": "#172554"
+    },
+    {
+      "id": "p16",
+      "short": "Análise Geométrica Polissemia Rela",
+      "title": "Análise Geométrica de Polissemia e de Relações Semânticas em Grandes Modelos de Linguagem",
+      "areas": [
+        "Computação e Inteligência Artificial",
+        "Humanidades",
+        "Matemática e Estatística"
+      ],
+      "subareas": [
+        "Processamento de Linguagem Natural",
+        "Linguística",
+        "Matemática Aplicada"
+      ],
+      "entries": [
+        {
+          "area": "Computação e Inteligência Artificial",
+          "subarea": "Processamento de Linguagem Natural",
+          "color": "#2563EB"
+        },
+        {
+          "area": "Humanidades",
+          "subarea": "Linguística",
+          "color": "#A78BFA"
+        },
+        {
+          "area": "Matemática e Estatística",
+          "subarea": "Matemática Aplicada",
+          "color": "#F43F5E"
+        }
+      ],
+      "x": 29.7,
+      "y": 51.2,
+      "ring": "conic-gradient(#2563EB 0.0deg 120.0deg, #A78BFA 120.0deg 240.0deg, #F43F5E 240.0deg 360.0deg)",
+      "primaryColor": "#2563EB"
+    },
+    {
+      "id": "p17",
+      "short": "Investigando Emergência Conceitos",
+      "title": "Investigando a Emergência de Conceitos Emocionais em Modelos de Linguagem Abertos",
+      "areas": [
+        "Computação e Inteligência Artificial",
+        "Psicologia"
+      ],
+      "subareas": [
+        "Processamento de Linguagem Natural",
+        "Psicologia Cognitiva"
+      ],
+      "entries": [
+        {
+          "area": "Computação e Inteligência Artificial",
+          "subarea": "Processamento de Linguagem Natural",
+          "color": "#2563EB"
+        },
+        {
+          "area": "Psicologia",
+          "subarea": "Psicologia Cognitiva",
+          "color": "#6B21A8"
+        }
+      ],
+      "x": 44.5,
+      "y": 40.5,
+      "ring": "conic-gradient(#2563EB 0.0deg 180.0deg, #6B21A8 180.0deg 360.0deg)",
+      "primaryColor": "#2563EB"
+    },
+    {
+      "id": "p18",
+      "short": "Dinâmica Grafos Funcionais Domínio",
+      "title": "Dinâmica de Grafos Funcionais em Domínios de Dedekind",
+      "areas": [
+        "Matemática e Estatística"
+      ],
+      "subareas": [
+        "Matemática Pura"
+      ],
+      "entries": [
+        {
+          "area": "Matemática e Estatística",
+          "subarea": "Matemática Pura",
+          "color": "#F43F5E"
+        }
+      ],
+      "x": 18.6,
+      "y": 74.3,
+      "ring": "conic-gradient(#F43F5E 0 360deg)",
+      "primaryColor": "#F43F5E"
+    },
+    {
+      "id": "p19",
+      "short": "Busca Grupos Compactos Azuis",
+      "title": "Busca por Grupos Compactos Azuis de Galáxias como laboratórios para o estudo de evolução de galáxias",
+      "areas": [
+        "Física e Astronomia",
+        "Computação e Inteligência Artificial"
+      ],
+      "subareas": [
+        "Astrofísica e Cosmologia",
+        "Ciência de Dados"
+      ],
+      "entries": [
+        {
+          "area": "Física e Astronomia",
+          "subarea": "Astrofísica e Cosmologia",
+          "color": "#FF7A1A"
+        },
+        {
+          "area": "Computação e Inteligência Artificial",
+          "subarea": "Ciência de Dados",
+          "color": "#2563EB"
+        }
+      ],
+      "x": 28.3,
+      "y": 29.7,
+      "ring": "conic-gradient(#FF7A1A 0.0deg 180.0deg, #2563EB 180.0deg 360.0deg)",
+      "primaryColor": "#FF7A1A"
+    },
+    {
+      "id": "p20",
+      "short": "Visão computacional aprendizado tê",
+      "title": "Visão computacional para aprendizado de tênis",
+      "areas": [
+        "Computação e Inteligência Artificial"
+      ],
+      "subareas": [
+        "Visão Computacional"
+      ],
+      "entries": [
+        {
+          "area": "Computação e Inteligência Artificial",
+          "subarea": "Visão Computacional",
+          "color": "#2563EB"
+        }
+      ],
+      "x": 38.9,
+      "y": 29.2,
+      "ring": "conic-gradient(#2563EB 0 360deg)",
+      "primaryColor": "#2563EB"
+    },
+    {
+      "id": "p21",
+      "short": "Identificação padrões erros algori",
+      "title": "Identificação de padrões de erros de algoritmos de machine learning em saúde: uma análise multicêntrica nas cinco regiões brasileiras",
+      "areas": [
+        "Computação e Inteligência Artificial",
+        "Ciências da Saúde"
+      ],
+      "subareas": [
+        "Inteligência Artificial e Aprendizado de Máquina",
+        "Saúde Pública e Epidemiologia"
+      ],
+      "entries": [
+        {
+          "area": "Computação e Inteligência Artificial",
+          "subarea": "Inteligência Artificial e Aprendizado de Máquina",
+          "color": "#2563EB"
+        },
+        {
+          "area": "Ciências da Saúde",
+          "subarea": "Saúde Pública e Epidemiologia",
+          "color": "#06A9C7"
+        }
+      ],
+      "x": 55.2,
+      "y": 32.4,
+      "ring": "conic-gradient(#2563EB 0.0deg 180.0deg, #06A9C7 180.0deg 360.0deg)",
+      "primaryColor": "#2563EB"
+    },
+    {
+      "id": "p22",
+      "short": "Problema Científico Consciência Me",
+      "title": "O Problema Científico da Consciência: Meditação e Sonhos Lúcidos",
+      "areas": [
+        "Psicologia",
+        "Ciências da Saúde",
+        "Humanidades"
+      ],
+      "subareas": [
+        "Psicologia Cognitiva",
+        "Neurociências",
+        "Filosofia"
+      ],
+      "entries": [
+        {
+          "area": "Psicologia",
+          "subarea": "Psicologia Cognitiva",
+          "color": "#6B21A8"
+        },
+        {
+          "area": "Ciências da Saúde",
+          "subarea": "Neurociências",
+          "color": "#06A9C7"
+        },
+        {
+          "area": "Humanidades",
+          "subarea": "Filosofia",
+          "color": "#A78BFA"
+        }
+      ],
+      "x": 51.8,
+      "y": 49.5,
+      "ring": "conic-gradient(#6B21A8 0.0deg 120.0deg, #06A9C7 120.0deg 240.0deg, #A78BFA 240.0deg 360.0deg)",
+      "primaryColor": "#6B21A8"
+    },
+    {
+      "id": "p23",
+      "short": "Automatizando identificação Infrae",
+      "title": "Automatizando a identificação de Infraestruturas Verde e Azul a fim de gerar uma base de dados global para o \"Tempo de Estabelecimento de Resfriamento\" (CET)",
+      "areas": [
+        "Terra, Mar e Ambiente",
+        "Computação e Inteligência Artificial"
+      ],
+      "subareas": [
+        "Sensoriamento Remoto e Geoprocessamento",
+        "Ciência de Dados"
+      ],
+      "entries": [
+        {
+          "area": "Terra, Mar e Ambiente",
+          "subarea": "Sensoriamento Remoto e Geoprocessamento",
+          "color": "#166534"
+        },
+        {
+          "area": "Computação e Inteligência Artificial",
+          "subarea": "Ciência de Dados",
+          "color": "#2563EB"
+        }
+      ],
+      "x": 39.4,
+      "y": 56.1,
+      "ring": "conic-gradient(#166534 0.0deg 180.0deg, #2563EB 180.0deg 360.0deg)",
+      "primaryColor": "#166534"
+    },
+    {
+      "id": "p24",
+      "short": "Quanto tempo leva atingir",
+      "title": "Quanto tempo leva para atingir o pico de redução de calor? Avançando o conceito de \"Cooling Establishment Time\"",
+      "areas": [
+        "Terra, Mar e Ambiente"
+      ],
+      "subareas": [
+        "Sensoriamento Remoto e Geoprocessamento",
+        "Ciências Ambientais"
+      ],
+      "entries": [
+        {
+          "area": "Terra, Mar e Ambiente",
+          "subarea": "Sensoriamento Remoto e Geoprocessamento",
+          "color": "#166534"
+        },
+        {
+          "area": "Terra, Mar e Ambiente",
+          "subarea": "Ciências Ambientais",
+          "color": "#166534"
+        }
+      ],
+      "x": 40,
+      "y": 80,
+      "ring": "conic-gradient(#166534 0 360deg)",
+      "primaryColor": "#166534"
+    },
+    {
+      "id": "p25",
+      "short": "Avaliação efeitos imunomodulatório",
+      "title": "Avaliação dos efeitos imunomodulatórios da fagoterapia em modelos de infecção por Pseudomonas aeruginosa",
+      "areas": [
+        "Ciências Biológicas"
+      ],
+      "subareas": [
+        "Microbiologia",
+        "Bioquímica",
+        "Biologia Celular e Molecular"
+      ],
+      "entries": [
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Microbiologia",
+          "color": "#19B789"
+        },
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Bioquímica",
+          "color": "#19B789"
+        },
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Biologia Celular e Molecular",
+          "color": "#19B789"
+        }
+      ],
+      "x": 81.9,
+      "y": 67.6,
+      "ring": "conic-gradient(#19B789 0 360deg)",
+      "primaryColor": "#19B789"
+    },
+    {
+      "id": "p26",
+      "short": "Descoberta sistemática sistemas co",
+      "title": "Descoberta sistemática de sistemas conjugativos em plasmídeos",
+      "areas": [
+        "Ciências Biológicas",
+        "Computação e Inteligência Artificial"
+      ],
+      "subareas": [
+        "Genética e Genômica",
+        "Microbiologia",
+        "Ciência de Dados"
+      ],
+      "entries": [
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Genética e Genômica",
+          "color": "#19B789"
+        },
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Microbiologia",
+          "color": "#19B789"
+        },
+        {
+          "area": "Computação e Inteligência Artificial",
+          "subarea": "Ciência de Dados",
+          "color": "#2563EB"
+        }
+      ],
+      "x": 60.5,
+      "y": 49.5,
+      "ring": "conic-gradient(#19B789 0.0deg 180.0deg, #2563EB 180.0deg 360.0deg)",
+      "primaryColor": "#19B789"
+    },
+    {
+      "id": "p27",
+      "short": "Mecanismos Moleculares Regeneração",
+      "title": "Mecanismos Moleculares de Regeneração em Lineus sanguineus (Rathke, 1799) (Pilidiophora: Nemertea)",
+      "areas": [
+        "Ciências Biológicas"
+      ],
+      "subareas": [
+        "Biologia Celular e Molecular"
+      ],
+      "entries": [
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Biologia Celular e Molecular",
+          "color": "#19B789"
+        }
+      ],
+      "x": 83.5,
+      "y": 73.2,
+      "ring": "conic-gradient(#19B789 0 360deg)",
+      "primaryColor": "#19B789"
+    },
+    {
+      "id": "p28",
+      "short": "Ampliação medidas acesso percebido",
+      "title": "Ampliação das medidas de acesso percebido a serviços locais e mobilidade ativa",
+      "areas": [
+        "Humanidades",
+        "Computação e Inteligência Artificial"
+      ],
+      "subareas": [
+        "Geografia Humana",
+        "Ciência de Dados"
+      ],
+      "entries": [
+        {
+          "area": "Humanidades",
+          "subarea": "Geografia Humana",
+          "color": "#A78BFA"
+        },
+        {
+          "area": "Computação e Inteligência Artificial",
+          "subarea": "Ciência de Dados",
+          "color": "#2563EB"
+        }
+      ],
+      "x": 36.6,
+      "y": 41.9,
+      "ring": "conic-gradient(#A78BFA 0.0deg 180.0deg, #2563EB 180.0deg 360.0deg)",
+      "primaryColor": "#A78BFA"
+    },
+    {
+      "id": "p29",
+      "short": "Pesquisa sobre segregação social",
+      "title": "Pesquisa sobre segregação social em cidades de 15 minutos utilizando dados de localização de celulares",
+      "areas": [
+        "Humanidades",
+        "Computação e Inteligência Artificial"
+      ],
+      "subareas": [
+        "Geografia Humana",
+        "Ciência de Dados"
+      ],
+      "entries": [
+        {
+          "area": "Humanidades",
+          "subarea": "Geografia Humana",
+          "color": "#A78BFA"
+        },
+        {
+          "area": "Computação e Inteligência Artificial",
+          "subarea": "Ciência de Dados",
+          "color": "#2563EB"
+        }
+      ],
+      "x": 33.5,
+      "y": 41.7,
+      "ring": "conic-gradient(#A78BFA 0.0deg 180.0deg, #2563EB 180.0deg 360.0deg)",
+      "primaryColor": "#A78BFA"
+    },
+    {
+      "id": "p30",
+      "short": "Geração via CRISPR/Cas9 células",
+      "title": "Geração via CRISPR/Cas9 de células com genes nocautes",
+      "areas": [
+        "Ciências Biológicas"
+      ],
+      "subareas": [
+        "Genética e Genômica",
+        "Bioquímica",
+        "Biologia Celular e Molecular"
+      ],
+      "entries": [
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Genética e Genômica",
+          "color": "#19B789"
+        },
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Bioquímica",
+          "color": "#19B789"
+        },
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Biologia Celular e Molecular",
+          "color": "#19B789"
+        }
+      ],
+      "x": 79.2,
+      "y": 68.4,
+      "ring": "conic-gradient(#19B789 0 360deg)",
+      "primaryColor": "#19B789"
+    },
+    {
+      "id": "p31",
+      "short": "Caracterização genes MRX3 FMP10",
+      "title": "Caracterização dos genes MRX3 e FMP10 no metabolismo mitocondrial de Saccharomyces cerevisiae",
+      "areas": [
+        "Ciências Biológicas"
+      ],
+      "subareas": [
+        "Bioquímica",
+        "Biologia Celular e Molecular",
+        "Microbiologia"
+      ],
+      "entries": [
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Bioquímica",
+          "color": "#19B789"
+        },
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Biologia Celular e Molecular",
+          "color": "#19B789"
+        },
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Microbiologia",
+          "color": "#19B789"
+        }
+      ],
+      "x": 84.6,
+      "y": 66.9,
+      "ring": "conic-gradient(#19B789 0 360deg)",
+      "primaryColor": "#19B789"
+    },
+    {
+      "id": "p32",
+      "short": "mysterious triple-peak features Be",
+      "title": "The mysterious triple-peak features in Be binaries",
+      "areas": [
+        "Física e Astronomia"
+      ],
+      "subareas": [
+        "Astrofísica e Cosmologia"
+      ],
+      "entries": [
+        {
+          "area": "Física e Astronomia",
+          "subarea": "Astrofísica e Cosmologia",
+          "color": "#FF7A1A"
+        }
+      ],
+      "x": 24.4,
+      "y": 22.1,
+      "ring": "conic-gradient(#FF7A1A 0 360deg)",
+      "primaryColor": "#FF7A1A"
+    },
+    {
+      "id": "p33",
+      "short": "Simetrias bicamada grafeno torcida",
+      "title": "Simetrias em bicamada de grafeno torcida em ângulo mágico",
+      "areas": [
+        "Física e Astronomia"
+      ],
+      "subareas": [
+        "Física da Matéria Condensada"
+      ],
+      "entries": [
+        {
+          "area": "Física e Astronomia",
+          "subarea": "Física da Matéria Condensada",
+          "color": "#FF7A1A"
+        }
+      ],
+      "x": 22.7,
+      "y": 27.6,
+      "ring": "conic-gradient(#FF7A1A 0 360deg)",
+      "primaryColor": "#FF7A1A"
+    },
+    {
+      "id": "p34",
+      "short": "Análise Cientométrica evolução ciê",
+      "title": "Análise Cientométrica da evolução da ciência política latino americana assistida por text-mining",
+      "areas": [
+        "Ciências Sociais",
+        "Computação e Inteligência Artificial",
+        "Humanidades"
+      ],
+      "subareas": [
+        "Ciência Política",
+        "Sociologia",
+        "Processamento de Linguagem Natural",
+        "Estudos da Ciência e Tecnologia (STS)"
+      ],
+      "entries": [
+        {
+          "area": "Ciências Sociais",
+          "subarea": "Ciência Política",
+          "color": "#9F1239"
+        },
+        {
+          "area": "Ciências Sociais",
+          "subarea": "Sociologia",
+          "color": "#9F1239"
+        },
+        {
+          "area": "Computação e Inteligência Artificial",
+          "subarea": "Processamento de Linguagem Natural",
+          "color": "#2563EB"
+        },
+        {
+          "area": "Humanidades",
+          "subarea": "Estudos da Ciência e Tecnologia (STS)",
+          "color": "#A78BFA"
+        }
+      ],
+      "x": 30.5,
+      "y": 43.6,
+      "ring": "conic-gradient(#9F1239 0.0deg 120.0deg, #2563EB 120.0deg 240.0deg, #A78BFA 240.0deg 360.0deg)",
+      "primaryColor": "#9F1239"
+    },
+    {
+      "id": "p35",
+      "short": "Fórmula Cayley outros resultados",
+      "title": "Fórmula de Cayley e outros resultados sobre árvores",
+      "areas": [
+        "Matemática e Estatística"
+      ],
+      "subareas": [
+        "Matemática Pura"
+      ],
+      "entries": [
+        {
+          "area": "Matemática e Estatística",
+          "subarea": "Matemática Pura",
+          "color": "#F43F5E"
+        }
+      ],
+      "x": 16.4,
+      "y": 70.3,
+      "ring": "conic-gradient(#F43F5E 0 360deg)",
+      "primaryColor": "#F43F5E"
+    },
+    {
+      "id": "p36",
+      "short": "Método Resolução Problema Caixeiro",
+      "title": "Método de Resolução do Problema de Caixeiro Viajante Aberto com Funções de Desempenho em Redes Urbanas",
+      "areas": [
+        "Matemática e Estatística"
+      ],
+      "subareas": [
+        "Otimização e Pesquisa Operacional"
+      ],
+      "entries": [
+        {
+          "area": "Matemática e Estatística",
+          "subarea": "Otimização e Pesquisa Operacional",
+          "color": "#F43F5E"
+        }
+      ],
+      "x": 16.1,
+      "y": 77.2,
+      "ring": "conic-gradient(#F43F5E 0 360deg)",
+      "primaryColor": "#F43F5E"
+    },
+    {
+      "id": "p37",
+      "short": "Staged Ant System -",
+      "title": "Staged Ant System - Uma nova heurística para o Problema do Caixeiro Viajante",
+      "areas": [
+        "Matemática e Estatística",
+        "Computação e Inteligência Artificial"
+      ],
+      "subareas": [
+        "Otimização e Pesquisa Operacional",
+        "Teoria da Computação"
+      ],
+      "entries": [
+        {
+          "area": "Matemática e Estatística",
+          "subarea": "Otimização e Pesquisa Operacional",
+          "color": "#F43F5E"
+        },
+        {
+          "area": "Computação e Inteligência Artificial",
+          "subarea": "Teoria da Computação",
+          "color": "#2563EB"
+        }
+      ],
+      "x": 26.6,
+      "y": 51,
+      "ring": "conic-gradient(#F43F5E 0.0deg 180.0deg, #2563EB 180.0deg 360.0deg)",
+      "primaryColor": "#F43F5E"
+    },
+    {
+      "id": "p38",
+      "short": "Métodos quantitativos filogenia li",
+      "title": "Métodos quantitativos em filogenia linguística: fundamentos matemáticos e suas aplicações em famílias linguísticas do mundo",
+      "areas": [
+        "Humanidades",
+        "Matemática e Estatística"
+      ],
+      "subareas": [
+        "Linguística",
+        "Matemática Aplicada"
+      ],
+      "entries": [
+        {
+          "area": "Humanidades",
+          "subarea": "Linguística",
+          "color": "#A78BFA"
+        },
+        {
+          "area": "Matemática e Estatística",
+          "subarea": "Matemática Aplicada",
+          "color": "#F43F5E"
+        }
+      ],
+      "x": 25.2,
+      "y": 67,
+      "ring": "conic-gradient(#A78BFA 0.0deg 180.0deg, #F43F5E 180.0deg 360.0deg)",
+      "primaryColor": "#A78BFA"
+    },
+    {
+      "id": "p39",
+      "short": "Consequências filosóficas forcing",
+      "title": "Consequências filosóficas do forcing na teoria de modelos",
+      "areas": [
+        "Matemática e Estatística",
+        "Humanidades"
+      ],
+      "subareas": [
+        "Matemática Pura",
+        "Filosofia"
+      ],
+      "entries": [
+        {
+          "area": "Matemática e Estatística",
+          "subarea": "Matemática Pura",
+          "color": "#F43F5E"
+        },
+        {
+          "area": "Humanidades",
+          "subarea": "Filosofia",
+          "color": "#A78BFA"
+        }
+      ],
+      "x": 22.8,
+      "y": 62,
+      "ring": "conic-gradient(#F43F5E 0.0deg 180.0deg, #A78BFA 180.0deg 360.0deg)",
+      "primaryColor": "#F43F5E"
+    },
+    {
+      "id": "p40",
+      "short": "Influência ambiente adaptação cere",
+      "title": "Influência do ambiente na adaptação cerebral à exposição repetida ao etanol",
+      "areas": [
+        "Ciências da Saúde",
+        "Computação e Inteligência Artificial"
+      ],
+      "subareas": [
+        "Neurociências",
+        "Farmacologia e Toxicologia",
+        "Visão Computacional"
+      ],
+      "entries": [
+        {
+          "area": "Ciências da Saúde",
+          "subarea": "Neurociências",
+          "color": "#06A9C7"
+        },
+        {
+          "area": "Ciências da Saúde",
+          "subarea": "Farmacologia e Toxicologia",
+          "color": "#06A9C7"
+        },
+        {
+          "area": "Computação e Inteligência Artificial",
+          "subarea": "Visão Computacional",
+          "color": "#2563EB"
+        }
+      ],
+      "x": 58.2,
+      "y": 34.1,
+      "ring": "conic-gradient(#06A9C7 0.0deg 180.0deg, #2563EB 180.0deg 360.0deg)",
+      "primaryColor": "#06A9C7"
+    },
+    {
+      "id": "p41",
+      "short": "Caracterização resposta imune infe",
+      "title": "Caracterização da resposta imune à infecção por SARS-CoV-2 no COVID-19 Human Challenge Study [descrição pública; título formal não publicado]",
+      "areas": [
+        "Ciências da Saúde",
+        "Ciências Biológicas"
+      ],
+      "subareas": [
+        "Ciências Biomédicas",
+        "Genética e Genômica"
+      ],
+      "entries": [
+        {
+          "area": "Ciências da Saúde",
+          "subarea": "Ciências Biomédicas",
+          "color": "#06A9C7"
+        },
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Genética e Genômica",
+          "color": "#19B789"
+        }
+      ],
+      "x": 75.9,
+      "y": 51.9,
+      "ring": "conic-gradient(#06A9C7 0.0deg 180.0deg, #19B789 180.0deg 360.0deg)",
+      "primaryColor": "#06A9C7"
+    },
+    {
+      "id": "p42",
+      "short": "Caracterização paisagens celulares",
+      "title": "Caracterização das paisagens celulares e espaciais de cânceres de pele [descrição pública; título formal não publicado]",
+      "areas": [
+        "Ciências da Saúde",
+        "Ciências Biológicas"
+      ],
+      "subareas": [
+        "Ciências Biomédicas",
+        "Biologia Celular e Molecular",
+        "Genética e Genômica"
+      ],
+      "entries": [
+        {
+          "area": "Ciências da Saúde",
+          "subarea": "Ciências Biomédicas",
+          "color": "#06A9C7"
+        },
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Biologia Celular e Molecular",
+          "color": "#19B789"
+        },
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Genética e Genômica",
+          "color": "#19B789"
+        }
+      ],
+      "x": 78.9,
+      "y": 52.8,
+      "ring": "conic-gradient(#06A9C7 0.0deg 180.0deg, #19B789 180.0deg 360.0deg)",
+      "primaryColor": "#06A9C7"
+    },
+    {
+      "id": "p43",
+      "short": "Investigação papel proteína príon",
+      "title": "Investigação do papel da proteína príon celular na biologia do glioblastoma por transcriptômica bulk e de célula única [descrição pública; título formal não publicado]",
+      "areas": [
+        "Ciências da Saúde",
+        "Ciências Biológicas"
+      ],
+      "subareas": [
+        "Ciências Biomédicas",
+        "Biologia Celular e Molecular",
+        "Genética e Genômica"
+      ],
+      "entries": [
+        {
+          "area": "Ciências da Saúde",
+          "subarea": "Ciências Biomédicas",
+          "color": "#06A9C7"
+        },
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Biologia Celular e Molecular",
+          "color": "#19B789"
+        },
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Genética e Genômica",
+          "color": "#19B789"
+        }
+      ],
+      "x": 80.1,
+      "y": 60.1,
+      "ring": "conic-gradient(#06A9C7 0.0deg 180.0deg, #19B789 180.0deg 360.0deg)",
+      "primaryColor": "#06A9C7"
+    },
+    {
+      "id": "p44",
+      "short": "Micro-organismos ambientes análogo",
+      "title": "Micro-organismos de ambientes análogos a Marte: extremófilos e diversidade",
+      "areas": [
+        "Ciências Biológicas",
+        "Física e Astronomia",
+        "Terra, Mar e Ambiente"
+      ],
+      "subareas": [
+        "Microbiologia",
+        "Astrofísica e Cosmologia",
+        "Geologia e Geofísica"
+      ],
+      "entries": [
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Microbiologia",
+          "color": "#19B789"
+        },
+        {
+          "area": "Física e Astronomia",
+          "subarea": "Astrofísica e Cosmologia",
+          "color": "#FF7A1A"
+        },
+        {
+          "area": "Terra, Mar e Ambiente",
+          "subarea": "Geologia e Geofísica",
+          "color": "#166534"
+        }
+      ],
+      "x": 47.2,
+      "y": 61.6,
+      "ring": "conic-gradient(#19B789 0.0deg 120.0deg, #FF7A1A 120.0deg 240.0deg, #166534 240.0deg 360.0deg)",
+      "primaryColor": "#19B789"
+    },
+    {
+      "id": "p45",
+      "short": "Perfil metabólico bactérias associ",
+      "title": "Perfil metabólico de bactérias associadas ao coral Mussismilia hispida",
+      "areas": [
+        "Ciências Biológicas",
+        "Química"
+      ],
+      "subareas": [
+        "Bioquímica",
+        "Microbiologia",
+        "Química Analítica"
+      ],
+      "entries": [
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Bioquímica",
+          "color": "#19B789"
+        },
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Microbiologia",
+          "color": "#19B789"
+        },
+        {
+          "area": "Química",
+          "subarea": "Química Analítica",
+          "color": "#F2B90C"
+        }
+      ],
+      "x": 71.5,
+      "y": 74,
+      "ring": "conic-gradient(#19B789 0.0deg 180.0deg, #F2B90C 180.0deg 360.0deg)",
+      "primaryColor": "#19B789"
+    },
+    {
+      "id": "p46",
+      "short": "Transporte Cadeias Quânticas fora",
+      "title": "Transporte em Cadeias Quânticas fora do Equilíbrio com Potenciais Quasiperiódicos",
+      "areas": [
+        "Física e Astronomia"
+      ],
+      "subareas": [
+        "Física Quântica",
+        "Física da Matéria Condensada"
+      ],
+      "entries": [
+        {
+          "area": "Física e Astronomia",
+          "subarea": "Física Quântica",
+          "color": "#FF7A1A"
+        },
+        {
+          "area": "Física e Astronomia",
+          "subarea": "Física da Matéria Condensada",
+          "color": "#FF7A1A"
+        }
+      ],
+      "x": 20.7,
+      "y": 22.1,
+      "ring": "conic-gradient(#FF7A1A 0 360deg)",
+      "primaryColor": "#FF7A1A"
+    },
+    {
+      "id": "p47",
+      "short": "Efeito contingencias probabilistic",
+      "title": "Efeito das contingencias probabilisticas no aprendizado de sequencias",
+      "areas": [
+        "Psicologia",
+        "Ciências da Saúde",
+        "Matemática e Estatística"
+      ],
+      "subareas": [
+        "Psicologia Experimental",
+        "Neurociências",
+        "Probabilidade e Estatística"
+      ],
+      "entries": [
+        {
+          "area": "Psicologia",
+          "subarea": "Psicologia Experimental",
+          "color": "#6B21A8"
+        },
+        {
+          "area": "Ciências da Saúde",
+          "subarea": "Neurociências",
+          "color": "#06A9C7"
+        },
+        {
+          "area": "Matemática e Estatística",
+          "subarea": "Probabilidade e Estatística",
+          "color": "#F43F5E"
+        }
+      ],
+      "x": 49.7,
+      "y": 57,
+      "ring": "conic-gradient(#6B21A8 0.0deg 120.0deg, #06A9C7 120.0deg 240.0deg, #F43F5E 240.0deg 360.0deg)",
+      "primaryColor": "#6B21A8"
+    },
+    {
+      "id": "p48",
+      "short": "Propriedades coletivas emergentes",
+      "title": "Propriedades coletivas emergentes em sociedades de redes neurais",
+      "areas": [
+        "Física e Astronomia",
+        "Computação e Inteligência Artificial"
+      ],
+      "subareas": [
+        "Física Estatística e Sistemas Complexos",
+        "Inteligência Artificial e Aprendizado de Máquina"
+      ],
+      "entries": [
+        {
+          "area": "Física e Astronomia",
+          "subarea": "Física Estatística e Sistemas Complexos",
+          "color": "#FF7A1A"
+        },
+        {
+          "area": "Computação e Inteligência Artificial",
+          "subarea": "Inteligência Artificial e Aprendizado de Máquina",
+          "color": "#2563EB"
+        }
+      ],
+      "x": 29.2,
+      "y": 22.1,
+      "ring": "conic-gradient(#FF7A1A 0.0deg 180.0deg, #2563EB 180.0deg 360.0deg)",
+      "primaryColor": "#FF7A1A"
+    },
+    {
+      "id": "p49",
+      "short": "Calibração funcionais densidade cá",
+      "title": "Calibração de funcionais de densidade para cálculos de constante de acoplamento indireta spin-spin",
+      "areas": [
+        "Química"
+      ],
+      "subareas": [
+        "Físico-Química",
+        "Química Computacional"
+      ],
+      "entries": [
+        {
+          "area": "Química",
+          "subarea": "Físico-Química",
+          "color": "#F2B90C"
+        },
+        {
+          "area": "Química",
+          "subarea": "Química Computacional",
+          "color": "#F2B90C"
+        }
+      ],
+      "x": 61,
+      "y": 78,
+      "ring": "conic-gradient(#F2B90C 0 360deg)",
+      "primaryColor": "#F2B90C"
+    },
+    {
+      "id": "p50",
+      "short": "Aniquilação ressonante moléculas p",
+      "title": "Aniquilação ressonante em moléculas positrônicas",
+      "areas": [
+        "Física e Astronomia",
+        "Química"
+      ],
+      "subareas": [
+        "Física Quântica",
+        "Química Computacional",
+        "Físico-Química"
+      ],
+      "entries": [
+        {
+          "area": "Física e Astronomia",
+          "subarea": "Física Quântica",
+          "color": "#FF7A1A"
+        },
+        {
+          "area": "Química",
+          "subarea": "Química Computacional",
+          "color": "#F2B90C"
+        },
+        {
+          "area": "Química",
+          "subarea": "Físico-Química",
+          "color": "#F2B90C"
+        }
+      ],
+      "x": 41.1,
+      "y": 49.5,
+      "ring": "conic-gradient(#FF7A1A 0.0deg 180.0deg, #F2B90C 180.0deg 360.0deg)",
+      "primaryColor": "#FF7A1A"
+    },
+    {
+      "id": "p51",
+      "short": "Embeddings Científicos Descoberta",
+      "title": "Embeddings Científicos para Descoberta de Catalisadores",
+      "areas": [
+        "Computação e Inteligência Artificial",
+        "Química"
+      ],
+      "subareas": [
+        "Inteligência Artificial e Aprendizado de Máquina",
+        "Química Computacional",
+        "Físico-Química"
+      ],
+      "entries": [
+        {
+          "area": "Computação e Inteligência Artificial",
+          "subarea": "Inteligência Artificial e Aprendizado de Máquina",
+          "color": "#2563EB"
+        },
+        {
+          "area": "Química",
+          "subarea": "Química Computacional",
+          "color": "#F2B90C"
+        },
+        {
+          "area": "Química",
+          "subarea": "Físico-Química",
+          "color": "#F2B90C"
+        }
+      ],
+      "x": 48.1,
+      "y": 50.4,
+      "ring": "conic-gradient(#2563EB 0.0deg 180.0deg, #F2B90C 180.0deg 360.0deg)",
+      "primaryColor": "#2563EB"
+    },
+    {
+      "id": "p52",
+      "short": "Análise documental constituição hi",
+      "title": "Análise documental da constituição história do conceito de extensão universitária",
+      "areas": [
+        "Humanidades"
+      ],
+      "subareas": [
+        "Educação",
+        "Estudos da Ciência e Tecnologia (STS)"
+      ],
+      "entries": [
+        {
+          "area": "Humanidades",
+          "subarea": "Educação",
+          "color": "#A78BFA"
+        },
+        {
+          "area": "Humanidades",
+          "subarea": "Estudos da Ciência e Tecnologia (STS)",
+          "color": "#A78BFA"
+        }
+      ],
+      "x": 31.7,
+      "y": 57.2,
+      "ring": "conic-gradient(#A78BFA 0 360deg)",
+      "primaryColor": "#A78BFA"
+    },
+    {
+      "id": "p53",
+      "short": "Evolução humana longo Plio-Pleisto",
+      "title": "Evolução humana ao longo do Plio-Pleistoceno: padrões de variação morfológica e processos evolutivos",
+      "areas": [
+        "Ciências Biológicas"
+      ],
+      "subareas": [
+        "Biologia Evolutiva",
+        "Genética e Genômica"
+      ],
+      "entries": [
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Biologia Evolutiva",
+          "color": "#19B789"
+        },
+        {
+          "area": "Ciências Biológicas",
+          "subarea": "Genética e Genômica",
+          "color": "#19B789"
+        }
+      ],
+      "x": 80.8,
+      "y": 74,
+      "ring": "conic-gradient(#19B789 0 360deg)",
+      "primaryColor": "#19B789"
+    }
+  ],
+  "projectAreaColors": {
+    "Ciências Biológicas": "#19B789",
+    "Física e Astronomia": "#FF7A1A",
+    "Química": "#F2B90C",
+    "Computação e Inteligência Artificial": "#2563EB",
+    "Matemática e Estatística": "#F43F5E",
+    "Humanidades": "#A78BFA",
+    "Ciências da Saúde": "#06A9C7",
+    "Engenharias": "#172554",
+    "Psicologia": "#6B21A8",
+    "Terra, Mar e Ambiente": "#166534",
+    "Ciências Sociais": "#9F1239",
+    "Linguística": "#EC4899"
+  },
+  "projectAreaLegend": [
+    {
+      "name": "Física e Astronomia",
+      "color": "#FF7A1A"
+    },
+    {
+      "name": "Matemática e Estatística",
+      "color": "#F43F5E"
+    },
+    {
+      "name": "Computação e Inteligência Artificial",
+      "color": "#2563EB"
+    },
+    {
+      "name": "Ciências da Saúde",
+      "color": "#06A9C7"
+    },
+    {
+      "name": "Terra, Mar e Ambiente",
+      "color": "#166534"
+    },
+    {
+      "name": "Ciências Biológicas",
+      "color": "#19B789"
+    },
+    {
+      "name": "Humanidades",
+      "color": "#A78BFA"
+    },
+    {
+      "name": "Química",
+      "color": "#F2B90C"
+    },
+    {
+      "name": "Engenharias",
+      "color": "#172554"
+    },
+    {
+      "name": "Psicologia",
+      "color": "#6B21A8"
+    },
+    {
+      "name": "Ciências Sociais",
+      "color": "#9F1239"
+    },
+    {
+      "name": "Linguística",
+      "color": "#EC4899"
+    }
+  ],
+  "projectLinks": [
+    {
+      "source": "p06",
+      "target": "p26",
+      "shared": [
+        "Ciência de Dados",
+        "Genética e Genômica",
+        "Microbiologia"
+      ],
+      "score": 3
+    },
+    {
+      "source": "p11",
+      "target": "p14",
+      "shared": [
+        "Biologia Celular e Molecular",
+        "Bioquímica",
+        "Neurociências"
+      ],
+      "score": 3
+    },
+    {
+      "source": "p25",
+      "target": "p31",
+      "shared": [
+        "Biologia Celular e Molecular",
+        "Bioquímica",
+        "Microbiologia"
+      ],
+      "score": 3
+    },
+    {
+      "source": "p07",
+      "target": "p44",
+      "shared": [
+        "Astrofísica e Cosmologia",
+        "Geologia e Geofísica",
+        "Microbiologia"
+      ],
+      "score": 3
+    },
+    {
+      "source": "p42",
+      "target": "p43",
+      "shared": [
+        "Biologia Celular e Molecular",
+        "Ciências Biomédicas",
+        "Genética e Genômica"
+      ],
+      "score": 3
+    },
+    {
+      "source": "p30",
+      "target": "p43",
+      "shared": [
+        "Biologia Celular e Molecular",
+        "Genética e Genômica"
+      ],
+      "score": 2
+    },
+    {
+      "source": "p11",
+      "target": "p30",
+      "shared": [
+        "Biologia Celular e Molecular",
+        "Bioquímica"
+      ],
+      "score": 2
+    },
+    {
+      "source": "p11",
+      "target": "p25",
+      "shared": [
+        "Biologia Celular e Molecular",
+        "Bioquímica"
+      ],
+      "score": 2
+    },
+    {
+      "source": "p30",
+      "target": "p42",
+      "shared": [
+        "Biologia Celular e Molecular",
+        "Genética e Genômica"
+      ],
+      "score": 2
+    },
+    {
+      "source": "p50",
+      "target": "p51",
+      "shared": [
+        "Físico-Química",
+        "Química Computacional"
+      ],
+      "score": 2
+    },
+    {
+      "source": "p16",
+      "target": "p38",
+      "shared": [
+        "Linguística",
+        "Matemática Aplicada"
+      ],
+      "score": 2
+    },
+    {
+      "source": "p14",
+      "target": "p25",
+      "shared": [
+        "Biologia Celular e Molecular",
+        "Bioquímica"
+      ],
+      "score": 2
+    },
+    {
+      "source": "p14",
+      "target": "p31",
+      "shared": [
+        "Biologia Celular e Molecular",
+        "Bioquímica"
+      ],
+      "score": 2
+    },
+    {
+      "source": "p31",
+      "target": "p45",
+      "shared": [
+        "Bioquímica",
+        "Microbiologia"
+      ],
+      "score": 2
+    },
+    {
+      "source": "p49",
+      "target": "p51",
+      "shared": [
+        "Físico-Química",
+        "Química Computacional"
+      ],
+      "score": 2
+    },
+    {
+      "source": "p49",
+      "target": "p50",
+      "shared": [
+        "Físico-Química",
+        "Química Computacional"
+      ],
+      "score": 2
+    },
+    {
+      "source": "p01",
+      "target": "p53",
+      "shared": [
+        "Biologia Evolutiva",
+        "Genética e Genômica"
+      ],
+      "score": 2
+    },
+    {
+      "source": "p41",
+      "target": "p42",
+      "shared": [
+        "Ciências Biomédicas",
+        "Genética e Genômica"
+      ],
+      "score": 2
+    },
+    {
+      "source": "p28",
+      "target": "p29",
+      "shared": [
+        "Ciência de Dados",
+        "Geografia Humana"
+      ],
+      "score": 2
+    },
+    {
+      "source": "p41",
+      "target": "p43",
+      "shared": [
+        "Ciências Biomédicas",
+        "Genética e Genômica"
+      ],
+      "score": 2
+    },
+    {
+      "source": "p16",
+      "target": "p34",
+      "shared": [
+        "Processamento de Linguagem Natural"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p22",
+      "target": "p47",
+      "shared": [
+        "Neurociências"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p19",
+      "target": "p32",
+      "shared": [
+        "Astrofísica e Cosmologia"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p01",
+      "target": "p47",
+      "shared": [
+        "Probabilidade e Estatística"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p34",
+      "target": "p52",
+      "shared": [
+        "Estudos da Ciência e Tecnologia (STS)"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p12",
+      "target": "p22",
+      "shared": [
+        "Neurociências"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p12",
+      "target": "p26",
+      "shared": [
+        "Ciência de Dados"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p23",
+      "target": "p28",
+      "shared": [
+        "Ciência de Dados"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p18",
+      "target": "p39",
+      "shared": [
+        "Matemática Pura"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p04",
+      "target": "p44",
+      "shared": [
+        "Astrofísica e Cosmologia"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p19",
+      "target": "p29",
+      "shared": [
+        "Ciência de Dados"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p06",
+      "target": "p08",
+      "shared": [
+        "Genética e Genômica"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p35",
+      "target": "p39",
+      "shared": [
+        "Matemática Pura"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p04",
+      "target": "p07",
+      "shared": [
+        "Astrofísica e Cosmologia"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p05",
+      "target": "p35",
+      "shared": [
+        "Matemática Pura"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p23",
+      "target": "p24",
+      "shared": [
+        "Sensoriamento Remoto e Geoprocessamento"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p09",
+      "target": "p38",
+      "shared": [
+        "Matemática Aplicada"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p05",
+      "target": "p18",
+      "shared": [
+        "Matemática Pura"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p08",
+      "target": "p45",
+      "shared": [
+        "Bioquímica"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p09",
+      "target": "p48",
+      "shared": [
+        "Física Estatística e Sistemas Complexos"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p36",
+      "target": "p37",
+      "shared": [
+        "Otimização e Pesquisa Operacional"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p02",
+      "target": "p33",
+      "shared": [
+        "Física da Matéria Condensada"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p10",
+      "target": "p46",
+      "shared": [
+        "Física Quântica"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p20",
+      "target": "p40",
+      "shared": [
+        "Visão Computacional"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p02",
+      "target": "p46",
+      "shared": [
+        "Física da Matéria Condensada"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p21",
+      "target": "p48",
+      "shared": [
+        "Inteligência Artificial e Aprendizado de Máquina"
+      ],
+      "score": 1
+    },
+    {
+      "source": "p03",
+      "target": "p32",
+      "shared": [
+        "Astrofísica e Cosmologia"
+      ],
+      "score": 1
     }
   ]
 };
   </script>
   <script>
-    (() => {
-      const slides = [...document.querySelectorAll('.slide')];
-      const deck = document.getElementById('deck');
-      const progress = document.getElementById('progress');
-      const slideNumber = document.getElementById('slideNumber');
-      const autoBtn = document.getElementById('autoBtn');
-      const areaColors={math:'var(--math)',physics:'var(--physics)',chemistry:'var(--chemistry)',biology:'var(--biology)',computing:'var(--computing)',humanities:'var(--humanities)'};
-      const problemMapData = window.CM_DATA.problemMapData;
-      const areaPositions={4:[{x:50,y:10},{x:86,y:38},{x:50,y:70},{x:14,y:38}],5:[{x:50,y:10},{x:86,y:30},{x:73,y:69},{x:27,y:69},{x:14,y:30}]};
-      let current = Math.max(0, slides.findIndex(s => '#' + s.id === location.hash));
-      let selectedProblem = 'linguagem';
-      let autoTimer = null;
-      let touchStartX = 0;
+(() => {
+  const slides = [...document.querySelectorAll('.slide')];
+  const deck = document.getElementById('deck');
+  const progress = document.getElementById('progress');
+  const slideNumber = document.getElementById('slideNumber');
+  const autoBtn = document.getElementById('autoBtn');
+  const helpDialog = document.getElementById('helpDialog');
+  const panel = document.getElementById('projectPanel');
+  const projectSpace = document.getElementById('projectSpace');
+  const projectLines = document.getElementById('projectLines');
+  const projectLegend = document.getElementById('projectLegend');
+  const areaColors = { math: 'var(--math)', physics: 'var(--physics)', chemistry: 'var(--chemistry)', biology: 'var(--biology)', computing: 'var(--computing)', humanities: 'var(--humanities)', earth: 'var(--earth)', health: 'var(--health)', linguistics: 'var(--linguistics)' };
+  const problemDisplayPalette = ['#FF7A1A', '#F43F5E', '#2563EB', '#06A9C7', '#166534', '#19B789', '#A78BFA', '#F2B90C', '#EC4899'];
+  const problemMapData = window.CM_DATA.problemMapData;
+  const problemKeys = Object.keys(problemMapData);
+  const areaPositions = {
+    4: [{ x: 50, y: 10 }, { x: 86, y: 38 }, { x: 50, y: 70 }, { x: 14, y: 38 }],
+    5: [{ x: 50, y: 10 }, { x: 86, y: 30 }, { x: 73, y: 69 }, { x: 27, y: 69 }, { x: 14, y: 30 }]
+  };
 
-      function pad(n){return String(n).padStart(2,'0')}
-      function showSlide(next, updateHash = true){
-        next = Math.max(0, Math.min(slides.length - 1, next));
-        slides.forEach((s,i)=>{s.classList.toggle('active',i===next);s.classList.toggle('was-active',i<next)});
-        current = next;
-        slideNumber.textContent = `${pad(current+1)} / ${pad(slides.length)}`;
-        progress.style.width = `${((current+1)/slides.length)*100}%`;
-        document.body.classList.toggle('dark-active',slides[current].classList.contains('dark'));
-        document.title = `${slides[current].dataset.title} — Ciências Moleculares`;
-        if(updateHash) history.replaceState(null,'','#'+slides[current].id);
-        document.getElementById('projectPanel').classList.remove('open');
-        document.getElementById('projectPanel').setAttribute('aria-hidden','true');
-        if(slides[current].id==='escolha') renderProblem(selectedProblem);
-        if(slides[current].id==='diversidade'){
-          requestAnimationFrame(()=>setTimeout(()=>document.querySelectorAll('.region-dot').forEach(d=>{d.style.setProperty('--x',d.dataset.tx+'%');d.style.setProperty('--y',d.dataset.ty+'%')}),120));
-        }else{
-          document.querySelectorAll('.region-dot').forEach(d=>{d.style.setProperty('--x',d.dataset.ox+'%');d.style.setProperty('--y',d.dataset.oy+'%')});
-        }
+  let current = Math.max(0, slides.findIndex(s => '#' + s.id === location.hash));
+  let autoTimer = null;
+  let problemTimer = null;
+  let projectTimer = null;
+  let questionTimer = null;
+  let cycleTimer = null;
+  let selectedProblemIndex = 0;
+  let selectedProjectIndex = 0;
+  let selectedQuestionIndex = 0;
+  let selectedCycleIndex = 0;
+  let touchStartX = 0;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function showSlide(next, updateHash = true) {
+    next = Math.max(0, Math.min(slides.length - 1, next));
+    slides.forEach((s, i) => {
+      s.classList.toggle('active', i === next);
+      s.classList.toggle('was-active', i < next);
+    });
+    current = next;
+    slideNumber.textContent = `${pad(current + 1)} / ${pad(slides.length)}`;
+    progress.style.width = `${((current + 1) / slides.length) * 100}%`;
+    document.body.classList.toggle('dark-active', slides[current].classList.contains('dark'));
+    document.body.dataset.slide = slides[current].id;
+    document.title = `${slides[current].dataset.title} - Ciências Moleculares`;
+    if (updateHash) history.replaceState(null, '', '#' + slides[current].id);
+
+    stopProblemCycle();
+    stopProjectCycle();
+    stopQuestionCycle();
+    stopCycleRotation();
+    closeProjectPanel();
+
+    if (slides[current].id === 'problema') startQuestionCycle();
+    if (slides[current].id === 'problemas-areas') startProblemCycle();
+    if (slides[current].id === 'ciclo-basico') startCycleRotation();
+    if (slides[current].id === 'projetos') startProjectCycle();
+  }
+
+  function move(delta) {
+    pauseAuto();
+    showSlide(current + delta);
+  }
+
+  function startAuto() {
+    if (autoTimer) return;
+    autoBtn.setAttribute('aria-pressed', 'true');
+    autoBtn.setAttribute('aria-label', 'Pausar avanço automático');
+    autoTimer = setInterval(() => showSlide(current === slides.length - 1 ? 0 : current + 1), 8500);
+  }
+
+  function pauseAuto() {
+    if (!autoTimer) return;
+    clearInterval(autoTimer);
+    autoTimer = null;
+    autoBtn.setAttribute('aria-pressed', 'false');
+    autoBtn.setAttribute('aria-label', 'Retomar avanço automático');
+  }
+
+  function toggleAuto() {
+    if (autoTimer) pauseAuto();
+    else startAuto();
+  }
+
+  function toggleFullscreen() {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+    else document.exitFullscreen?.();
+  }
+
+  function closeProjectPanel() {
+    panel.classList.remove('open');
+    panel.setAttribute('aria-hidden', 'true');
+  }
+
+  document.getElementById('prevBtn').addEventListener('click', () => move(-1));
+  document.getElementById('nextBtn').addEventListener('click', () => move(1));
+  document.getElementById('fullBtn').addEventListener('click', toggleFullscreen);
+  autoBtn.addEventListener('click', toggleAuto);
+  deck.addEventListener('pointerdown', () => { if (autoTimer) pauseAuto(); }, { passive: true });
+
+  document.getElementById('helpBtn').addEventListener('click', () => helpDialog.classList.add('open'));
+  helpDialog.addEventListener('click', e => { if (e.target === helpDialog) helpDialog.classList.remove('open'); });
+  document.addEventListener('keydown', e => {
+    if (helpDialog.classList.contains('open')) {
+      if (e.key === 'Escape') helpDialog.classList.remove('open');
+      return;
+    }
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); move(1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); move(-1); }
+    else if (e.key === 'Home') { pauseAuto(); showSlide(0); }
+    else if (e.key === 'End') { pauseAuto(); showSlide(slides.length - 1); }
+    else if (e.key.toLowerCase() === 'f') toggleFullscreen();
+    else if (e.key.toLowerCase() === 'a') toggleAuto();
+    else if (e.key === '?') helpDialog.classList.add('open');
+    else if (e.key === 'Escape') {
+      stopProjectCycle();
+      closeProjectPanel();
+    }
+  });
+  deck.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].clientX, { passive: true });
+  deck.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 70) move(dx < 0 ? 1 : -1);
+  }, { passive: true });
+
+  const questionPills = [...document.querySelectorAll('.auto-question')];
+  function highlightQuestion(index) {
+    selectedQuestionIndex = index;
+    questionPills.forEach((pill, i) => pill.classList.toggle('active-question', i === index));
+  }
+
+  function startQuestionCycle() {
+    highlightQuestion(selectedQuestionIndex);
+    questionTimer = setInterval(() => {
+      highlightQuestion((selectedQuestionIndex + 1) % questionPills.length);
+    }, 1900);
+  }
+
+  function stopQuestionCycle() {
+    if (!questionTimer) return;
+    clearInterval(questionTimer);
+    questionTimer = null;
+    questionPills.forEach(pill => pill.classList.remove('active-question'));
+  }
+
+  function renderProblem(key) {
+    const data = problemMapData[key];
+    const areaWrap = document.getElementById('mapAreas');
+    const lineWrap = document.getElementById('mapLines');
+    const explanation = document.getElementById('mapExplanation');
+    document.getElementById('mapCenter').textContent = data.question;
+    areaWrap.innerHTML = '';
+    lineWrap.innerHTML = '';
+    explanation.textContent = data.areas.map(area => area.name).join(' + ');
+    const positions = areaPositions[data.areas.length] || areaPositions[5];
+    data.areas.forEach((area, i) => {
+      const pos = positions[i];
+      const delay = .18 + i * .18;
+      const displayColor = problemDisplayPalette[(selectedProblemIndex + i) % problemDisplayPalette.length] || areaColors[area.macro];
+      const n = document.createElement('span');
+      n.className = 'map-area';
+      n.textContent = area.name;
+      n.style.setProperty('--x', pos.x + '%');
+      n.style.setProperty('--y', pos.y + '%');
+      n.style.setProperty('--area', displayColor);
+      n.style.setProperty('--delay', delay + 's');
+      areaWrap.appendChild(n);
+
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      line.setAttribute('x1', '500');
+      line.setAttribute('y1', '270');
+      line.setAttribute('x2', String(pos.x * 10));
+      line.setAttribute('y2', String(pos.y * 6));
+      line.style.setProperty('--area', displayColor);
+      line.style.setProperty('--delay', (delay + .1) + 's');
+      lineWrap.appendChild(line);
+    });
+  }
+
+  function startProblemCycle() {
+    renderProblem(problemKeys[selectedProblemIndex]);
+    problemTimer = setInterval(() => {
+      selectedProblemIndex = (selectedProblemIndex + 1) % problemKeys.length;
+      renderProblem(problemKeys[selectedProblemIndex]);
+    }, 5200);
+  }
+
+  function stopProblemCycle() {
+    if (!problemTimer) return;
+    clearInterval(problemTimer);
+    problemTimer = null;
+  }
+
+  const cycleAreas = window.CM_DATA.cycleAreas;
+  const cycleSubareas = {
+    'Matemática': ['Cálculo', 'Álgebra linear', 'Geometria analítica', 'Equações diferenciais', 'Probabilidade', 'Análise matemática'],
+    'Física': ['Mecânica', 'Ondas', 'Termodinâmica', 'Eletromagnetismo', 'Relatividade', 'Mecânica quântica'],
+    'Química': ['Química geral', 'Estrutura atômica e molecular', 'Físico-química', 'Química inorgânica', 'Espectroscopia', 'Química orgânica'],
+    'Biologia': ['Bioquímica', 'Biologia molecular', 'Biologia celular', 'Genética', 'Evolução', 'Fisiologia e sistemas biológicos'],
+    'Computação': ['Programação', 'Algoritmos', 'Estruturas de dados', 'Grafos', 'Métodos numéricos', 'Modelagem computacional']
+  };
+  const cycleSvg = document.getElementById('cycleSvg');
+  const cycleArea = document.getElementById('cycleArea');
+  const cycleTool = document.getElementById('cycleTool');
+  const cycleDetail = document.getElementById('cycleDetail');
+
+  function polar(radius, angle) {
+    const a = (angle - 90) * Math.PI / 180;
+    return { x: 210 + radius * Math.cos(a), y: 210 + radius * Math.sin(a) };
+  }
+
+  function donutPath(start, end) {
+    const outerStart = polar(190, start);
+    const outerEnd = polar(190, end);
+    const innerEnd = polar(88, end);
+    const innerStart = polar(88, start);
+    const large = end - start > 180 ? 1 : 0;
+    return `M ${outerStart.x} ${outerStart.y} A 190 190 0 ${large} 1 ${outerEnd.x} ${outerEnd.y} L ${innerEnd.x} ${innerEnd.y} A 88 88 0 ${large} 0 ${innerStart.x} ${innerStart.y} Z`;
+  }
+
+  function showCycleArea(area) {
+    cycleArea.textContent = area.name;
+    cycleTool.textContent = cycleSubareas[area.name].join(' · ');
+    cycleDetail.style.setProperty('--detail-color', area.color);
+    [...cycleSvg.querySelectorAll('.basic-segment')].forEach(path => {
+      path.classList.toggle('active-segment', path.dataset.area === area.name);
+    });
+  }
+
+  cycleAreas.forEach((area, index) => {
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', donutPath(area.start, area.end));
+    path.setAttribute('fill', area.color);
+    path.setAttribute('class', 'basic-segment');
+    path.dataset.area = area.name;
+    path.setAttribute('tabindex', '0');
+    path.setAttribute('role', 'button');
+    path.setAttribute('aria-label', area.name + ': ' + area.tool);
+    path.addEventListener('mouseenter', () => showCycleArea(area));
+    path.addEventListener('focus', () => showCycleArea(area));
+    path.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        showCycleArea(area);
       }
-      function move(delta){pauseAuto();showSlide(current+delta)}
+    });
+    cycleSvg.appendChild(path);
+  });
 
-      document.getElementById('prevBtn').addEventListener('click',()=>move(-1));
-      document.getElementById('nextBtn').addEventListener('click',()=>move(1));
-      document.getElementById('fullBtn').addEventListener('click',toggleFullscreen);
-      function toggleFullscreen(){if(!document.fullscreenElement) document.documentElement.requestFullscreen?.(); else document.exitFullscreen?.()}
-      function pauseAuto(){if(autoTimer){clearInterval(autoTimer);autoTimer=null;autoBtn.setAttribute('aria-pressed','false');autoBtn.setAttribute('aria-label','Ativar avanço automático')}}
-      function toggleAuto(){
-        if(autoTimer){pauseAuto();return}
-        autoBtn.setAttribute('aria-pressed','true');autoBtn.setAttribute('aria-label','Pausar avanço automático');
-        autoTimer=setInterval(()=>showSlide(current===slides.length-1?0:current+1),9000);
+  function startCycleRotation() {
+    showCycleArea(cycleAreas[selectedCycleIndex]);
+    cycleTimer = setInterval(() => {
+      selectedCycleIndex = (selectedCycleIndex + 1) % cycleAreas.length;
+      showCycleArea(cycleAreas[selectedCycleIndex]);
+    }, 1700);
+  }
+
+  function stopCycleRotation() {
+    if (!cycleTimer) return;
+    clearInterval(cycleTimer);
+    cycleTimer = null;
+    [...cycleSvg.querySelectorAll('.basic-segment')].forEach(path => path.classList.remove('active-segment'));
+  }
+
+  const projects = window.CM_DATA.projects;
+  const denseProjectGraph = projects.length > 30;
+  const projectLinks = window.CM_DATA.projectLinks || [];
+  const projectById = new Map(projects.map(project => [project.id, project]));
+  const linkElements = [];
+  const projectButtons = [];
+  (window.CM_DATA.projectAreaLegend || []).forEach(area => {
+    const item = document.createElement('span');
+    item.className = 'legend-item';
+    item.innerHTML = `<span class="legend-dot" style="--legend-color:${area.color}"></span><span>${area.name}</span>`;
+    projectLegend.appendChild(item);
+  });
+  projectLinks.forEach(link => {
+    const source = projectById.get(link.source);
+    const target = projectById.get(link.target);
+    if (!source || !target) return;
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.classList.add('project-link');
+    line.dataset.source = link.source;
+    line.dataset.target = link.target;
+    line.setAttribute('x1', source.x);
+    line.setAttribute('y1', source.y);
+    line.setAttribute('x2', target.x);
+    line.setAttribute('y2', target.y);
+    projectLines.appendChild(line);
+    linkElements.push(line);
+  });
+  projects.forEach((p, i) => {
+    const b = document.createElement('button');
+    b.className = 'project-node';
+    b.style.setProperty('--x', p.x + '%');
+    b.style.setProperty('--y', p.y + '%');
+    b.style.setProperty('--ring-bg', p.ring);
+    b.style.setProperty('--primary-color', p.primaryColor);
+    b.style.setProperty('--size', denseProjectGraph ? (p.areas.length > 1 ? '1.08rem' : '.92rem') : (p.areas.length > 1 ? '1.42rem' : '1.2rem'));
+    b.setAttribute('aria-label', p.title);
+    b.innerHTML = `<span class="dot"></span><span class="node-label">${p.short}</span>`;
+    b.addEventListener('click', () => {
+      pauseAuto();
+      stopProjectCycle();
+      openProject(p, i);
+    });
+    projectButtons.push(b);
+    projectSpace.appendChild(b);
+  });
+
+  function openProject(p, index) {
+    selectedProjectIndex = index;
+    projectButtons.forEach((button, i) => button.classList.toggle('active-project', i === index));
+    linkElements.forEach(line => {
+      line.classList.toggle('active-link', line.dataset.source === p.id || line.dataset.target === p.id);
+    });
+    document.getElementById('panelTitle').textContent = p.title;
+    const panelInst = document.getElementById('panelInst');
+    panelInst.replaceChildren();
+    p.areas.forEach(area => {
+      const marker = document.createElement('span');
+      marker.className = 'panel-area';
+      marker.style.setProperty('--area-color', window.CM_DATA.projectAreaColors[area] || '#64748b');
+      marker.textContent = area;
+      panelInst.appendChild(marker);
+    });
+    document.getElementById('panelAreas').textContent = p.subareas.join(' · ');
+    panel.classList.toggle('panel-left', p.x > 65);
+    panel.classList.add('open');
+    panel.setAttribute('aria-hidden', 'false');
+  }
+
+  function startProjectCycle() {
+    if (projectTimer || !projects.length) return;
+    projectTimer = setTimeout(() => {
+      openProject(projects[selectedProjectIndex], selectedProjectIndex);
+      if (reduceMotion) {
+        projectTimer = null;
+        return;
       }
-      autoBtn.addEventListener('click',toggleAuto);
-      deck.addEventListener('pointerdown',()=>{ if(autoTimer) pauseAuto(); },{passive:true});
+      projectTimer = setInterval(() => {
+        selectedProjectIndex = (selectedProjectIndex + 1) % projects.length;
+        openProject(projects[selectedProjectIndex], selectedProjectIndex);
+      }, 3200);
+    }, 900);
+  }
 
-      const helpDialog=document.getElementById('helpDialog');
-      document.getElementById('helpBtn').addEventListener('click',()=>helpDialog.classList.add('open'));
-      helpDialog.addEventListener('click',e=>{if(e.target===helpDialog)helpDialog.classList.remove('open')});
-      document.addEventListener('keydown',e=>{
-        if(helpDialog.classList.contains('open')){if(e.key==='Escape')helpDialog.classList.remove('open');return}
-        if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();move(1)}
-        else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();move(-1)}
-        else if(e.key==='Home'){pauseAuto();showSlide(0)}else if(e.key==='End'){pauseAuto();showSlide(slides.length-1)}
-        else if(e.key.toLowerCase()==='f')toggleFullscreen();else if(e.key.toLowerCase()==='a')toggleAuto();else if(e.key==='?')helpDialog.classList.add('open');
-        else if(e.key==='Escape'){document.getElementById('projectPanel').classList.remove('open')}
-      });
-      deck.addEventListener('touchstart',e=>touchStartX=e.changedTouches[0].clientX,{passive:true});
-      deck.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-touchStartX;if(Math.abs(dx)>70)move(dx<0?1:-1)},{passive:true});
+  function stopProjectCycle(clearFocus = true) {
+    if (projectTimer) {
+      clearInterval(projectTimer);
+      clearTimeout(projectTimer);
+      projectTimer = null;
+    }
+    if (!clearFocus) return;
+    projectButtons.forEach(button => button.classList.remove('active-project'));
+    linkElements.forEach(line => line.classList.remove('active-link'));
+  }
 
-      const problemList=document.getElementById('problemList');
-      Object.entries(problemMapData).forEach(([key,value])=>{
-        const btn=document.createElement('button');btn.className='problem-pill';btn.textContent=value.question;btn.dataset.problem=key;btn.style.setProperty('--area',areaColors[value.color]);btn.addEventListener('click',()=>renderProblem(key));problemList.appendChild(btn);
-      });
-      document.querySelectorAll('#problema [data-problem]').forEach(btn=>btn.addEventListener('click',()=>{selectedProblem=btn.dataset.problem;renderProblem(selectedProblem);showSlide(slides.findIndex(s=>s.id==='escolha'))}));
-      function renderProblem(key){
-        selectedProblem=key;const data=problemMapData[key];
-        document.getElementById('mapCenter').textContent=data.question;
-        const areaWrap=document.getElementById('mapAreas');const lineWrap=document.getElementById('mapLines');const explanation=document.getElementById('mapExplanation');areaWrap.innerHTML='';lineWrap.innerHTML='';explanation.textContent='Passe o cursor por uma área para ver como ela contribui.';
-        [...problemList.children].forEach(b=>b.classList.toggle('active-choice',b.dataset.problem===key));
-        const positions=areaPositions[data.areas.length]||areaPositions[5];
-        data.areas.forEach((area,i)=>{const pos=positions[i];const delay=.32+i*.58;const n=document.createElement('button');n.className='map-area';n.type='button';n.textContent=area.name;n.style.setProperty('--x',pos.x+'%');n.style.setProperty('--y',pos.y+'%');n.style.setProperty('--area',areaColors[area.macro]);n.style.setProperty('--delay',delay+'s');n.setAttribute('aria-label',area.name+': '+area.why);n.addEventListener('mouseenter',()=>explanation.textContent=area.why);n.addEventListener('mouseleave',()=>explanation.textContent='Passe o cursor por uma área para ver como ela contribui.');n.addEventListener('focus',()=>explanation.textContent=area.why);n.addEventListener('blur',()=>explanation.textContent='Passe o cursor por uma área para ver como ela contribui.');areaWrap.appendChild(n);const line=document.createElementNS('http://www.w3.org/2000/svg','line');line.setAttribute('x1','500');line.setAttribute('y1','270');line.setAttribute('x2',String(pos.x*10));line.setAttribute('y2',String(pos.y*6));line.style.setProperty('--area',areaColors[area.macro]);line.style.setProperty('--delay',(delay+.22)+'s');lineWrap.appendChild(line)});
-      }
-      renderProblem(selectedProblem);
+  document.getElementById('panelClose').addEventListener('click', () => {
+    pauseAuto();
+    stopProjectCycle();
+    closeProjectPanel();
+  });
 
-      const cycleAreas=window.CM_DATA.cycleAreas;
-      function polar(radius,angle){const a=(angle-90)*Math.PI/180;return{x:210+radius*Math.cos(a),y:210+radius*Math.sin(a)}}
-      function donutPath(start,end){const outerStart=polar(190,start),outerEnd=polar(190,end),innerEnd=polar(88,end),innerStart=polar(88,start),large=end-start>180?1:0;return `M ${outerStart.x} ${outerStart.y} A 190 190 0 ${large} 1 ${outerEnd.x} ${outerEnd.y} L ${innerEnd.x} ${innerEnd.y} A 88 88 0 ${large} 0 ${innerStart.x} ${innerStart.y} Z`}
-      const cycleSvg=document.getElementById('cycleSvg');const cycleArea=document.getElementById('cycleArea');const cycleTool=document.getElementById('cycleTool');const cycleDetail=document.getElementById('cycleDetail');
-      function showCycleArea(area){cycleArea.textContent=area.name;cycleTool.textContent=area.tool;cycleDetail.style.setProperty('--detail-color',area.color)}
-      cycleAreas.forEach(area=>{const path=document.createElementNS('http://www.w3.org/2000/svg','path');path.setAttribute('d',donutPath(area.start,area.end));path.setAttribute('fill',area.color);path.setAttribute('class','basic-segment');path.setAttribute('tabindex','0');path.setAttribute('role','button');path.setAttribute('aria-label',area.name+': '+area.tool);path.addEventListener('mouseenter',()=>showCycleArea(area));path.addEventListener('focus',()=>showCycleArea(area));path.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();showCycleArea(area)}});cycleSvg.appendChild(path)});
+  projectSpace.addEventListener('pointerenter', () => {
+    if (slides[current].id === 'projetos') stopProjectCycle(false);
+  });
 
-      const areas=window.CM_DATA.areas;
-      const comboMap=window.CM_DATA.comboMap;
-      const chips=document.getElementById('areaChips');let selectedAreas=[];
-      const areaPalette={'Matemática':'math','Física':'physics','Biologia':'biology','Computação':'computing','Linguística':'humanities','Psicologia':'humanities','Química':'chemistry','Ciências Sociais':'humanities'};
-      areas.forEach(area=>{const b=document.createElement('button');b.className='area-chip';b.textContent=area;b.style.setProperty('--area',areaColors[areaPalette[area]]);b.setAttribute('aria-pressed','false');b.addEventListener('click',()=>toggleArea(area,b));chips.appendChild(b)});
-      function toggleArea(area,button){
-        if(selectedAreas.includes(area))selectedAreas=selectedAreas.filter(a=>a!==area);else if(selectedAreas.length<3)selectedAreas.push(area);
-        [...chips.children].forEach(b=>{const on=selectedAreas.includes(b.textContent);b.classList.toggle('selected',on);b.setAttribute('aria-pressed',String(on));b.disabled=selectedAreas.length===3&&!on});
-        const key=[...selectedAreas].sort((a,b)=>a.localeCompare(b,'pt-BR')).join('|');const result=document.getElementById('researchResult');
-        if(selectedAreas.length<2){result.innerHTML='<span class="result-kicker">Escolha 2 ou 3 áreas</span><div class="result-title">Sua pergunta pode estar entre elas.</div><p class="result-copy">Não existe uma combinação única: estas são apenas algumas possibilidades de pesquisa.</p>';return}
-        let found=comboMap[key];
-        if(!found&&selectedAreas.length===3){const pairs=[];for(let i=0;i<3;i++)for(let j=i+1;j<3;j++)pairs.push([selectedAreas[i],selectedAreas[j]].sort((a,b)=>a.localeCompare(b,'pt-BR')).join('|'));found=pairs.map(p=>comboMap[p]).find(Boolean)}
-        if(!found)found=['Pesquisa interdisciplinar','Modelagem do problema','Novos métodos e perguntas'];
-        result.innerHTML=`<span class="result-kicker">${selectedAreas.join(' + ')}</span><div class="result-title">${found.join(' · ')}</div><p class="result-copy">Uma combinação possível — o percurso real depende da pergunta, do projeto e da orientação.</p>`;
-      }
+  document.addEventListener('click', event => {
+    if (slides[current].id !== 'projetos' || !panel.classList.contains('open')) return;
+    if (panel.contains(event.target) || event.target.closest('.project-node')) return;
+    stopProjectCycle();
+    closeProjectPanel();
+  });
 
-      const projects=window.CM_DATA.projects;
-      const projectSpace=document.getElementById('projectSpace');const panel=document.getElementById('projectPanel');
-      projects.forEach((p,i)=>{const b=document.createElement('button');b.className='project-node';b.style.setProperty('--x',p.x+'%');b.style.setProperty('--y',p.y+'%');b.style.setProperty('--node-color',p.c);b.style.setProperty('--glow-color',p.glow);b.style.setProperty('--size',(i%3===0?'1.15rem':'.88rem'));b.setAttribute('aria-label',p.title);b.innerHTML=`<span class="dot"></span><span class="node-label">${p.short}</span>`;b.addEventListener('click',()=>openProject(p));projectSpace.appendChild(b)});
-      function openProject(p){document.getElementById('panelTitle').textContent=p.title;document.getElementById('panelInst').textContent=p.inst;document.getElementById('panelAreas').textContent=p.areas;panel.classList.add('open');panel.setAttribute('aria-hidden','false')}
-      document.getElementById('panelClose').addEventListener('click',()=>{panel.classList.remove('open');panel.setAttribute('aria-hidden','true')});
-
-      const regionPositions=[
-        {x:35,y:43}, {x:51,y:66}, {x:40,y:36}, {x:68,y:53}, {x:50,y:45}, {x:48,y:35}, {x:47,y:62}, {x:16,y:36}, {x:65,y:66}, {x:56,y:56}, {x:80,y:68}
-      ];
-      const regions=document.getElementById('regions');projects.forEach((p,i)=>{const d=document.createElement('span');d.className='region-dot';d.dataset.short=p.short;d.dataset.ox=p.x;d.dataset.oy=p.y;d.dataset.tx=regionPositions[i].x;d.dataset.ty=regionPositions[i].y;d.style.setProperty('--x',p.x+'%');d.style.setProperty('--y',p.y+'%');d.style.setProperty('--node-color',p.glow);d.style.transitionDelay=(i*.06)+'s';regions.appendChild(d)});
-
-      showSlide(current,false);
-      window.addEventListener('hashchange',()=>{const i=slides.findIndex(s=>'#'+s.id===location.hash);if(i>=0)showSlide(i,false)});
-    })();
+  showSlide(current, false);
+  startAuto();
+  window.addEventListener('hashchange', () => {
+    const i = slides.findIndex(s => '#' + s.id === location.hash);
+    if (i >= 0) showSlide(i, false);
+  });
+})();
   </script>
 </body>
 </html>
-
